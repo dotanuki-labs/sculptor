@@ -1,0 +1,11 @@
+[package]
+name = "rust-cli-tool-scaffold"
+version = "0.1.0"
+edition = "2021"
+description = "An opinionated way to kick-off CLI apps powered by Rust"
+repository = "https://github.com/dotanuki-labs/rust-cli-tool-scaffold"
+readme = "README.md"
+license = "MIT"
+publish = false
+
+[dependencies]

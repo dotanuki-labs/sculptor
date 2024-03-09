@@ -9,3 +9,4 @@ license = "MIT"
 publish = false
 
 [dependencies]
+clap = { version = "4.5.2", features = ["derive"] }

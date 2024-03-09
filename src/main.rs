@@ -1,4 +1,5 @@
 use clap::Parser;
+use human_panic::setup_panic;
 
 #[derive(Parser, Debug)]
 #[command(version, about, long_about = None)]
@@ -8,6 +9,8 @@ struct ProgramArguments {
 }
 
 fn main() {
+    setup_panic!();
+
     let arguments = ProgramArguments::parse();
     println!("Hello, {}!", arguments.name);
 }

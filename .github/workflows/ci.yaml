@@ -25,3 +25,6 @@ jobs:
 
       - name: Build project
         run: cargo build
+
+      - name: Run tests
+        run: cargo test

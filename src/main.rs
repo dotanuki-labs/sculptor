@@ -1,3 +1,5 @@
+mod core;
+
 use clap::Parser;
 use human_panic::setup_panic;
 
@@ -12,7 +14,8 @@ fn main() {
     setup_panic!();
 
     let arguments = ProgramArguments::parse();
-    println!("Hello, {}!", arguments.name);
+    let greet = core::greet(&arguments.name).unwrap();
+    println!("{}", greet);
 }
 
 #[cfg(test)]

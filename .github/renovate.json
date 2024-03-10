@@ -1,26 +1,43 @@
 {
-  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["workarounds:all", "helpers:pinGitHubActionDigests"],
-  "osvVulnerabilityAlerts": true,
-  "dependencyDashboard": true,
-  "labels": ["dependencies"],
-  "packageRules": [
-    {
-      "description": "Customize rust updates commit message",
-      "matchPackageNames": ["rust"],
-      "commitMessageTopic": "rust"
-    }
-  ],
-  "enabledManagers": ["github-actions", "cargo"],
-  "customManagers": [
-    {
-      "description": "Update Rust stable version in rust-toolchain.toml",
-      "customType": "regex",
-      "fileMatch": ["(^|/)rust-toolchain\\.toml$"],
-      "matchStrings": ["channel\\s*=\\s*('|\")(?<currentValue>.+?)('|\")\\s"],
-      "depNameTemplate": "rust",
-      "packageNameTemplate": "rust-lang/rust",
-      "datasourceTemplate": "github-releases"
-    }
-  ]
+    "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+    "extends": [
+        "workarounds:all",
+        "helpers:pinGitHubActionDigests"
+    ],
+    "osvVulnerabilityAlerts": true,
+    "dependencyDashboard": true,
+    "labels": [
+        "dependencies"
+    ],
+    "packageRules": [
+        {
+            "description": "Rust",
+            "matchPackageNames": [
+                "rust"
+            ],
+            "matchManagers": [
+                "regex"
+            ],
+            "commitMessageTopic": "rust"
+        }
+    ],
+    "enabledManagers": [
+        "github-actions",
+        "cargo"
+    ],
+    "customManagers": [
+        {
+            "description": "Update Rust stable version in rust-toolchain.toml",
+            "customType": "regex",
+            "fileMatch": [
+                "(^|/)rust-toolchain\\.toml$"
+            ],
+            "matchStrings": [
+                "channel\\s*=\\s*('|\")(?<currentValue>.+?)('|\")\\s"
+            ],
+            "depNameTemplate": "rust",
+            "packageNameTemplate": "rust-lang/rust",
+            "datasourceTemplate": "github-releases"
+        }
+    ]
 }

@@ -1,6 +1,7 @@
 {
     "$schema": "https://docs.renovatebot.com/renovate-schema.json",
     "extends": [
+        "mergeConfidence:all-badges",
         "workarounds:all",
         "helpers:pinGitHubActionDigests"
     ],
@@ -11,12 +12,14 @@
     ],
     "packageRules": [
         {
-            "description": "Rust",
+            "description": [
+                "Rust"
+            ],
             "matchPackageNames": [
                 "rust"
             ],
             "matchManagers": [
-                "regex"
+                "custom.regex"
             ],
             "commitMessageTopic": "rust"
         }
@@ -27,13 +30,15 @@
     ],
     "customManagers": [
         {
-            "description": "Update Rust stable version in rust-toolchain.toml",
+            "description": [
+                "Update Rust stable version in rust-toolchain.toml"
+            ],
             "customType": "regex",
             "fileMatch": [
                 "(^|/)rust-toolchain\\.toml$"
             ],
             "matchStrings": [
-                "channel\\s*=\\s*('|\")(?<currentValue>.+?)('|\")\\s"
+                "channel\\s*=\\s*\"(?<currentValue>\\d+\\.\\d+(\\.\\d+)?)\""
             ],
             "depNameTemplate": "rust",
             "packageNameTemplate": "rust-lang/rust",

@@ -24,10 +24,6 @@
             "commitMessageTopic": "rust"
         }
     ],
-    "enabledManagers": [
-        "github-actions",
-        "cargo"
-    ],
     "customManagers": [
         {
             "description": [

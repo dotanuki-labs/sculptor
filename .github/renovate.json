@@ -1,9 +1,10 @@
 {
     "$schema": "https://docs.renovatebot.com/renovate-schema.json",
     "extends": [
-        "mergeConfidence:all-badges",
-        "workarounds:all",
-        "helpers:pinGitHubActionDigests"
+        "config:recommended",
+        "docker:pinDigests",
+        "helpers:pinGitHubActionDigests",
+        ":pinDevDependencies"
     ],
     "osvVulnerabilityAlerts": true,
     "dependencyDashboard": true,

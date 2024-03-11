@@ -1,8 +1,15 @@
 # Update Rust toolchain
 toolchain:
-    @echo "→ Install active Rust toolchain"
+    @echo "→ Install and active Rust toolchain"
     rustup show active-toolchain
     @echo
+
+# Install required Cargo plugins
+cargo-plugins:
+    @echo "→ Installing Cargo plugins"
+    cargo install --locked cargo-deny
+    @echo
+
 # Check code formatting and smells
 lint:
     @echo "→ Checking code formatting (fmt)"
@@ -18,6 +25,10 @@ build:
     @echo "→ Compile project and build binary"
     cargo build
     @echo
+
+supplychain: cargo-plugins
+    @echo "→ Checking supplying chain"
+    cargo deny check
 
 # Run Tests
 test: build

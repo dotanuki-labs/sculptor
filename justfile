@@ -7,10 +7,15 @@ toolchain:
 # Install required Cargo plugins
 cargo-plugins:
     @echo "→ Installing Cargo plugins"
-    cargo install --locked cargo-deny
-    cargo install --locked cargo-cyclonedx
+    cargo install cargo-binstall
+    cargo binstall cargo-deny
+    cargo binstall cargo-cyclonedx
     @echo
 
+# Performs setup for this project
+setup: toolchain cargo-plugins
+    @echo "✅ Setup concluded"
+    @echo
 # Check code formatting and smells
 lint:
     @echo "→ Checking code formatting (fmt)"
@@ -42,5 +47,5 @@ test: build
 
 # Emulates CI checks
 ci: toolchain lint test
-    @echo "→ Emulated a CI build with success"
+    @echo "✅ Emulated a CI build with success"
     @echo

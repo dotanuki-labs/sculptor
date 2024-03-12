@@ -17,8 +17,8 @@ jobs:
       - name: Install just
         run: sudo snap install --edge --classic just
 
-      - name: Install Rust toolchain
-        run: just toolchain
+      - name: Setup Rust and Cargo plugins
+        run: just setup
 
       - name: Check code smells
         run: just lint

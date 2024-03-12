@@ -1,11 +1,8 @@
+# Rust builds
 /target
+rust-cli-tool-scaffold.cdx.json
 
+# IDE environment
 .DS_STORE
 .idea
 
-
-# Added by cargo
-#
-# already existing elements were commented out
-
-#/target

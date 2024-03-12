@@ -8,6 +8,7 @@ toolchain:
 cargo-plugins:
     @echo "→ Installing Cargo plugins"
     cargo install --locked cargo-deny
+    cargo install --locked cargo-cyclonedx
     @echo
 
 # Check code formatting and smells
@@ -26,9 +27,12 @@ build:
     cargo build
     @echo
 
-supplychain: cargo-plugins
+security: cargo-plugins
     @echo "→ Checking supplying chain"
     cargo deny check
+
+    @echo "→ Generating SBOMs"
+    cargo cyclonedx
 
 # Run Tests
 test: build

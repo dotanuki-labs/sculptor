@@ -7,9 +7,9 @@ toolchain:
 # Install required Cargo plugins
 cargo-plugins:
     @echo "→ Installing Cargo plugins"
-    cargo install cargo-binstall
-    cargo binstall cargo-deny
-    cargo binstall cargo-cyclonedx
+    curl -L --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/cargo-bins/cargo-binstall/main/install-from-binstall-release.sh | bash
+    yes | cargo binstall cargo-deny
+    yes | cargo binstall cargo-cyclonedx
     @echo
 
 # Performs setup for this project

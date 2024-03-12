@@ -37,7 +37,7 @@ security: cargo-plugins
     cargo deny check
 
     @echo "→ Generating SBOMs"
-    cargo cyclonedx
+    cargo cyclonedx --format json
 
 # Run Tests
 test: build

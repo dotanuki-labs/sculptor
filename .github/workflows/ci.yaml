@@ -34,8 +34,3 @@ jobs:
         with:
             name: sbom-${{ github.sha }}.json
             path: rust-cli-tool-scaffold.cdx.json
-
-      - name: Submit SBOM to Github Code Security
-        uses: evryfs/sbom-dependency-submission-action@v0.0.14
-        with:
-            sbom-files: rust-cli-tool-scaffold.cdx.json

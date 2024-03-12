@@ -7,9 +7,15 @@ toolchain:
 # Install required Cargo plugins
 cargo-plugins:
     @echo "→ Installing Cargo plugins"
-    cargo install --locked cargo-deny
+    curl -L --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/cargo-bins/cargo-binstall/main/install-from-binstall-release.sh | bash
+    yes | cargo binstall cargo-deny
+    yes | cargo binstall cargo-cyclonedx
     @echo
 
+# Performs setup for this project
+setup: toolchain cargo-plugins
+    @echo "✅ Setup concluded"
+    @echo
 # Check code formatting and smells
 lint:
     @echo "→ Checking code formatting (fmt)"
@@ -26,9 +32,12 @@ build:
     cargo build
     @echo
 
-supplychain: cargo-plugins
+security: cargo-plugins
     @echo "→ Checking supplying chain"
     cargo deny check
+
+    @echo "→ Generating SBOMs"
+    cargo cyclonedx --format json
 
 # Run Tests
 test: build
@@ -38,5 +47,5 @@ test: build
 
 # Emulates CI checks
 ci: toolchain lint test
-    @echo "→ Emulated a CI build with success"
+    @echo "✅ Emulated a CI build with success"
     @echo

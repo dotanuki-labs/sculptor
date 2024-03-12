@@ -17,11 +17,20 @@ jobs:
       - name: Install just
         run: sudo snap install --edge --classic just
 
-      - name: Install Rust toolchain
-        run: just toolchain
+      - name: Setup Rust and Cargo plugins
+        run: just setup
 
       - name: Check code smells
         run: just lint
 
       - name: Run tests
         run: just test
+
+      - name: Verify supply chain security
+        run: just security
+
+      - name: Archive SBOM
+        uses: actions/upload-artifact@v4.3.1
+        with:
+            name: sbom-${{ github.sha }}.json
+            path: rust-cli-tool-scaffold.cdx.json

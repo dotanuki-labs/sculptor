@@ -10,6 +10,7 @@ cargo-plugins:
     curl -L --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/cargo-bins/cargo-binstall/main/install-from-binstall-release.sh | bash
     yes | cargo binstall cargo-deny
     yes | cargo binstall cargo-cyclonedx
+    yes | cargo binstall cargo-modules
     @echo
 
 # Performs setup for this project
@@ -33,11 +34,17 @@ build:
     @echo
 
 security: cargo-plugins
+    @echo "→ Scan project structure"
+    cargo modules structure >>"$GITHUB_STEP_SUMMARY"
+    @echo
+
     @echo "→ Checking supplying chain"
     cargo deny check
+    @echo
 
     @echo "→ Generating SBOMs"
     cargo cyclonedx --format json
+    @echo
 
 # Run Tests
 test: build

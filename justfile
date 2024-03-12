@@ -35,7 +35,7 @@ build:
 
 security: cargo-plugins
     @echo "→ Scan project structure"
-    cargo modules structure | sed -r "s/[[:cntrl:]]\[[0-9]{1,3}m//g" >>"$GITHUB_STEP_SUMMARY"
+    cargo modules structure | sed -r "s/\x1B\[([0-9]{1,3}(;[0-9]{1,2})?)?[mGK]//g" >>"$GITHUB_STEP_SUMMARY"
     @echo
 
     @echo "→ Checking supplying chain"

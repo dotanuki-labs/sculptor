@@ -9,13 +9,13 @@ toolchain:
 # Install required Cargo plugins
 cargo-plugins:
     @echo "→ Installing Cargo Binstall"
-    curl -L --proto '=https' --tlsv1.2 -sSf  "{{cargo_binstall}}" | bash
+    ./scripts/cargo-binstaller.sh
     @echo
 
     @echo "→ Installing Cargo plugins"
-    yes | cargo binstall cargo-deny --secure >/dev/null &2>1
-    yes | cargo binstall cargo-cyclonedx --secure >/dev/null &2>1
-    yes | cargo binstall cargo-nextest --secure >/dev/null &2>1
+    yes | cargo binstall cargo-deny --secure --force
+    yes | cargo binstall cargo-cyclonedx --secure --force
+    yes | cargo binstall cargo-nextest --secure --force
     @echo
 
 # Performs setup for this project

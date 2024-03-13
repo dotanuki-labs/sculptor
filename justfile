@@ -10,6 +10,7 @@ cargo-plugins:
     curl -L --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/cargo-bins/cargo-binstall/main/install-from-binstall-release.sh | bash
     yes | cargo binstall cargo-deny
     yes | cargo binstall cargo-cyclonedx
+    yes | cargo binstall cargo-bloat
     @echo
 
 # Performs setup for this project
@@ -33,6 +34,13 @@ build:
     @echo
 
 security: cargo-plugins
+    @echo "→ Track binary size"
+    cargo bloat --crates --message-format json \
+      | jq -r  '["Name","Size(kb)"], ["---","---"], (.crates[] | [.name, .size]) | @tsv' \
+      | tr '\t' '|' >>$GITHUB_STEP_SUMMARY
+
+    @echo
+
     @echo "→ Checking supplying chain"
     cargo deny check
 

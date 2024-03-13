@@ -8,8 +8,9 @@ toolchain:
 cargo-plugins:
     @echo "→ Installing Cargo plugins"
     curl -L --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/cargo-bins/cargo-binstall/main/install-from-binstall-release.sh | bash
-    yes | cargo binstall cargo-deny
-    yes | cargo binstall cargo-cyclonedx
+    yes | cargo binstall cargo-deny --secure
+    yes | cargo binstall cargo-cyclonedx --secure
+    yes | cargo binstall cargo-nextest --secure
     @echo
 
 # Performs setup for this project
@@ -42,7 +43,7 @@ security: cargo-plugins
 # Run Tests
 test: build
     @echo "→ Run project tests"
-    cargo test
+    cargo nextest run
     @echo
 
 # Emulates CI checks

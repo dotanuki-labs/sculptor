@@ -1,3 +1,5 @@
+cargo_binstall := "https://raw.githubusercontent.com/cargo-bins/cargo-binstall/main/install-from-binstall-release.sh"
+
 # Update Rust toolchain
 toolchain:
     @echo "→ Install and active Rust toolchain"
@@ -6,17 +8,21 @@ toolchain:
 
 # Install required Cargo plugins
 cargo-plugins:
+    @echo "→ Installing Cargo Binstall"
+    curl -L --proto '=https' --tlsv1.2 -sSf  "{{cargo_binstall}}" | bash
+    @echo
+
     @echo "→ Installing Cargo plugins"
-    curl -L --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/cargo-bins/cargo-binstall/main/install-from-binstall-release.sh | bash
-    yes | cargo binstall cargo-deny --secure
-    yes | cargo binstall cargo-cyclonedx --secure
-    yes | cargo binstall cargo-nextest --secure
+    yes | cargo binstall cargo-deny --secure >/dev/null &2>1
+    yes | cargo binstall cargo-cyclonedx --secure >/dev/null &2>1
+    yes | cargo binstall cargo-nextest --secure >/dev/null &2>1
     @echo
 
 # Performs setup for this project
 setup: toolchain cargo-plugins
     @echo "✅ Setup concluded"
     @echo
+
 # Check code formatting and smells
 lint:
     @echo "→ Checking code formatting (fmt)"
@@ -47,6 +53,6 @@ test: build
     @echo
 
 # Emulates CI checks
-ci: toolchain lint test
+ci: lint test
     @echo "✅ Emulated a CI build with success"
     @echo

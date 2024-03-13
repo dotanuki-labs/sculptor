@@ -13,9 +13,9 @@ cargo-plugins:
     @echo
 
     @echo "→ Installing Cargo plugins"
-    yes | cargo binstall cargo-deny --secure
-    yes | cargo binstall cargo-cyclonedx --secure
-    yes | cargo binstall cargo-nextest --secure
+    yes | cargo binstall cargo-deny --secure --force
+    yes | cargo binstall cargo-cyclonedx --secure --force
+    yes | cargo binstall cargo-nextest --secure --force
     @echo
 
 # Performs setup for this project

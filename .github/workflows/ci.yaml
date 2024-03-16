@@ -43,15 +43,13 @@ jobs:
   build:
       runs-on: ubuntu-22.04
       needs: tests
+      strategy:
+          matrix:
+              os: [ 'ubuntu-22.04', 'macos-14']
 
       steps:
           - name: Project Checkout
             uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
-
-          - name: Setup CI caching
-            uses: Swatinem/rust-cache@23bce251a8cd2ffc3c1075eaa2367cf899916d84 # v2.7.3
-            with:
-                save-if: ${{ github.ref == 'refs/heads/main' }}
 
           - name: Install just
             run: sudo snap install --edge --classic just
@@ -59,15 +57,30 @@ jobs:
           - name: Setup Rust and Cargo plugins
             run: just setup
 
-          - name: Builds against several targets
-            run: just cross-build
+          - name: Build binaries targeting Linux
+            if: matrix.os == 'ubuntu-22.04'
+            run: just cross-build-linux
 
-          - name: Archive binaries
+          - name: Build binaries targeting MacOS
+            if: matrix.os == 'macos-14'
+            run: |
+                brew install docker colima && colima start
+                just cross-build-mac
+
+          - name: Archive binaries (Linux)
+            if: matrix.os == 'ubuntu-22.04'
             uses: actions/upload-artifact@5d5d22a31266ced268874388b861e4b58bb5c2f3 # v4.3.1
             with:
                 name: cross-compiled-binaries
                 path: |
                     target/x86_64-unknown-linux-gnu/release/rust-cli-tool-scaffold
                     target/aarch64-unknown-linux-gnu/release/rust-cli-tool-scaffold
+
+          - name: Archive binaries (MacOS)
+            if: matrix.os == 'macos-14'
+            uses: actions/upload-artifact@5d5d22a31266ced268874388b861e4b58bb5c2f3 # v4.3.1
+            with:
+                name: cross-compiled-binaries
+                path: |
                     target/aarch64-apple-darwin/release/rust-cli-tool-scaffold
                     target/x86_64-apple-darwin/release/rust-cli-tool-scaffold

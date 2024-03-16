@@ -7,7 +7,7 @@ on:
       - main
 
 jobs:
-  build:
+  tests:
     runs-on: ubuntu-22.04
 
     steps:
@@ -39,3 +39,35 @@ jobs:
         with:
             name: sbom-${{ github.sha }}.json
             path: rust-cli-tool-scaffold.cdx.json
+
+  build:
+      runs-on: ubuntu-22.04
+      needs: tests
+
+      steps:
+          - name: Project Checkout
+            uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+
+          - name: Setup CI caching
+            uses: Swatinem/rust-cache@23bce251a8cd2ffc3c1075eaa2367cf899916d84 # v2.7.3
+            with:
+                save-if: ${{ github.ref == 'refs/heads/main' }}
+
+          - name: Install just
+            run: sudo snap install --edge --classic just
+
+          - name: Setup Rust and Cargo plugins
+            run: just setup
+
+          - name: Builds against several targets
+            run: just cross-build
+
+          - name: Archive binaries
+            uses: actions/upload-artifact@5d5d22a31266ced268874388b861e4b58bb5c2f3 # v4.3.1
+            with:
+                name: cross-compiled-binaries
+                path: |
+                    target/x86_64-unknown-linux-gnu/release/rust-cli-tool-scaffold
+                    target/aarch64-unknown-linux-gnu/release/rust-cli-tool-scaffold
+                    target/aarch64-apple-darwin/release/rust-cli-tool-scaffold
+                    target/x86_64-apple-darwin/release/rust-cli-tool-scaffold

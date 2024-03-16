@@ -16,6 +16,7 @@ cargo-plugins:
     yes | cargo binstall cargo-deny --secure --force
     yes | cargo binstall cargo-cyclonedx --secure --force
     yes | cargo binstall cargo-nextest --secure --force
+    yes | cargo binstall cross --secure --force
     @echo
 
 # Performs setup for this project
@@ -37,6 +38,17 @@ lint:
 build:
     @echo "→ Compile project and build binary"
     cargo build
+    @echo
+
+# Build against several target platform
+cross-build: setup
+    @echo "→ Compiles project and builds binaries targeting different platforms"
+    # cross build --target x86_64-unknown-linux-musl --release
+    # cross build --target aarch64-unknown-linux-musl --release
+    cross build --target x86_64-unknown-linux-gnu --release
+    cross build --target aarch64-unknown-linux-gnu --release
+    cross build --target aarch64-apple-darwin --release
+    cross build --target x86_64-apple-darwin --release
     @echo
 
 security: cargo-plugins

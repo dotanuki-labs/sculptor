@@ -15,7 +15,9 @@ cross_compile() {
     rustup target add "$target"
     cargo zigbuild --release --target "$target"
 
-    cp target/"$target"/release/rust-cli-tool-scaffold "$output_dir"/rust-cli-tool-"$target"
+    local binary="target/$target/release/rust-cli-tool-scaffold"
+    cp "$binary" "$output_dir"/rust-cli-tool-"$target"
+    sha256sum "$binary" >> "$output_dir"/rust-cli-tool-"$target"-sha256
 }
 
 for platform in apple-darwin  unknown-linux-gnu; do

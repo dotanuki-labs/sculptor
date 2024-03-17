@@ -15,6 +15,7 @@ cargo-plugins:
     @echo "→ Installing Cargo plugins"
     yes | cargo binstall cargo-deny --secure --force
     yes | cargo binstall cargo-cyclonedx --secure --force
+    yes | cargo binstall cargo-zigbuild --secure --force
     yes | cargo binstall cargo-nextest --secure --force
     @echo
 
@@ -33,11 +34,16 @@ lint:
     cargo clippy --all-targets --all-features
     @echo
 
-# Build project
-build:
+# Build project against the local toolchain
+simple-build:
     @echo "→ Compile project and build binary"
     cargo build
     @echo
+
+# Build project against all supported targets
+cross-build:
+    @echo "→ Build project against all supported targets"
+    ./scripts/cross-build.sh
 
 security: cargo-plugins
     @echo "→ Checking supplying chain"
@@ -47,7 +53,7 @@ security: cargo-plugins
     cargo cyclonedx --format json
 
 # Run Tests
-test: build
+test: simple-build
     @echo "→ Run project tests"
     cargo nextest run
     @echo

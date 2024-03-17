@@ -44,6 +44,7 @@ jobs:
       runs-on: ubuntu-22.04
       needs: tests
       strategy:
+          fail-fast: false
           matrix:
               os: [ 'ubuntu-22.04', 'macos-14']
 

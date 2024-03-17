@@ -17,6 +17,7 @@ cross_compile() {
 
     local binary="target/$target/release/rust-cli-tool-scaffold"
     cp "$binary" "$output_dir"/rust-cli-tool-"$target"
+    chmod +x "$output_dir"/rust-cli-tool-"$target"
     sha256sum "$binary" >> "$output_dir"/rust-cli-tool-"$target"-sha256
 }
 

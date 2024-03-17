@@ -39,3 +39,15 @@ jobs:
         with:
             name: sbom-${{ github.sha }}.json
             path: rust-cli-tool-scaffold.cdx.json
+
+      - name: Install Zig
+        run: sudo snap install zig --classic --beta && zig version
+
+      - name: Build against all supported targets
+        run: just cross-build
+
+      - name: Archive binaries
+        uses: actions/upload-artifact@5d5d22a31266ced268874388b861e4b58bb5c2f3 # v4.3.1
+        with:
+            name: rust-cli-tool-binaries
+            path: target/ci

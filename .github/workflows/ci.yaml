@@ -19,32 +19,31 @@ jobs:
         with:
             save-if: ${{ github.ref == 'refs/heads/main' }}
 
-      - name: Install just
-        run: sudo snap install --edge --classic just
+      - name: Install additional tools
+        run: |
+            sudo snap install --edge --classic just
+            sudo snap install zig --classic --beta && zig version
 
       - name: Setup Rust and Cargo plugins
-        run: just setup
+        run: just setup-ci
 
       - name: Check code smells
         run: just lint
 
       - name: Run tests
-        run: just test
+        run: just tests
 
-      - name: Verify supply chain security
-        run: just security
+      - name: Check supply-chain issues
+        run: just supply-chain-checks
+
+      - name: Build against all supported targets
+        run: just cross-build
 
       - name: Archive SBOM
         uses: actions/upload-artifact@5d5d22a31266ced268874388b861e4b58bb5c2f3 # v4.3.1
         with:
             name: sbom-${{ github.sha }}.json
             path: rust-cli-tool-scaffold.cdx.json
-
-      - name: Install Zig
-        run: sudo snap install zig --classic --beta && zig version
-
-      - name: Build against all supported targets
-        run: just cross-build
 
       - name: Archive binaries
         uses: actions/upload-artifact@5d5d22a31266ced268874388b861e4b58bb5c2f3 # v4.3.1

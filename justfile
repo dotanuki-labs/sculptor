@@ -15,6 +15,7 @@ cargo-plugins-local:
 
     @echo "→ Installing Cargo plugins (local)"
     yes | cargo binstall cargo-nextest --secure --force
+    yes | cargo binstall cargo-get --secure --force
     @echo
 
 # Performs setup for this project (local)
@@ -62,6 +63,7 @@ cargo-plugins-ci:
     yes | cargo binstall cargo-cyclonedx --secure --force
     yes | cargo binstall cargo-zigbuild --secure --force
     yes | cargo binstall cargo-nextest --secure --force
+    yes | cargo binstall cargo-get --secure --force
     @echo
 
 # Performs setup for this project (CI)

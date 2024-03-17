@@ -49,7 +49,7 @@ build:
 # Build targeting Apple x86 / aarch64
 cross-build-mac: setup
     @echo "→ Compiles project and builds binaries targeting different platforms"
-    cross build --target aarch64-apple-darwin --release
+    cargo build --release
     cross build --target x86_64-apple-darwin --release
     @echo
 

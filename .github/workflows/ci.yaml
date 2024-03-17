@@ -64,9 +64,7 @@ jobs:
 
           - name: Build binaries targeting MacOS
             if: matrix.os == 'macos-14'
-            run: |
-                brew install docker colima && colima start
-                just cross-build-mac
+            run: brew install docker colima && colima start && just cross-build-mac
 
           - name: Archive binaries (Linux)
             if: matrix.os == 'ubuntu-22.04'
@@ -83,5 +81,5 @@ jobs:
             with:
                 name: cross-compiled-binaries
                 path: |
-                    target/aarch64-apple-darwin/release/rust-cli-tool-scaffold
+                    target/release/rust-cli-tool-scaffold
                     target/x86_64-apple-darwin/release/rust-cli-tool-scaffold

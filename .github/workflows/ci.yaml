@@ -64,6 +64,10 @@ jobs:
 
           - name: Build binaries targeting MacOS
             if: matrix.os == 'macos-14'
+            uses: Homebrew/actions/setup-homebrew@master
+
+          - name: Build binaries targeting MacOS
+            if: matrix.os == 'macos-14'
             run: brew install docker colima && colima start && just cross-build-mac
 
           - name: Archive binaries (Linux)

@@ -2,12 +2,6 @@ cargo_binstall := "https://raw.githubusercontent.com/cargo-bins/cargo-binstall/m
 
 # Update Rust toolchain
 toolchain:
-    @echo "→ Add required toolchains"
-    rustup target add aarch64-apple-darwin
-    rustup target add x86_64-apple-darwin
-    rustup target add aarch64-unknown-linux-gnu
-    rustup target add x86_64-unknown-linux-gnu
-
     @echo "→ Install and active Rust toolchain"
     rustup show active-toolchain
     @echo
@@ -50,11 +44,16 @@ build:
 cross-build-mac: setup
     @echo "→ Compiles project and builds binaries targeting different platforms"
     cargo build --release
+    rustup target add x86_64-apple-darwin
     cross build --target x86_64-apple-darwin --release
     @echo
 
 # Build targeting Linux x86 / aarch64
 cross-build-linux: setup
+    @echo "→ Add required toolchains"
+    rustup target add aarch64-unknown-linux-gnu
+    rustup target add x86_64-unknown-linux-gnu
+
     @echo "→ Compiles project and builds binaries targeting different platforms"
     cross build --target x86_64-unknown-linux-gnu --release
     cross build --target aarch64-unknown-linux-gnu --release

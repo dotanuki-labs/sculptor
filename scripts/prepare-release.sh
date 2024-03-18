@@ -2,7 +2,6 @@
 # Copyright 2024 Dotanuki Labs
 # SPDX-License-Identifier: MIT
 
-
 set -e
 
 dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"

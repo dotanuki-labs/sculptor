@@ -10,8 +10,20 @@ on:
       - main
 
 jobs:
+  essential-checks:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Project Checkout
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+
+      - name: Run essential checks
+        uses: dotanuki-labs/github-actions/essentials@main
+        with:
+          file-patterns: '*.sh,*.rs,*.yml'
+          license: 'mit'
   build:
     runs-on: ubuntu-22.04
+    needs: essential-checks
 
     steps:
       - name: Project Checkout

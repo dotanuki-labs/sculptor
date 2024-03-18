@@ -2,7 +2,6 @@
 # Copyright 2024 Dotanuki Labs
 # SPDX-License-Identifier: MIT
 
-
 readonly color_cyan="\033[1;36m"
 readonly color_normal="\033[0m"
 
@@ -10,7 +9,7 @@ readonly target_name="$1"
 readonly placeholder_name="rust-cli-tool-scaffold"
 
 cyan() {
-    echo ${color_cyan}$1${color_normal}
+    echo "${color_cyan}$1${color_normal}"
 }
 
 say() {

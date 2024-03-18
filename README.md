@@ -1,1 +1,1 @@
-Hello
+# rust-cli-tool-scaffold

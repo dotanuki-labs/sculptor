@@ -1,3 +1,6 @@
+# Copyright 2024 Dotanuki Labs
+# SPDX-License-Identifier: MIT
+
 pull_request_rules:
   - name: Automatic merges for Renovate pull requests
     conditions:

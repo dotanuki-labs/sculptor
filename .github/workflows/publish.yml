@@ -11,11 +11,6 @@ jobs:
       - name: Project Checkout
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
 
-      - name: Setup CI caching
-        uses: Swatinem/rust-cache@23bce251a8cd2ffc3c1075eaa2367cf899916d84 # v2.7.3
-        with:
-          save-if: ${{ github.ref == 'refs/heads/main' }}
-
       - name: Install additional tools
         run: |
           sudo snap install --edge --classic just
@@ -39,7 +34,9 @@ jobs:
         with:
           name: ${{ steps.prepare-release.outputs.version }}
           tag_name: ${{ steps.prepare-release.outputs.version }}
-          files: target/ci/**/*
           token: ${{ secrets.DOTANUKI_BOT_TOKEN }}
           generate_release_notes: true
           draft: true
+          files: |
+            target/ci/**/*
+            rust-cli-tool-scaffold.cdx.json

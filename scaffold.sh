@@ -42,13 +42,26 @@ remove() {
     rm -rf "$target"
 }
 
+replace_readme() {
+    local target="README.md"
+    local replacement="README-template.md"
+
+    say "• Removing $(cyan "$target")"
+    rm -rf "$target"
+
+    patch_file "$replacement"
+
+    say "• Replacing $(cyan "$target")"
+    mv "$replacement" "$target"
+}
+
 require_name
 
 echo
 say "🔥 Scaffolding with $(cyan "$target_name")"
 echo
 
-patch_file README.md
+replace_readme
 patch_file .gitignore
 patch_file Cargo.toml
 patch_file Cargo.lock

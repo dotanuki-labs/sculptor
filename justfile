@@ -71,10 +71,16 @@ setup-ci: toolchain cargo-plugins-ci
     @echo "✅ Setup (CI) concluded"
     @echo
 
-# Build project against all supported targets
-cross-build:
+# Build project against some supported targets
+cross-build-pull-request:
+    @echo "→ Build project against some supported targets"
+    ./scripts/cross-build.sh simple
+    @echo
+
+# Build project against some supported targets
+cross-build-release:
     @echo "→ Build project against all supported targets"
-    ./scripts/cross-build.sh
+    ./scripts/cross-build.sh full
     @echo
 
 # Generates supply-chain related artifacts

@@ -25,7 +25,7 @@ jobs:
         run: just supply-chain-checks
 
       - name: Build against all supported targets
-        run: just cross-build
+        run: just cross-build-release
 
       - name: Prepare to release
         id: prepare-release

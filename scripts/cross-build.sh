@@ -6,11 +6,6 @@ set -euo pipefail
 
 readonly output_dir="target/ci"
 
-dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-cd "${dir%/*}"
-
-rm -rf "$output_dir" && mkdir -p "$output_dir"
-
 cross_compile() {
     local target="$1"
 
@@ -23,8 +18,49 @@ cross_compile() {
     sha256sum "$binary" >>"$output_dir"/rust-cli-tool-scaffold-"$target"-sha256
 }
 
-for platform in apple-darwin unknown-linux-gnu; do
-    for arch in x86_64 aarch64; do
-        cross_compile "$arch-$platform"
+cross_build_full() {
+    for platform in apple-darwin unknown-linux-gnu; do
+        for arch in x86_64 aarch64; do
+            cross_compile "$arch-$platform"
+        done
     done
-done
+}
+
+cross_build_simple() {
+    cross_compile "x86_64-unknown-linux-gnu"
+    cross_compile "aarch64-apple-darwin"
+}
+
+usage() {
+    echo "Usage"
+    echo
+    echo "‣ cross-build.sh (default mode : simple)"
+    echo "‣ cross-build.sh simple"
+    echo "‣ cross-build.sh full"
+}
+
+readonly mode="${1:-simple}"
+
+echo
+
+dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+cd "${dir%/*}"
+
+rm -rf "$output_dir" && mkdir -p "$output_dir"
+
+case "$mode" in
+"simple")
+    cross_build_simple
+    ;;
+"full")
+    cross_build_full
+    ;;
+*)
+    echo "Error: Invalid cross-build mode → $mode"
+    usage
+    echo
+    exit 1
+    ;;
+esac
+
+echo

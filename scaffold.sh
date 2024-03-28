@@ -69,6 +69,7 @@ patch_file scripts/cross-build.sh
 patch_file .github/workflows/ci.yml
 patch_file .github/workflows/cd.yml
 patch_file src/main.rs
+patch_file tests/integration.rs
 remove .idea
 remove .git
 remove target

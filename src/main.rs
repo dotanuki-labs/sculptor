@@ -17,6 +17,6 @@ fn main() {
     setup_panic!();
 
     let arguments = ProgramArguments::parse();
-    let greet = core::greet(&arguments.name).unwrap();
+    let greet = core::greet(&arguments.name).expect("Expecting a greet!");
     println!("{}", greet);
 }

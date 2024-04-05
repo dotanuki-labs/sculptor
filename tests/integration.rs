@@ -5,7 +5,7 @@ use assert_cmd::Command;
 use predicates::str::contains;
 
 fn sut() -> Command {
-    Command::cargo_bin("rust-cli-tool-scaffold").unwrap()
+    Command::cargo_bin("rust-cli-tool-scaffold").expect("Should be able to create a command")
 }
 
 #[test]

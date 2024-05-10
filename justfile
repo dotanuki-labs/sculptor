@@ -12,11 +12,13 @@ cargo-plugins-local:
     @echo "→ Installing Cargo Binstall"
     ./scripts/cargo-binstaller.sh
     @echo
-
     @echo "→ Installing Cargo plugins (local)"
-    yes | cargo binstall cargo-nextest --secure --force
-    yes | cargo binstall cargo-get --secure --force
-    yes | cargo binstall cargo-msrv --secure --force
+    # renovate: depName=nextest-rs/nextest
+    cargo binstall cargo-nextest@0.9.68 -y --force
+
+    # Todo : implement Renovate for other subcommands
+    cargo binstall cargo-get -y --secure --force
+    cargo binstall cargo-msrv -y --secure --force
     @echo
 
 # Performs setup for this project (local)

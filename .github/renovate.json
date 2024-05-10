@@ -40,6 +40,18 @@
             "depNameTemplate": "rust",
             "packageNameTemplate": "rust-lang/rust",
             "datasourceTemplate": "github-releases"
+        },
+
+        {
+            "description": [
+                "Update versioned Cargo subcommands"
+            ],
+            "customType": "regex",
+            "fileMatch": ["^justfile"],
+            "datasourceTemplate": "github-releases",
+            "matchStrings": [
+                "#\\s?renovate: depName=(?<depName>.*?)\n\\s*cargo\\s*binstall\\s*cargo-nextest@(?<currentValue>\\d+\\.\\d+(\\.\\d+)?)"
+            ]
         }
     ]
 }

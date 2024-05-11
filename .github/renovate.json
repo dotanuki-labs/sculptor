@@ -50,7 +50,7 @@
             "fileMatch": ["(^|/)justfile"],
             "datasourceTemplate": "github-releases",
             "matchStrings": [
-                "#renovate: depName=(?<depName>.*?)\n.*cargo-nextest@(?<currentValue>\\d+\\.\\d+(\\.\\d+)?)"
+                "\\s*#renovate: depName=(?<depName>.*?)\ncargo\\s*binstall\\s*cargo-nextest@(?<currentValue>\\d+\\.\\d+(\\.\\d+)?)"
             ]
         }
     ]

@@ -27,7 +27,6 @@
     ],
     "customManagers": [
         {
-            "description": ["Update Rust stable version in rust-toolchain.toml"],
             "customType": "regex",
             "depNameTemplate": "rust",
             "packageNameTemplate": "rust-lang/rust",
@@ -38,11 +37,10 @@
             ]
         },
         {
-            "description": ["Update versioned Cargo subcommands"],
             "customType": "regex",
-            "depNameTemplate": "rust",
-            "datasourceTemplate": "github-releases",
+            "depNameTemplate": "nextest",
             "packageNameTemplate": "nextest-rs/nextest",
+            "datasourceTemplate": "github-releases",
             "fileMatch": ["(^|/)justfile"],
             "matchStrings": [
                 "cargo-nextest@(?<currentValue>\\d+\\.\\d+(\\.\\d+)?)"

@@ -31,7 +31,9 @@
             "depNameTemplate": "rust",
             "packageNameTemplate": "rust-lang/rust",
             "datasourceTemplate": "github-releases",
-            "fileMatch": ["(^|/)rust-toolchain\\.toml$"],
+            "fileMatch": [
+                "(^|/)rust-toolchain\\.toml$"
+            ],
             "matchStrings": [
                 "channel\\s*=\\s*\"(?<currentValue>\\d+\\.\\d+(\\.\\d+)?)\""
             ]
@@ -41,9 +43,23 @@
             "depNameTemplate": "cargo-nextest",
             "packageNameTemplate": "nextest-rs/nextest",
             "datasourceTemplate": "github-releases",
-            "fileMatch": ["(^|/)justfile"],
+            "fileMatch": [
+                "(^|/)justfile"
+            ],
             "matchStrings": [
                 "cargo-nextest@(?<currentValue>\\d+\\.\\d+\\.\\d+)"
+            ]
+        },
+        {
+            "customType": "regex",
+            "depNameTemplate": "cargo-cyclonedx",
+            "packageNameTemplate": "CycloneDX/cyclonedx-rust-cargo",
+            "datasourceTemplate": "github-releases",
+            "fileMatch": [
+                "(^|/)justfile"
+            ],
+            "matchStrings": [
+                "cargo-cyclonedx@(?<currentValue>\\d+\\.\\d+\\.\\d+)"
             ]
         },
         {
@@ -51,7 +67,9 @@
             "depNameTemplate": "cargo-msrv",
             "packageNameTemplate": "foresterre/cargo-msrv",
             "datasourceTemplate": "github-releases",
-            "fileMatch": ["(^|/)justfile"],
+            "fileMatch": [
+                "(^|/)justfile"
+            ],
             "matchStrings": [
                 "cargo-msrv@(?<currentValue>\\d+\\.\\d+\\.\\d+)"
             ]
@@ -61,9 +79,35 @@
             "depNameTemplate": "cargo-deny",
             "packageNameTemplate": "EmbarkStudios/cargo-deny",
             "datasourceTemplate": "github-releases",
-            "fileMatch": ["(^|/)justfile"],
+            "fileMatch": [
+                "(^|/)justfile"
+            ],
             "matchStrings": [
                 "cargo-deny@(?<currentValue>\\d+\\.\\d+\\.\\d+)"
+            ]
+        },
+        {
+            "customType": "regex",
+            "depNameTemplate": "cargo-zigbuild",
+            "packageNameTemplate": "rust-cross/cargo-zigbuild",
+            "datasourceTemplate": "github-releases",
+            "fileMatch": [
+                "(^|/)justfile"
+            ],
+            "matchStrings": [
+                "cargo-zigbuild@(?<currentValue>\\d+\\.\\d+\\.\\d+)"
+            ]
+        },
+        {
+            "customType": "regex",
+            "depNameTemplate": "cargo-get",
+            "packageNameTemplate": "nicolaiunrein/cargo-get",
+            "datasourceTemplate": "github-releases",
+            "fileMatch": [
+                "(^|/)justfile"
+            ],
+            "matchStrings": [
+                "cargo-get@(?<currentValue>\\d+\\.\\d+\\.\\d+)"
             ]
         }
     ]

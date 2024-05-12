@@ -43,7 +43,7 @@
             "datasourceTemplate": "github-releases",
             "fileMatch": ["(^|/)justfile"],
             "matchStrings": [
-                "cargo-nextest@(?<currentValue>\\d+\\.\\d+(\\.\\d+)?)"
+                "cargo-nextest@(?<currentValue>.*)"
             ]
         },
         {
@@ -54,6 +54,16 @@
             "fileMatch": ["(^|/)justfile"],
             "matchStrings": [
                 "cargo-msrv@(?<currentValue>\\d+\\.\\d+(\\.\\d+)?)"
+            ]
+        },
+        {
+            "customType": "regex",
+            "depNameTemplate": "cargo-deny",
+            "packageNameTemplate": "EmbarkStudios/cargo-deny",
+            "datasourceTemplate": "github-releases",
+            "fileMatch": ["(^|/)justfile"],
+            "matchStrings": [
+                "cargo-deny@(?<currentValue>.*)"
             ]
         }
     ]

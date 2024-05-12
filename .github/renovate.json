@@ -27,29 +27,25 @@
     ],
     "customManagers": [
         {
-            "description": [
-                "Update Rust stable version in rust-toolchain.toml"
-            ],
+            "description": ["Update Rust stable version in rust-toolchain.toml"],
             "customType": "regex",
-            "fileMatch": [
-                "(^|/)rust-toolchain\\.toml$"
-            ],
-            "matchStrings": [
-                "channel\\s*=\\s*\"(?<currentValue>\\d+\\.\\d+(\\.\\d+)?)\""
-            ],
             "depNameTemplate": "rust",
             "packageNameTemplate": "rust-lang/rust",
             "datasourceTemplate": "github-releases"
-        },
-
-        {
-            "description": [
-                "Update versioned Cargo subcommands"
+            "fileMatch": ["(^|/)rust-toolchain\\.toml$"],
+            "matchStrings": [
+                "channel\\s*=\\s*\"(?<currentValue>\\d+\\.\\d+(\\.\\d+)?)\""
             ],
+        },
+        {
+            "description": ["Update versioned Cargo subcommands"],
             "customType": "regex",
+            "depNameTemplate": "rust",
+            "datasourceTemplate": "github-releases",
+            "packageNameTemplate": "nextest-rs/nextest",
             "fileMatch": ["(^|/)justfile"],
             "matchStrings": [
-                "#\\s?renovate: datasource=(?<datasource>.*?) depName=(?<depName>.*?)\n\\s*cargo\\s*binstall\\s*cargo-nextest@(?<currentValue>\\d+\\.\\d+(\\.\\d+)?)"
+                "cargo-nextest@(?<currentValue>\\d+\\.\\d+(\\.\\d+)?)"
             ]
         }
     ]

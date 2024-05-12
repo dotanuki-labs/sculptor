@@ -48,9 +48,8 @@
             ],
             "customType": "regex",
             "fileMatch": ["(^|/)justfile"],
-            "datasourceTemplate": "github-releases",
             "matchStrings": [
-                "#\\s?renovate: depName=(?<depName>.*?)\n\\s*cargo\\s*binstall\\s*cargo-nextest@(?<currentValue>\\d+\\.\\d+(\\.\\d+)?)"
+                "#\\s?renovate: datasource=(?<datasource>.*?) depName=(?<depName>.*?)\n\\s*cargo\\s*binstall\\s*cargo-nextest@(?<currentValue>\\d+\\.\\d+(\\.\\d+)?)"
             ]
         }
     ]

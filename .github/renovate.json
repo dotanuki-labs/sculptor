@@ -31,11 +31,11 @@
             "customType": "regex",
             "depNameTemplate": "rust",
             "packageNameTemplate": "rust-lang/rust",
-            "datasourceTemplate": "github-releases"
+            "datasourceTemplate": "github-releases",
             "fileMatch": ["(^|/)rust-toolchain\\.toml$"],
             "matchStrings": [
                 "channel\\s*=\\s*\"(?<currentValue>\\d+\\.\\d+(\\.\\d+)?)\""
-            ],
+            ]
         },
         {
             "description": ["Update versioned Cargo subcommands"],

@@ -17,7 +17,7 @@ setup:
     cargo binstall cargo-msrv@0.15.1 -y --force
     cargo binstall cargo-deny@0.14.23 -y --force
     cargo binstall cargo-zigbuild@0.18.4 -y --force
-    cargo binstall cargo-get@1.1.0 -y --force
+    cargo binstall cargo-get@1.1.1 -y --force
 
     @echo
     @echo "✅ Setup concluded"

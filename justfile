@@ -13,7 +13,7 @@ cargo-plugins-local:
     ./scripts/cargo-binstaller.sh
     @echo
     @echo "→ Installing Cargo plugins (local)"
-    # renovate: depName=nextest-rs/nextest
+    # renovate: datasource=github-releases depName=nextest-rs/nextest
     cargo binstall cargo-nextest@0.9.68 -y --force
 
     # Todo : implement Renovate for other subcommands

@@ -12,7 +12,7 @@ setup:
 
     @echo
     @echo "→ Installing Cargo plugins"
-    cargo binstall cargo-nextest@0.9.68 -y --force
+    cargo binstall cargo-nextest@0.9.70 -y --force
     cargo binstall cargo-cyclonedx@0.5.0 -y --force
     cargo binstall cargo-msrv@0.15.1 -y --force
     cargo binstall cargo-deny@0.14.23 -y --force

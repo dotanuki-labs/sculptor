@@ -16,7 +16,7 @@ setup:
     cargo binstall cargo-cyclonedx@0.5.0 -y --force
     cargo binstall cargo-msrv@0.15.1 -y --force
     cargo binstall cargo-deny@0.14.23 -y --force
-    cargo binstall cargo-zigbuild@0.18.3 -y --force
+    cargo binstall cargo-zigbuild@0.18.4 -y --force
     cargo binstall cargo-get@1.1.0 -y --force
 
     @echo

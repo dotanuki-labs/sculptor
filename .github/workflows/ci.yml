@@ -40,7 +40,7 @@ jobs:
             sudo snap install zig --classic --beta && zig version
 
       - name: Setup Rust and Cargo plugins
-        run: just setup-ci
+        run: just setup
 
       - name: Check code smells
         run: just lint
@@ -49,19 +49,16 @@ jobs:
         run: just tests
 
       - name: Check supply-chain issues
-        run: just supply-chain-checks
-
-      - name: Check MSRV
-        run: just msrv-check
-
-      - name: Build against supported targets
-        run: just cross-build-pull-request
+        run: just supply-chain
 
       - name: Archive SBOM
         uses: actions/upload-artifact@65462800fd760344b1a7b4382951275a0abb4808 # v4.3.3
         with:
-            name: sbom-${{ github.sha }}.json
-            path: rust-cli-tool-scaffold.cdx.json
+          name: sbom-${{ github.sha }}.json
+          path: rust-cli-tool-scaffold.cdx.json
+
+      - name: Build against supported targets
+        run: just build-all
 
       - name: Archive binaries
         uses: actions/upload-artifact@65462800fd760344b1a7b4382951275a0abb4808 # v4.3.3

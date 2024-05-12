@@ -43,7 +43,7 @@
             "depNameTemplate": "cargo-nextest",
             "packageNameTemplate": "nextest-rs/nextest",
             "datasourceTemplate": "github-releases",
-            "extractVersionTemplate": "^{{{cargo-nextest-}}}/(?<version>.*)$",
+            "extractVersionTemplate": "^cargo-nextest-(?<version>.*)$",
             "fileMatch": [
                 "(^|/)justfile"
             ],
@@ -56,7 +56,7 @@
             "depNameTemplate": "cargo-cyclonedx",
             "packageNameTemplate": "CycloneDX/cyclonedx-rust-cargo",
             "datasourceTemplate": "github-releases",
-            "extractVersionTemplate": "^{{{cargo-cyclonedx-}}}/(?<version>.*)$",
+            "extractVersionTemplate": "^cargo-cyclonedx-(?<version>.*)$",
             "fileMatch": [
                 "(^|/)justfile"
             ],

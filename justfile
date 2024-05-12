@@ -14,10 +14,8 @@ cargo-plugins-local:
     @echo
     @echo "→ Installing Cargo plugins (local)"
     cargo binstall cargo-nextest@0.9.68 -y --force
-
-    # Todo : implement Renovate for other subcommands
+    cargo binstall cargo-msrv@0.15.0 -y --force
     cargo binstall cargo-get -y --secure --force
-    cargo binstall cargo-msrv -y --secure --force
     @echo
 
 # Performs setup for this project (local)
@@ -61,12 +59,12 @@ cargo-plugins-ci:
     @echo
 
     @echo "→ Installing Cargo plugins (CI)"
+    cargo binstall cargo-nextest@0.9.68 -y --force
+    cargo binstall cargo-msrv@0.15.0 -y --force
     yes | cargo binstall cargo-deny --secure --force
     yes | cargo binstall cargo-cyclonedx --secure --force
     yes | cargo binstall cargo-zigbuild --secure --force
-    yes | cargo binstall cargo-nextest --secure --force
     yes | cargo binstall cargo-get --secure --force
-    yes | cargo binstall cargo-msrv --secure --force
     @echo
 
 # Performs setup for this project (CI)

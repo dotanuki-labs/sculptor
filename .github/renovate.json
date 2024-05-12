@@ -38,12 +38,22 @@
         },
         {
             "customType": "regex",
-            "depNameTemplate": "nextest",
+            "depNameTemplate": "cargo-nextest",
             "packageNameTemplate": "nextest-rs/nextest",
             "datasourceTemplate": "github-releases",
             "fileMatch": ["(^|/)justfile"],
             "matchStrings": [
                 "cargo-nextest@(?<currentValue>\\d+\\.\\d+(\\.\\d+)?)"
+            ]
+        },
+        {
+            "customType": "regex",
+            "depNameTemplate": "cargo-msrv",
+            "packageNameTemplate": "foresterre/cargo-msrv",
+            "datasourceTemplate": "github-releases",
+            "fileMatch": ["(^|/)justfile"],
+            "matchStrings": [
+                "cargo-msrv@(?<currentValue>\\d+\\.\\d+(\\.\\d+)?)"
             ]
         }
     ]

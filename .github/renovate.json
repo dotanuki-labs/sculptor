@@ -43,7 +43,7 @@
             "datasourceTemplate": "github-releases",
             "fileMatch": ["(^|/)justfile"],
             "matchStrings": [
-                "cargo-nextest@(?<currentValue>.*)"
+                "cargo-nextest@(?<currentValue>\\d+\\.\\d+\\.\\d+)"
             ]
         },
         {
@@ -53,7 +53,7 @@
             "datasourceTemplate": "github-releases",
             "fileMatch": ["(^|/)justfile"],
             "matchStrings": [
-                "cargo-msrv@(?<currentValue>\\d+\\.\\d+(\\.\\d+)?)"
+                "cargo-msrv@(?<currentValue>\\d+\\.\\d+\\.\\d+)"
             ]
         },
         {
@@ -63,7 +63,7 @@
             "datasourceTemplate": "github-releases",
             "fileMatch": ["(^|/)justfile"],
             "matchStrings": [
-                "cargo-deny@(?<currentValue>.*)"
+                "cargo-deny@(?<currentValue>\\d+\\.\\d+\\.\\d+)"
             ]
         }
     ]

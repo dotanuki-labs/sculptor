@@ -1,0 +1,2 @@
+# Needed while this repo is private. Removed automatically by our scaffolding script
+exclude_path = ["docs"]

@@ -1,6 +1,9 @@
 # General tasks driven by Just
 # https://just.systems
 
+_default:
+  @just --list --unsorted
+
 # Performs setup for this project
 setup:
     @echo "→ Install and activate Rust toolchain"

@@ -18,9 +18,11 @@ jobs:
 
       - name: Run essential checks
         uses: dotanuki-labs/github-actions/essentials@main
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          file-patterns: '*.sh,*.rs,*.yml'
-          license: 'mit'
+          file-patterns: "*.sh,*.rs,*.yml"
+          license: "mit"
   build:
     runs-on: ubuntu-22.04
     needs: essential-checks
@@ -32,12 +34,12 @@ jobs:
       - name: Setup CI caching
         uses: Swatinem/rust-cache@23bce251a8cd2ffc3c1075eaa2367cf899916d84 # v2.7.3
         with:
-            save-if: ${{ github.ref == 'refs/heads/main' }}
+          save-if: ${{ github.ref == 'refs/heads/main' }}
 
       - name: Install additional tools
         run: |
-            sudo snap install --edge --classic just
-            sudo snap install zig --classic --beta && zig version
+          sudo snap install --edge --classic just
+          sudo snap install zig --classic --beta && zig version
 
       - name: Setup Rust and Cargo plugins
         run: just setup
@@ -63,5 +65,5 @@ jobs:
       - name: Archive binaries
         uses: actions/upload-artifact@65462800fd760344b1a7b4382951275a0abb4808 # v4.3.3
         with:
-            name: rust-cli-tool-scaffold-binaries
-            path: target/ci
+          name: rust-cli-tool-scaffold-binaries
+          path: target/ci

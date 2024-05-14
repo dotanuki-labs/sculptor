@@ -34,10 +34,12 @@ jobs:
         with:
           save-if: ${{ github.ref == 'refs/heads/main' }}
 
-      - name: Install additional tools
-        run: |
-          sudo snap install --edge --classic just
-          sudo snap install zig --classic --beta && zig version
+      - name: Install asdf
+        uses: asdf-vm/actions/setup@v3.0.2
+
+      - name: Install local required tools
+        shell: bash
+        run: ./scripts/setup-tooling.sh
 
       - name: Setup Rust and Cargo plugins
         run: just setup

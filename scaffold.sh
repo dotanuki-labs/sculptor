@@ -70,10 +70,15 @@ patch_file .github/workflows/ci.yml
 patch_file .github/workflows/cd.yml
 patch_file src/main.rs
 patch_file tests/integration.rs
+patch_file docs/changelog.md
+patch_file docs/contributing.md
+patch_file docs/development.md
+patch_file docs/releasing.md
 remove .idea
 remove .git
 remove target
 remove scaffold.sh
+remove lychee.toml
 
 echo
 say "✅ Done"

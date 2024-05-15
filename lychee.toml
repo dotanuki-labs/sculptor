@@ -1,2 +1,2 @@
-# Needed while this repo is private. Removed automatically by our scaffolding script
+# Needed while this repo is private. Removes after open-sourced
 exclude_path = ["docs"]

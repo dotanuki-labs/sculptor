@@ -14,16 +14,19 @@ Please ensure you have those installed on your system.
 
 ## Project setup
 
-To get started, install additional required tools with `asdf`:
+To get started, install required tools with :
 
 ```bash
-./scripts/setup-tooling.sh
+./scripts/install-requirements.sh
 ```
 
 which will install
-[just](https://just.systems)
-and
-[ziglang](https://ziglang.org)
+
+- [just](https://just.systems)
+- [ziglang](https://ziglang.org)
+- [cargo-binstall](https://github.com/cargo-bins/cargo-binstall)
+- [additional cargo-plugins](https://github.com/dotanuki-labs/gradle-wiper/blob/main/cargo-plugins.toml)
+
 for your user.
 
 This project uses `just` as a task runner and
@@ -33,12 +36,11 @@ defines a few recipes to make things straightforward. You can check them by runn
 just
 
 Available recipes:
-    setup        # Performs setup for this project
     lint         # Check code formatting and smells
     tests        # Run Tests
     build-simple # Build project against some supported targets
     build-all    # Build project against all supported targets
-    supply-chain # Generates supply-chain related artifacts
+    security     # Run security checks and generates supply-chain artifacts
 ```
 
 We definitely recommend getting started by setting up the latest version of Rust along with

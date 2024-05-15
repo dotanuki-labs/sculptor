@@ -16,14 +16,11 @@ jobs:
       - name: Install asdf
         uses: asdf-vm/actions/setup@05e0d2ed97b598bfce82fd30daf324ae0c4570e6 # v3.0.2
 
-      - name: Install local required tools
-        run: ./scripts/setup-tooling.sh
-
-      - name: Setup Rust and Cargo plugins
-        run: just setup-ci
+      - name: Install required tooling
+        run: ./scripts/install-requirements.sh
 
       - name: Check supply-chain issues
-        run: just supply-chain-checks
+        run: just security
 
       - name: Build against all supported targets
         run: just cross-build-release

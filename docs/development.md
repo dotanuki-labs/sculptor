@@ -36,11 +36,11 @@ defines a few recipes to make things straightforward. You can check them by runn
 just
 
 Available recipes:
-    lint         # Check code formatting and smells
-    tests        # Run Tests
-    build-simple # Build project against some supported targets
-    build-all    # Build project against all supported targets
-    security     # Run security checks and generates supply-chain artifacts
+    setup      # Performs setup for this project
+    lint       # Check code formatting and smells
+    tests      # Run Tests
+    build mode # Build project against supported targets, where mode is 'simple' or 'all'
+    security   # Run security checks and generates supply-chain artifacts
 ```
 
 We definitely recommend getting started by setting up the latest version of Rust along with

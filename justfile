@@ -37,16 +37,10 @@ tests:
     cargo nextest run
     @echo
 
-# Build project against some supported targets
-build-simple:
-    @echo "→ Build project against some supported targets"
-    ./scripts/cross-build.sh simple
-    @echo
-
-# Build project against all supported targets
-build-all:
+# Build project against supported targets, where mode is 'simple' or 'all'
+build mode:
     @echo "→ Build project against all supported targets"
-    ./scripts/cross-build.sh full
+    ./scripts/cross-build.sh {{mode}}
     @echo
 
 # Run security checks and generates supply-chain artifacts

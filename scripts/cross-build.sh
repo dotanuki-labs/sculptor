@@ -18,7 +18,7 @@ cross_compile() {
     sha256sum "$binary" >>"$output_dir"/rust-cli-tool-scaffold-"$target"-sha256
 }
 
-cross_build_full() {
+cross_build_all() {
     for platform in apple-darwin unknown-linux-gnu; do
         for arch in x86_64 aarch64; do
             cross_compile "$arch-$platform"
@@ -36,7 +36,8 @@ usage() {
     echo
     echo "‣ cross-build.sh (default mode : simple)"
     echo "‣ cross-build.sh simple"
-    echo "‣ cross-build.sh full"
+    echo "‣ cross-build.sh all"
+    echo
 }
 
 readonly mode="${1:-simple}"
@@ -52,13 +53,12 @@ case "$mode" in
 "simple")
     cross_build_simple
     ;;
-"full")
-    cross_build_full
+"all")
+    cross_build_all
     ;;
 *)
     echo "Error: Invalid cross-build mode → $mode"
     usage
-    echo
     exit 1
     ;;
 esac

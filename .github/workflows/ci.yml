@@ -55,8 +55,8 @@ jobs:
           name: sbom-${{ github.sha }}.json
           path: rust-cli-tool-scaffold.cdx.json
 
-      - name: Build against supported targets
-        run: just build-all
+      - name: Build against all supported targets
+        run: just build all
 
       - name: Archive binaries
         uses: actions/upload-artifact@65462800fd760344b1a7b4382951275a0abb4808 # v4.3.3

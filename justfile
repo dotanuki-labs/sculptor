@@ -49,8 +49,8 @@ build-all:
     ./scripts/cross-build.sh full
     @echo
 
-# Generates supply-chain related artifacts
-supply-chain:
+# Run security checks and generates supply-chain artifacts
+security:
     @echo "→ Checking minimum supported Rust version (MSRV)"
     cargo msrv verify
 

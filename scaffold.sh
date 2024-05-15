@@ -78,7 +78,6 @@ remove .idea
 remove .git
 remove target
 remove scaffold.sh
-remove lychee.toml
 
 echo
 say "✅ Done"

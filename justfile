@@ -21,6 +21,12 @@ setup:
     @echo "✅ Setup concluded"
     @echo
 
+# Checks minimum supported Rust toolchain version
+msrv:
+    @echo "→ Checking minimum supported Rust toolchain version (MSRV)"
+    cargo msrv verify
+    @echo
+
 # Check code formatting and smells
 lint:
     @echo "→ Checking code formatting (rustfmt)"
@@ -37,10 +43,10 @@ tests:
     cargo nextest run
     @echo
 
-# Build project against supported targets, where mode is 'simple' or 'all'
-build mode:
-    @echo "→ Build project against all supported targets"
-    ./scripts/cross-build.sh {{mode}}
+# Builds binaries according to local or CI environment
+assemble:
+    @echo "→ Building project according to local or CI environment"
+    ./scripts/flex-build.sh
     @echo
 
 # Run security checks and generates supply-chain artifacts

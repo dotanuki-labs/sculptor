@@ -25,7 +25,7 @@ which will install
 - [just](https://just.systems)
 - [ziglang](https://ziglang.org)
 - [cargo-binstall](https://github.com/cargo-bins/cargo-binstall)
-- [additional cargo-plugins](https://github.com/dotanuki-labs/gradle-wiper/blob/main/cargo-plugins.toml)
+- [additional cargo-plugins](https://github.com/dotanuki-labs/rust-cli-tool-scaffold/blob/main/cargo-plugins.toml)
 
 for your user.
 
@@ -36,11 +36,12 @@ defines a few recipes to make things straightforward. You can check them by runn
 just
 
 Available recipes:
-    setup      # Performs setup for this project
-    lint       # Check code formatting and smells
-    tests      # Run Tests
-    build mode # Build project against supported targets, where mode is 'simple' or 'all'
-    security   # Run security checks and generates supply-chain artifacts
+    setup    # Performs setup for this project
+    msrv     # Checks minimum supported Rust toolchain version
+    lint     # Check code formatting and smells
+    tests    # Run Tests
+    assemble # Builds binaries according to local or CI environment
+    security # Run security checks and generates supply-chain artifacts
 ```
 
 We definitely recommend getting started by setting up the latest version of Rust along with

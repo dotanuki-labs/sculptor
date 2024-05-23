@@ -27,7 +27,8 @@ jobs:
         with:
           file-patterns: "*.sh,*.rs,*.yml"
           license: "mit"
-  build:
+
+  lint:
     runs-on: ubuntu-22.04
     needs: docs
 
@@ -35,25 +36,69 @@ jobs:
       - name: Project Checkout
         uses: actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29 # v4.1.6
 
-      - name: Setup CI caching
-        uses: Swatinem/rust-cache@23bce251a8cd2ffc3c1075eaa2367cf899916d84 # v2.7.3
-        with:
-          save-if: ${{ github.ref == 'refs/heads/main' }}
-
-      - name: Install asdf
-        uses: asdf-vm/actions/setup@05e0d2ed97b598bfce82fd30daf324ae0c4570e6 # v3.0.2
-
-      - name: Install required tooling
-        run: ./scripts/install-requirements.sh
-
-      - name: Lint Bash files
+      - name: Lint Bash scripts
         uses: dotanuki-labs/github-actions/quality/bash@main
 
-      - name: Check code smells
+      - name: Setup CI
+        uses: ./.github/actions/setup-rust
+
+      - name: Lint project
         run: just lint
+
+      - name: Check MSRV
+        run: just msrv
+
+  tests:
+    runs-on: ubuntu-22.04
+    needs: docs
+
+    steps:
+      - name: Project Checkout
+        uses: actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29 # v4.1.6
+
+      - name: Lint Bash scripts
+        uses: dotanuki-labs/github-actions/quality/bash@main
+
+      - name: Setup CI
+        uses: ./.github/actions/setup-rust
 
       - name: Run tests
         run: just tests
+
+
+  build:
+    needs: docs
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ 'ubuntu-22.04', 'macos-14' ]
+
+    steps:
+      - name: Project Checkout
+        uses: actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29 # v4.1.6
+
+      - name: Setup CI
+        uses: ./.github/actions/setup-rust
+
+      - name: Cross-compilation against some targets
+        run: just assemble
+
+      - name: Archive binaries
+        uses: actions/upload-artifact@65462800fd760344b1a7b4382951275a0abb4808 # v4.3.3
+        with:
+          name: rust-cli-tool-scaffold-binaries-${{ runner.os }}
+          path: target/ci
+
+  security:
+    runs-on: ubuntu-22.04
+    needs: [lint, tests, build]
+
+    steps:
+      - name: Project Checkout
+        uses: actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29 # v4.1.6
+
+      - name: Setup CI
+        uses: ./.github/actions/setup-rust
 
       - name: Check supply-chain issues
         run: just security
@@ -63,12 +108,3 @@ jobs:
         with:
           name: sbom-${{ github.sha }}.json
           path: rust-cli-tool-scaffold.cdx.json
-
-      - name: Build against all supported targets
-        run: just build all
-
-      - name: Archive binaries
-        uses: actions/upload-artifact@65462800fd760344b1a7b4382951275a0abb4808 # v4.3.3
-        with:
-          name: rust-cli-tool-scaffold-binaries
-          path: target/ci

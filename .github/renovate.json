@@ -34,7 +34,7 @@
       "packageNameTemplate": "nextest-rs/nextest",
       "datasourceTemplate": "github-releases",
       "extractVersionTemplate": "^cargo-nextest-(?<version>.*)$",
-      "fileMatch": ["(^|/)cargo-plugins\\.toml"],
+      "fileMatch": ["(^|/)krabby"],
       "matchStrings": [
         "cargo-nextest\\s*=\\s*\"(?<currentValue>\\d+\\.\\d+(\\.\\d+)?)\""
       ]
@@ -44,10 +44,10 @@
       "depNameTemplate": "cargo-cyclonedx",
       "packageNameTemplate": "CycloneDX/cyclonedx-rust-cargo",
       "datasourceTemplate": "github-releases",
-      "extractVersionTemplate": "^cargo-cyclonedx-(?<version>.*)$",
-      "fileMatch": ["(^|/)cargo-plugins\\.toml"],
+      "extractVersionTemplate": "^cyclonedx-bom-(?<version>.*)$",
+      "fileMatch": ["(^|/)krabby"],
       "matchStrings": [
-        "cargo-cyclonedx\\s*=\\s*\"(?<currentValue>\\d+\\.\\d+(\\.\\d+)?)\""
+        "cargo-cyclonedx@(?<currentValue>\\d+\\.\\d+(\\.\\d+)?)"
       ]
     },
     {

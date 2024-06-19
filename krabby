@@ -22,7 +22,7 @@ install_cargo_extensions() {
     fi
 
     cargo install cargo-deny@0.14.24 --force
-    cargo install cargo-cyclonedx@0.5.3 --force
+    cargo install cargo-cyclonedx@0.5.2 --force
     cargo install cargo-msrv@0.15.1 --force
 }
 

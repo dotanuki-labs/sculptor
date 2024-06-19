@@ -12,7 +12,7 @@ build() {
     local target="$1"
 
     rustup target add "$target"
-    cargo zigbuild --release --target "$target"
+    cargo build --release --target "$target"
 
     local binary="target/$target/release/rust-cli-tool-scaffold"
     cp "$binary" "$output_dir"/rust-cli-tool-scaffold-"$target"

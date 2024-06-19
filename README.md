@@ -6,7 +6,6 @@
 
 - Easy setup for local and CI development powered by [just](https://github.com/casey/just)
 - Simple module structure and application entrypoint driven by [clap](https://github.com/clap-rs/clap)
-- Cross-compilation against Linux/Mac targets powered by [cargo-zigbuild](https://github.com/rust-cross/cargo-zigbuild)
 - Pull request automation powered by [Mergify](https://mergify.com/)
 - CI and CD pipelines driven by Github Actions
 - A few other niceties

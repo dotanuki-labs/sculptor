@@ -17,10 +17,13 @@ usage() {
 }
 
 install_cargo_extensions() {
-    cargo install cargo-nextest@0.9.72 --force
+    if [[ -z "$CI" ]]; then
+        cargo install cargo-nextest@0.9.72 --force
+    fi
+
     cargo install cargo-deny@0.14.24 --force
     cargo install cargo-cyclonedx@0.5.3 --force
-    cargo install cargo-msrv @0.15.1 --force
+    cargo install cargo-msrv@0.15.1 --force
 }
 
 check_code_smells() {
@@ -38,9 +41,17 @@ check_code_smells() {
 
 run_cargo_tests() {
     echo
-    echo "🦀 Running tests from Rust code"
-    echo
-    cargo nextest run
+
+    if [[ -z "$CI" ]]; then
+        echo "🦀 Running tests from Rust code (test runner : nextest)"
+        echo
+        cargo nextest run
+    else
+        echo "🦀 Running tests from Rust code (test runner : default)"
+        echo
+        cargo test
+    fi
+
     echo
 }
 

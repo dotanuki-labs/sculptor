@@ -62,7 +62,7 @@ Please check them out.
 ```
 
 - Code your changes 🔥
-- Use our `krabby.sh` tasks to verify [what we execute on CI](https://github.com/dotanuki-labs/rust-cli-tool-scaffold/blob/main/.github/workflows/ci.yml)
+- Use our `krabby` helper script to verify [what we execute on CI](https://github.com/dotanuki-labs/rust-cli-tool-scaffold/blob/main/.github/workflows/ci.yml)
 - Raise your Pull Request 🚀
 - Fill the description with our [pull request template](https://github.com/dotanuki-labs/.github/blob/main/.github/PULL_REQUEST_TEMPLATE.md)
 - Ensure you've your PR [linked with a proper issue](https://docs.github.com/en/issues/tracking-your-work-with-issues/linking-a-pull-request-to-an-issue#linking-a-pull-request-to-an-issue-using-a-keyword)

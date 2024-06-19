@@ -13,17 +13,11 @@ Please ensure you have those installed on your system.
 
 ## Project setup
 
-To get started, install required Cargo extensions with :
-
-```bash
-./krabby.sh setup
-```
-
-This project uses `krabby.sh` as a task runner and
+This project uses the `krabby` helper script as a task runner and
 defines a few targets to make things straightforward. You can check them by running:
 
 ```bash
-./krabby.sh
+./krabby
 
 Available tasks:
     setup       # Installs required Cargo extensions
@@ -37,7 +31,7 @@ We definitely recommend getting started by setting up the latest version of Rust
 all required Cargo subcommands by running:
 
 ```bash
-./krabby.sh setup
+./krabby setup
 ```
 
 ## Code Style
@@ -77,7 +71,7 @@ and all required status checks must pass.
 
 This project adopts
 [GiHub Actions](https://github.com/dotanuki-labs/rust-cli-tool-scaffold/actions)
-as it CI system. Most of the verifications we'll run on CI are wrapped by the `krabby.sh` script,
+as it CI system. Most of the verifications we'll run on CI are wrapped by the `krabby` script,
 as previously mentioned.
 
 In addition to that, we also run a specific `Job` to enforce code quality standards for docs,

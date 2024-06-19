@@ -23,7 +23,6 @@ To get started, install required tools with :
 which will install
 
 - [just](https://just.systems)
-- [ziglang](https://ziglang.org)
 - [cargo-binstall](https://github.com/cargo-bins/cargo-binstall)
 - [additional cargo-plugins](https://github.com/dotanuki-labs/rust-cli-tool-scaffold/blob/main/cargo-plugins.toml)
 

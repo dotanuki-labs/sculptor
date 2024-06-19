@@ -4,7 +4,7 @@
 
 ## Features
 
-- Easy setup for local and CI development powered by [just](https://github.com/casey/just)
+- Easy setup for local and CI development
 - Simple module structure and application entrypoint driven by [clap](https://github.com/clap-rs/clap)
 - Pull request automation powered by [Mergify](https://mergify.com/)
 - CI and CD pipelines driven by Github Actions

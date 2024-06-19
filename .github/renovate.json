@@ -12,7 +12,7 @@
   "packageRules": [
     {
       "description": ["Rust"],
-      "matchPackageNames": ["rust"],
+      "matchDepNames": ["rust"],
       "matchManagers": ["custom.regex"],
       "commitMessageTopic": "rust"
     }

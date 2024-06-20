@@ -107,7 +107,6 @@ case "$task" in
 "lint")
     check_code_smells
     ;;
-    ;;
 "tests")
     run_cargo_tests
     ;;

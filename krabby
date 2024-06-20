@@ -59,23 +59,15 @@ check_code_smells() {
 
 run_cargo_tests() {
     echo
-
-    if [[ -z "$CI" ]]; then
-        echo "🦀 Running tests from Rust code (test runner : nextest)"
-        echo
-        cargo nextest run
-    else
-        echo "🦀 Running tests from Rust code (test runner : default)"
-        echo
-        cargo test
-    fi
-
+    echo "🦀 Running unit + integration tests for Rust code"
+    echo
+    cargo nextest run
     echo
 }
 
 build_binaries() {
     echo
-    echo "🦀  Building project according to environment"
+    echo "🦀 Building project according to environment"
     echo
     ./scripts/flex-build.sh
     echo
@@ -115,8 +107,6 @@ case "$task" in
 "lint")
     check_code_smells
     ;;
-"msrv")
-    check_msrv
     ;;
 "tests")
     run_cargo_tests

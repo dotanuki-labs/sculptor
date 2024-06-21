@@ -27,6 +27,18 @@
       "matchStrings": [
         "channel\\s*=\\s*\"(?<currentValue>\\d+\\.\\d+(\\.\\d+)?)\""
       ]
+    },
+    {
+      "customType": "regex",
+      "depNameTemplate": "callinectes",
+      "packageNameTemplate": "dotanuki-labs/callinectes",
+      "datasourceTemplate": "docker",
+      "versioningTemplate": "docker",
+      "r"
+      "fileMatch": ["(^|/)krabby\\.sh$"],
+      "matchStrings": [
+          "ghcr.io/dotanuki-labs/callinectes:?<currentValue>.*?)@(?<currentDigest>.*?)"
+      ]
     }
   ]
 }

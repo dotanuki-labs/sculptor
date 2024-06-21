@@ -43,7 +43,7 @@ jobs:
         uses: ./.github/actions/setup-rust
 
       - name: Lint project
-        run: ./krabby lint
+        run: ./krabby.sh lint
 
   tests:
     runs-on: ubuntu-22.04
@@ -60,7 +60,7 @@ jobs:
         uses: ./.github/actions/setup-rust
 
       - name: Run tests
-        run: ./krabby tests
+        run: ./krabby.sh tests
 
 
   build:
@@ -78,7 +78,7 @@ jobs:
         uses: ./.github/actions/setup-rust
 
       - name: Cross-compilation against some targets
-        run: ./krabby assemble
+        run: ./krabby.sh assemble
 
       - name: Archive binaries
         uses: actions/upload-artifact@65462800fd760344b1a7b4382951275a0abb4808 # v4.3.3
@@ -98,7 +98,7 @@ jobs:
         uses: ./.github/actions/setup-rust
 
       - name: Check supply-chain issues
-        run: ./krabby security
+        run: ./krabby.sh security
 
       - name: Archive SBOM
         uses: actions/upload-artifact@65462800fd760344b1a7b4382951275a0abb4808 # v4.3.3

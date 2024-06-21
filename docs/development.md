@@ -17,7 +17,7 @@ This project uses the `krabby` helper script as a task runner and
 defines a few targets to make things straightforward. You can check them by running:
 
 ```bash
-./krabby
+./krabby.sh
 
 Available tasks:
     setup       # Installs required Cargo extensions
@@ -31,7 +31,7 @@ We definitely recommend getting started by setting up the latest version of Rust
 all required Cargo subcommands by running:
 
 ```bash
-./krabby setup
+./krabby.sh setup
 ```
 
 ## Code Style

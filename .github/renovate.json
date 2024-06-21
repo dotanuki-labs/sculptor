@@ -27,58 +27,6 @@
       "matchStrings": [
         "channel\\s*=\\s*\"(?<currentValue>\\d+\\.\\d+(\\.\\d+)?)\""
       ]
-    },
-    {
-      "customType": "regex",
-      "depNameTemplate": "cargo-nextest",
-      "packageNameTemplate": "nextest-rs/nextest",
-      "datasourceTemplate": "github-releases",
-      "extractVersionTemplate": "^cargo-nextest-(?<version>.*)$",
-      "fileMatch": ["(^|/)krabby"],
-      "matchStrings": [
-        "cargo-nextest@(?<currentValue>\\d+\\.\\d+(\\.\\d+)?)"
-      ]
-    },
-    {
-      "customType": "regex",
-      "depNameTemplate": "cargo-cyclonedx",
-      "packageNameTemplate": "CycloneDX/cyclonedx-rust-cargo",
-      "datasourceTemplate": "github-releases",
-      "extractVersionTemplate": "^cyclonedx-bom-(?<version>.*)$",
-      "fileMatch": ["(^|/)krabby"],
-      "matchStrings": [
-        "cargo-cyclonedx@(?<currentValue>\\d+\\.\\d+(\\.\\d+)?)"
-      ]
-    },
-    {
-      "customType": "regex",
-      "depNameTemplate": "cargo-msrv",
-      "packageNameTemplate": "foresterre/cargo-msrv",
-      "datasourceTemplate": "github-releases",
-      "fileMatch": ["(^|/)krabby"],
-      "matchStrings": [
-        "cargo-msrv@(?<currentValue>\\d+\\.\\d+(\\.\\d+)?)"
-      ]
-    },
-    {
-      "customType": "regex",
-      "depNameTemplate": "cargo-deny",
-      "packageNameTemplate": "EmbarkStudios/cargo-deny",
-      "datasourceTemplate": "github-releases",
-      "fileMatch": ["(^|/)krabby"],
-      "matchStrings": [
-        "cargo-deny@(?<currentValue>\\d+\\.\\d+(\\.\\d+)?)"
-      ]
-    },
-    {
-      "customType": "regex",
-      "depNameTemplate": "cargo-get",
-      "packageNameTemplate": "nicolaiunrein/cargo-get",
-      "datasourceTemplate": "github-releases",
-      "fileMatch": ["(^|/)krabby"],
-      "matchStrings": [
-        "cargo-get@(?<currentValue>\\d+\\.\\d+(\\.\\d+)?)"
-      ]
     }
   ]
 }

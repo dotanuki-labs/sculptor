@@ -36,7 +36,7 @@
       "versioningTemplate": "docker",
       "fileMatch": ["(^|/)krabby\\.sh$"],
       "matchStrings": [
-          "ghcr.io/dotanuki-labs/callinectes:(?<currentValue>.*?)@(?<currentDigest>.*?)"
+          "\\s*readonly callinectes=\"ghcr.io/dotanuki-labs/callinectes:(?<currentValue>[^\\s@]*)(@(?<currentDigest>sha256:[0-9a-f]*))\""
       ]
     }
   ]

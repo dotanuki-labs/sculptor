@@ -8,46 +8,30 @@
 This project is written in Rust, and explicitly depends on:
 
 - [rustup](https://rustup.rs/)
-- [asdf-vm](https://asdf-vm.com/)
 
 Please ensure you have those installed on your system.
 
 ## Project setup
 
-To get started, install required tools with :
+This project uses the `krabby` helper script as a task runner and
+defines a few targets to make things straightforward. You can check them by running:
 
 ```bash
-./scripts/install-requirements.sh
-```
+./krabby.sh
 
-which will install
-
-- [just](https://just.systems)
-- [cargo-binstall](https://github.com/cargo-bins/cargo-binstall)
-- [additional cargo-plugins](https://github.com/dotanuki-labs/rust-cli-tool-scaffold/blob/main/cargo-plugins.toml)
-
-for your user.
-
-This project uses `just` as a task runner and
-defines a few recipes to make things straightforward. You can check them by running:
-
-```bash
-just
-
-Available recipes:
-    setup    # Performs setup for this project
-    msrv     # Checks minimum supported Rust toolchain version
-    lint     # Check code formatting and smells
-    tests    # Run Tests
-    assemble # Builds binaries according to local or CI environment
-    security # Run security checks and generates supply-chain artifacts
+Available tasks:
+    setup       # Installs required Cargo extensions
+    lint        # Check code formatting and smells
+    tests       # Run tests for Rust modules and integration tests
+    assemble    # Builds binaries according to the environment (local or CI)
+    security    # Run security checks and generates supply-chain artifacts
 ```
 
 We definitely recommend getting started by setting up the latest version of Rust along with
 all required Cargo subcommands by running:
 
 ```bash
-just setup
+./krabby.sh setup
 ```
 
 ## Code Style
@@ -87,7 +71,7 @@ and all required status checks must pass.
 
 This project adopts
 [GiHub Actions](https://github.com/dotanuki-labs/rust-cli-tool-scaffold/actions)
-as it CI system. Most of the verifications we'll run on CI are provided by the `just` recipes,
+as it CI system. Most of the verifications we'll run on CI are wrapped by the `krabby` script,
 as previously mentioned.
 
 In addition to that, we also run a specific `Job` to enforce code quality standards for docs,

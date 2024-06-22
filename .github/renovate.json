@@ -18,7 +18,8 @@
     {
       "matchDatasources": ["docker"],
       "matchDepNames": ["dotanuki-labs/callinectes"],
-      "matchManagers": ["custom.regex"]
+      "matchManagers": ["custom.regex"],
+      "versioning": "git"
     }
   ],
   "customManagers": [

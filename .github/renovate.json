@@ -2,6 +2,7 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
     "config:recommended",
+    "docker:pinDigests",
     "helpers:pinGitHubActionDigests",
     ":pinDevDependencies"
   ],
@@ -18,8 +19,7 @@
     {
       "matchDatasources": ["docker"],
       "matchDepNames": ["dotanuki-labs/callinectes"],
-      "matchManagers": ["custom.regex"],
-      "versioning": "git"
+      "matchManagers": ["custom.regex"]
     }
   ],
   "customManagers": [
@@ -35,10 +35,12 @@
     },
     {
       "customType": "regex",
-      "datasourceTemplate": "docker",
+      "datasourceTemplate": "git-refs",
+      "currentValueTemplate": "main",
+      "packageNameTemplate": "https://github.com/dotanuki-labs/callinectes",
       "fileMatch": ["(^|/)krabby\\.sh$"],
       "matchStrings": [
-          "readonly callinectes=\"(?<depName>.*?):(?<currentValue>.*?)\""
+          "readonly callinectes=\"ghcr.io/dotanuki-labs/callinectes:(?<currentDigest>.*?)\""
       ]
     }
   ]

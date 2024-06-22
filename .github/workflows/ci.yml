@@ -39,9 +39,6 @@ jobs:
       - name: Lint Bash scripts
         uses: dotanuki-labs/github-actions/quality/bash@main
 
-      - name: Setup CI
-        uses: ./.github/actions/setup-rust
-
       - name: Lint project
         run: ./krabby.sh lint
 
@@ -93,9 +90,6 @@ jobs:
     steps:
       - name: Project Checkout
         uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
-
-      - name: Setup CI
-        uses: ./.github/actions/setup-rust
 
       - name: Check supply-chain issues
         run: ./krabby.sh security

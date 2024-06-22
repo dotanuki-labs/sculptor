@@ -2,7 +2,6 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
     "config:recommended",
-    "docker:pinDigests",
     "helpers:pinGitHubActionDigests",
     ":pinDevDependencies"
   ],
@@ -19,8 +18,7 @@
     {
       "matchDatasources": ["docker"],
       "matchDepNames": ["dotanuki-labs/callinectes"],
-      "matchManagers": ["custom.regex"],
-      "versioning": "git"
+      "matchManagers": ["custom.regex"]
     }
   ],
   "customManagers": [

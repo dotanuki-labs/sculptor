@@ -7,5 +7,5 @@ set -e
 dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 cd "${dir%/*}"
 
-version=$(cargo get package.version)
+version=$(grep 'version' Cargo.toml | head -1 | sed "s/version[[:space:]]=[[:space:]]//g" | tr -d '"')
 echo "version=$version" >>"$GITHUB_OUTPUT"

@@ -47,8 +47,41 @@ build_binaries() {
     echo
     echo "🔥 Building project according to environment"
     echo
-    ./scripts/flex-build.sh
-    echo
+    local gha_runner="${RUNNER_OS:-local}"
+    local platform
+
+    echo "Detected environment → $gha_runner"
+
+    case "$gha_runner" in
+    "local")
+        cargo build --release
+        exit 0
+        ;;
+    "macOS")
+        platform="apple-darwin"
+        ;;
+    "Linux")
+        platform="unknown-linux-gnu"
+        ;;
+    *)
+        echo "Error: unsupported environment → $gha_runner"
+        echo
+        exit 1
+        ;;
+    esac
+
+    local output_dir="target/ci"
+
+    for arch in x86_64 aarch64; do
+        local target="$arch-$platform"
+        rustup target add "$target"
+        cargo build --release --target "$target"
+
+        local binary="target/$target/release/rust-cli-tool-scaffold"
+        cp "$binary" "$output_dir"/rust-cli-tool-scaffold-"$target"
+        chmod +x "$output_dir"/rust-cli-tool-scaffold-"$target"
+        sha256sum "$binary" >>"$output_dir"/rust-cli-tool-scaffold-"$target"-sha256
+    done
 }
 
 check_supply_chain() {

@@ -50,9 +50,11 @@ jobs:
         with:
           path: artifacts
 
-      - name: Prepare to release
+      - name: Extract current version
         id: prepare-release
-        run: ./scripts/prepare-release.sh
+        run: |
+          version=$(grep 'version' Cargo.toml | head -1 | sed "s/version[[:space:]]=[[:space:]]//g" | tr -d '"')
+          echo "version=$version" >>"$GITHUB_OUTPUT"
 
       - name: Publish draft release on Github
         uses: softprops/action-gh-release@a74c6b72af54cfa997e81df42d94703d6313a2d0 # v2.0.6

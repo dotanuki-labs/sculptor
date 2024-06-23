@@ -65,7 +65,7 @@ replace_readme
 patch_file .gitignore
 patch_file Cargo.toml
 patch_file Cargo.lock
-patch_file scripts/flex-build.sh
+patch_file krabby.sh
 patch_file .github/workflows/ci.yml
 patch_file .github/workflows/cd.yml
 patch_file src/main.rs

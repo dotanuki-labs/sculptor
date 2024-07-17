@@ -7,7 +7,7 @@ set -e
 dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 cd "$dir"
 
-readonly callinectes="ghcr.io/dotanuki-labs/callinectes:f152ae4905f72134d08393a3812f24ccef67e786"
+readonly callinectes="ghcr.io/dotanuki-labs/callinectes:0cae1fa0477104a003000c048995f6856ad95634"
 readonly task="$1"
 
 usage() {

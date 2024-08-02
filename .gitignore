@@ -1,5 +1,6 @@
 # Rust builds
 /target
+artifacts
 rust-cli-tool-scaffold.cdx.json
 
 # IDE environment

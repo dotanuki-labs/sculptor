@@ -26,7 +26,7 @@ jobs:
         uses: actions/upload-artifact@89ef406dd8d7e03cfd12d9e0a4a378f454709029 # v4.3.5
         with:
           name: gradle-wiper-binaries-${{ runner.os }}
-          path: target/ci
+          path: artifacts
 
   release:
     needs: build
@@ -39,11 +39,12 @@ jobs:
       - name: Setup CI
         uses: ./.github/actions/setup-rust
 
-      - name: Publish on crates.io
-        run: cargo publish --token ${{ secrets.CRATESIO_PUBLISH_TOKEN }}
-
       - name: Check supply-chain issues
         run: ./krabby.sh security
+
+      - name: Publish on crates.io
+        if: false
+        run: cargo publish --token ${{ secrets.CRATESIO_PUBLISH_TOKEN }}
 
       - name: Fetch executable from previous build
         uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16 # v4.1.8

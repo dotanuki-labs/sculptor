@@ -5,6 +5,10 @@ name: CD
 
 on: workflow_dispatch
 
+permissions:
+  id-token: write
+  attestations: write
+
 jobs:
   build:
     runs-on: ${{ matrix.os }}
@@ -42,14 +46,21 @@ jobs:
       - name: Check supply-chain issues
         run: ./krabby.sh security
 
-      - name: Publish on crates.io
-        if: false
-        run: cargo publish --token ${{ secrets.CRATESIO_PUBLISH_TOKEN }}
-
       - name: Fetch executable from previous build
         uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16 # v4.1.8
         with:
           path: artifacts
+
+      - name: Build provenance for binaries
+        uses: actions/attest-build-provenance@v1.4.0
+        with:
+          subject-path: artifacts/**/*
+
+      - name: Build provenance for SBOM
+        uses: actions/attest-sbom@v1.4.0
+        with:
+          subject-path: artifacts/**/*
+          sbom-path: rust-cli-tool-scaffold.cdx.json
 
       - name: Prepare Github release
         id: prepare-release
@@ -66,3 +77,8 @@ jobs:
           files: |
             artifacts/**/*
             rust-cli-tool-scaffold.cdx.json
+
+      - name: Publish on crates.io
+        if: false
+        run: cargo publish --token ${{ secrets.CRATESIO_PUBLISH_TOKEN }}
+

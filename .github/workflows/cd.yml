@@ -15,7 +15,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ 'ubuntu-22.04', 'macos-14' ]
+        os: ["ubuntu-22.04", "macos-14"]
 
     steps:
       - name: Project Checkout
@@ -30,7 +30,7 @@ jobs:
       - name: Archive binaries
         uses: actions/upload-artifact@89ef406dd8d7e03cfd12d9e0a4a378f454709029 # v4.3.5
         with:
-          name: gradle-wiper-binaries-${{ runner.os }}
+          name: rust-cli-tool-scaffold-binaries-${{ runner.os }}
           path: artifacts
 
   release:
@@ -84,4 +84,3 @@ jobs:
       - name: Publish on crates.io
         if: false
         run: cargo publish --token ${{ secrets.CRATESIO_PUBLISH_TOKEN }}
-

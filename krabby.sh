@@ -99,8 +99,8 @@ compute_checksums() {
     touch "$checksums"
     find . -name 'rust-cli-tool-scaffold-*' -exec sha256sum {} \; |
         sed "s/\.\///g" |
-        sed "s/gradle-wiper-binaries-macOS\///g" |
-        sed "s/gradle-wiper-binaries-Linux\///g" >"$checksums"
+        sed "s/rust-cli-tool-scaffold-binaries-macOS\///g" |
+        sed "s/rust-cli-tool-scaffold-binaries-Linux\///g" >"$checksums"
 }
 
 export_release_version() {

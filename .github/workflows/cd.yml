@@ -54,11 +54,13 @@ jobs:
 
       - name: Build provenance for binaries
         uses: actions/attest-build-provenance@210c1913531870065f03ce1f9440dd87bc0938cd # v1.4.0
+        if: false
         with:
           subject-path: artifacts/**/*
 
       - name: Build provenance for SBOM
         uses: actions/attest-sbom@f19ab44411e02574a74181cec8eb584319d0f779 # v1.4.0
+        if: false
         with:
           subject-path: artifacts/**/*
           sbom-path: rust-cli-tool-scaffold.cdx.json

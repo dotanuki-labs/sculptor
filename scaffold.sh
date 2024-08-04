@@ -55,6 +55,12 @@ replace_readme() {
     mv "$replacement" "$target"
 }
 
+enable_cd_workflow() {
+    readonly cd=".github/workflows/cd.yml"
+    grep -v "if: false" "$cd" >enabled
+    mv enabled "$cd"
+}
+
 require_name
 
 echo
@@ -74,6 +80,7 @@ patch_file docs/changelog.md
 patch_file docs/contributing.md
 patch_file docs/development.md
 patch_file docs/releasing.md
+enable_cd_workflow
 remove .idea
 remove .git
 remove target

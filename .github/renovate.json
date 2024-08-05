@@ -37,7 +37,8 @@
       "customType": "regex",
       "datasourceTemplate": "git-refs",
       "currentValueTemplate": "main",
-      "packageNameTemplate": "dotanuki-labs/callinectes",
+      "depNameTemplate": "dotanuki-labs/callinectes",
+      "packageNameTemplate": "https://github.com/dotanuki-labs/callinectes",
       "fileMatch": ["(^|/)krabby\\.sh$"],
       "matchStrings": [
           "readonly callinectes=\"ghcr.io/dotanuki-labs/callinectes:(?<currentDigest>.*?)\""

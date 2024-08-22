@@ -17,6 +17,7 @@ msrv = "1.74.0"
 anyhow = "1.0.82"
 clap = { version = "4.5.4", features = ["derive"] }
 human-panic = "2.0.0"
+better-panic = "0.3.0"
 
 [dev-dependencies]
 assert_cmd = "2.0.14"

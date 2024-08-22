@@ -4,7 +4,6 @@
 mod core;
 
 use clap::Parser;
-use human_panic::setup_panic;
 
 #[derive(Parser, Debug)]
 #[command(version, about, long_about = None)]
@@ -14,7 +13,8 @@ struct ProgramArguments {
 }
 
 fn main() {
-    setup_panic!();
+    better_panic::install();
+    human_panic::setup_panic!();
 
     let arguments = ProgramArguments::parse();
     let greet = core::greet(&arguments.name).expect("Expecting a greet!");

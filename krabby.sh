@@ -19,8 +19,9 @@ usage() {
     echo "lint              # Check code formatting and smells"
     echo "tests             # Run tests for Rust modules and integration tests"
     echo "assemble          # Builds binaries according to the environment (local or CI)"
-    echo "security          # Run security checks and generates supply-chain artifacts"
-    echo "prepare-release   # Run security checks and generates supply-chain artifacts"
+    echo "security          # Checks issues in the supply chain"
+    echo "sbom              # Generates CycloneDX SBOM from Rust dependencies"
+    echo "prepare-release   # Prepare metadata before publishing artifacts"
     echo
 }
 
@@ -34,7 +35,7 @@ check_code_smells() {
     echo
     echo "🔥 Checking code smells for Rust code"
     echo
-    docker run --rm -v "${PWD}:/usr/src" "$callinectes" code
+    docker run --rm -v "${PWD}:/usr/src" "$callinectes" fmt clippy
 }
 
 run_cargo_tests() {
@@ -89,7 +90,14 @@ check_supply_chain() {
     echo
     echo "🔥 Checking dependencies and supply-chain"
     echo
-    docker run --rm -v "${PWD}:/usr/src" "$callinectes" deps
+    docker run --rm -v "${PWD}:/usr/src" "$callinectes" msrv machete deny
+}
+
+generate_cyclonedx_sbom() {
+    echo
+    echo "🔥 Generating CycloneDX SBOM"
+    echo
+    docker run --rm -v "${PWD}:/usr/src" "$callinectes" cyclonedx
 }
 
 compute_checksums() {
@@ -133,6 +141,9 @@ case "$task" in
     ;;
 "security")
     check_supply_chain
+    ;;
+"sbom")
+    generate_cyclonedx_sbom
     ;;
 "prepare-release")
     prepare_github_release

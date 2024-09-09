@@ -56,12 +56,13 @@
         {
             "customType": "regex",
             "datasourceTemplate": "docker",
+            "currentValueTemplate": "latest",
             "depNameTemplate": "dotanuki-labs/callinectes",
             "fileMatch": [
                 "(^|/)krabby\\.sh$"
             ],
             "matchStrings": [
-                "readonly callinectes=\"ghcr.io/dotanuki-labs/callinectes:(?<currentValue>.*?)\""
+                "readonly callinectes=\"ghcr.io/dotanuki-labs/callinectes@(?<currentDigest>.*?)\""
             ]
         }
     ]

@@ -57,6 +57,7 @@
             "customType": "regex",
             "datasourceTemplate": "docker",
             "currentValueTemplate": "latest",
+            "registryUrlTemplate": "https://ghcr.io",
             "depNameTemplate": "dotanuki-labs/callinectes",
             "fileMatch": [
                 "(^|/)krabby\\.sh$"

@@ -62,7 +62,7 @@
                 "(^|/)krabby\\.sh$"
             ],
             "matchStrings": [
-                "readonly callinectes=\"ghcr.io/dotanuki-labs/callinectes:(?<currentDigest>.*?)\""
+                "readonly callinectes=\"ghcr.io/dotanuki-labs/callinectes:(?<currentValue>.*?)\""
             ]
         }
     ]

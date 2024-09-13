@@ -18,7 +18,7 @@ fn should_parse_arguments() {
 
 #[test]
 fn should_show_help() {
-    let description = "An opinionated way to kick-off CLI apps powered by Rust";
+    let description = "Usage: rust-cli-tool-scaffold";
 
     let execution = sut().arg("--help").assert();
     execution.stdout(contains(description));

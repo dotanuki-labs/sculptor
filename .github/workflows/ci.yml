@@ -36,11 +36,8 @@ jobs:
       - name: Project Checkout
         uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
 
-      - name: Lint Bash scripts
-        uses: dotanuki-labs/github-actions/quality/bash@main
-
-      - name: Lint project
-        run: ./krabby.sh lint
+      - name: Inspect and lint source files
+        run: cargo xtasks sources
 
   tests:
     runs-on: ubuntu-22.04
@@ -53,8 +50,8 @@ jobs:
       - name: Setup CI
         uses: ./.github/actions/setup-rust
 
-      - name: Run tests
-        run: ./krabby.sh tests
+      - name: Run project tests
+        run: cargo xtasks tests
 
 
   build:
@@ -71,8 +68,8 @@ jobs:
       - name: Setup CI
         uses: ./.github/actions/setup-rust
 
-      - name: Cross-compilation against some targets
-        run: ./krabby.sh assemble
+      - name: Generates build artifacts
+        run: cargo xtasks artifacts binaries
 
       - name: Archive binaries
         uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874 # v4.4.0
@@ -80,22 +77,44 @@ jobs:
           name: rust-cli-tool-scaffold-binaries-${{ runner.os }}
           path: artifacts
 
-  security:
+  artifacts:
+    needs: build
     runs-on: ubuntu-22.04
-    needs: [lint, tests, build]
 
     steps:
       - name: Project Checkout
         uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
 
-      - name: Check supply-chain issues
-        run: ./krabby.sh security
+      - name: Fetch executable from previous build
+        uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16 # v4.1.8
+        with:
+          path: artifacts
 
-      - name: Generate SBOM
-        run: ./krabby.sh sbom
+      - name: Setup CI
+        uses: ./.github/actions/setup-rust
+
+      - name: Generate additional artifacts
+        run: cargo xtasks artifacts extras
+
+      - name: Archive checksums
+        uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874 # v4.4.0
+        with:
+          name: checksums.txt
+          path: artifacts/checksums.txt
 
       - name: Archive SBOM
         uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874 # v4.4.0
         with:
           name: sbom-${{ github.sha }}.json
-          path: rust-cli-tool-scaffold.cdx.json
+          path: crates/rust-cli-tool-scaffold/rust-cli-tool-scaffold.cdx.json
+
+  security:
+    runs-on: ubuntu-22.04
+    needs: [lint, tests, artifacts]
+
+    steps:
+      - name: Project Checkout
+        uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
+
+      - name: Check issues with supply chain
+        run: cargo xtasks security

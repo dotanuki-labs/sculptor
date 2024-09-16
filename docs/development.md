@@ -13,18 +13,24 @@ Please ensure you have those installed on your system.
 
 ## Project setup
 
-This project uses the `krabby` helper script as a task runner and
-defines a few targets to make things straightforward. You can check them by running:
+This project uses `xtasks` helpers to run common tasks. You can check them by running:
 
 ```bash
-./krabby.sh
+cargo xtasks
 
-Available tasks:
-    setup       # Installs required Cargo extensions
-    lint        # Check code formatting and smells
-    tests       # Run tests for Rust modules and integration tests
-    assemble    # Builds binaries according to the environment (local or CI)
-    security    # Run security checks and generates supply-chain artifacts
+Companion build tasks for rust-cli-tool-scaffold
+
+Usage: xtasks <COMMAND>
+
+Commands:
+  sources    Inspects sources for formatting and smells
+  tests      Runs unit and integration tests
+  artifacts  Builds project artifacts (binaries or metadata)
+  security   Detects issues with project dependencies
+  help       Print this message or the help of the given subcommand(s)
+
+Options:
+  -h, --help  Print help
 ```
 
 We definitely recommend getting started by setting up the latest version of Rust along with

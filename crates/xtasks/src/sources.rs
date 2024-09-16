@@ -47,22 +47,3 @@ fn check_code_smells(shell: &Shell) -> anyhow::Result<()> {
 
     Ok(())
 }
-
-#[allow(dead_code)]
-fn check_msrv(shell: &Shell) -> anyhow::Result<()> {
-    println!();
-    println!("🔥 Checking minimal supported Rust version (cargo-mrsv)");
-    println!();
-
-    match evaluate_build_environment() {
-        CI => {
-            let (volume, image) = docker_execution_arguments();
-            cmd!(shell, "docker run --rm -v {volume} {image} msrv").run()?;
-        },
-        Local => {
-            cmd!(shell, "cargo msrv verify").run()?;
-        },
-    };
-
-    Ok(())
-}

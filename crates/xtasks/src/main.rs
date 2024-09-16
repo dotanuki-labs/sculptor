@@ -31,7 +31,7 @@ struct SubjectToBuild {
 
 #[derive(Subcommand)]
 enum Task {
-    /// Inspects sources for formatting, smell and compatibility issues
+    /// Inspects sources for formatting and smells
     Sources,
     /// Runs unit and integration tests
     Tests,

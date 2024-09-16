@@ -47,10 +47,11 @@
             "packageNameTemplate": "rust-lang/rust",
             "datasourceTemplate": "github-releases",
             "fileMatch": [
-                "(^|/)rust-toolchain\\.toml$"
+                "(^|/)rust-toolchain\\.toml$",
+                "Cargo\\.toml$"
             ],
             "matchStrings": [
-                "channel\\s*=\\s*\"(?<currentValue>\\d+\\.\\d+(\\.\\d+)?)\""
+                "(channel|rust-version)\\s*=\\s*\"(?<currentValue>\\d+\\.\\d+(\\.\\d+)?)\""
             ]
         },
         {
@@ -60,10 +61,10 @@
             "registryUrlTemplate": "https://ghcr.io",
             "depNameTemplate": "dotanuki-labs/callinectes",
             "fileMatch": [
-                "(^|/)krabby\\.sh$"
+                "crates/xtasks/utils\\.rs$"
             ],
             "matchStrings": [
-                "readonly callinectes=\"ghcr.io/dotanuki-labs/callinectes:(?<currentValue>.*)@(?<currentDigest>sha256:[a-f0-9]+)\""
+                "static CALLINECTES_DOCKER_DIGEST: &str = \"(?<currentDigest>sha256:[a-f0-9]+)\""
             ]
         }
     ]

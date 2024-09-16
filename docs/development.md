@@ -34,10 +34,10 @@ Options:
 ```
 
 We definitely recommend getting started by setting up the latest version of Rust along with
-all required Cargo subcommands by running:
+by running:
 
 ```bash
-./krabby.sh setup
+rustup show active-toolchain
 ```
 
 ## Code Style
@@ -77,7 +77,7 @@ and all required status checks must pass.
 
 This project adopts
 [GiHub Actions](https://github.com/dotanuki-labs/rust-cli-tool-scaffold/actions)
-as it CI system. Most of the verifications we'll run on CI are wrapped by the `krabby` script,
+as it CI system. Most of the verifications we'll run on CI are wrapped by the `xtasks` helpers,
 as previously mentioned.
 
 In addition to that, we also run a specific `Job` to enforce code quality standards for docs,

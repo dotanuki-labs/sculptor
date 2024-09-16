@@ -2,6 +2,7 @@
 /target
 artifacts
 rust-cli-tool-scaffold.cdx.json
+xtasks.cdx.json
 
 # IDE environment
 .fleet

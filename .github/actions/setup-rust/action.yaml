@@ -24,4 +24,4 @@ runs:
 
         - name: Setup Rust and Cargo plugins
           shell: bash
-          run: ./krabby.sh setup
+          run: rustup show active-toolchain

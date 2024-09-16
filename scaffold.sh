@@ -61,21 +61,28 @@ enable_cd_workflow() {
     mv enabled "$cd"
 }
 
+define_project_crate() {
+    mv "crates/$placeholder_name" "crates/$target_name"
+}
+
 require_name
 
 echo
 say "🔥 Scaffolding with $(cyan "$target_name")"
 echo
 
+define_project_crate
 replace_readme
 patch_file .gitignore
-patch_file Cargo.toml
-patch_file Cargo.lock
-patch_file krabby.sh
 patch_file .github/workflows/ci.yml
 patch_file .github/workflows/cd.yml
-patch_file src/main.rs
-patch_file tests/integration.rs
+patch_file Cargo.toml
+patch_file Cargo.lock
+patch_file "crates/$target_name/Cargo.toml"
+patch_file "crates/$target_name/src/main.rs"
+patch_file "crates/$target_name/tests/integration.rs"
+patch_file "crates/xtasks/src/artifacts.rs"
+patch_file "crates/xtasks/Cargo.toml"
 patch_file docs/changelog.md
 patch_file docs/contributing.md
 patch_file docs/development.md
@@ -84,6 +91,7 @@ enable_cd_workflow
 remove .idea
 remove .git
 remove target
+remove "crates/$target_name/rust-cli-tool-scaffold.cdx.json"
 remove scaffold.sh
 
 echo

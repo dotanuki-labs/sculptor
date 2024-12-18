@@ -28,7 +28,7 @@ jobs:
         run: cargo xtasks binaries
 
       - name: Archive binaries
-        uses: actions/upload-artifact@b4b15b8c7c6ac21ea08fcf65892d2ee8f75cf882 # v4.4.3
+        uses: actions/upload-artifact@6f51ac03b9356f520e9adb1b1b7802705f340c2b # v4.5.0
         with:
           name: rust-cli-tool-scaffold-binaries-${{ runner.os }}
           path: artifacts
@@ -53,13 +53,13 @@ jobs:
         run: cargo xtasks artifacts extras
 
       - name: Archive checksums
-        uses: actions/upload-artifact@b4b15b8c7c6ac21ea08fcf65892d2ee8f75cf882 # v4.4.3
+        uses: actions/upload-artifact@6f51ac03b9356f520e9adb1b1b7802705f340c2b # v4.5.0
         with:
           name: checksums.txt
           path: artifacts/checksums.txt
 
       - name: Archive SBOM
-        uses: actions/upload-artifact@b4b15b8c7c6ac21ea08fcf65892d2ee8f75cf882 # v4.4.3
+        uses: actions/upload-artifact@6f51ac03b9356f520e9adb1b1b7802705f340c2b # v4.5.0
         with:
           name: sbom-${{ github.sha }}.json
           path: crates/rust-cli-tool-scaffold/rust-cli-tool-scaffold.cdx.json

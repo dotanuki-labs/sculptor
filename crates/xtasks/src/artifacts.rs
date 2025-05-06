@@ -1,14 +1,14 @@
 // Copyright 2024 Dotanuki Labs
 // SPDX-License-Identifier: MIT
 
-use crate::utils::BuildEnvironment::{Local, CI};
-use crate::utils::{docker_execution_arguments, evaluate_build_environment};
 use crate::ArtifactType;
+use crate::utils::BuildEnvironment::{CI, Local};
+use crate::utils::{docker_execution_arguments, evaluate_build_environment};
 use anyhow::bail;
 use sha2::{Digest, Sha256};
 use std::{env, fs};
 use walkdir::WalkDir;
-use xshell::{cmd, Shell};
+use xshell::{Shell, cmd};
 
 static DEFAULT_ARTIFACTS_DIR: &str = "artifacts";
 

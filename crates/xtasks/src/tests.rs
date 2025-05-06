@@ -1,8 +1,8 @@
 // Copyright 2024 Dotanuki Labs
 // SPDX-License-Identifier: MIT
 
-use crate::utils::{evaluate_build_environment, BuildEnvironment::Local, BuildEnvironment::CI};
-use xshell::{cmd, Shell};
+use crate::utils::{BuildEnvironment::CI, BuildEnvironment::Local, evaluate_build_environment};
+use xshell::{Shell, cmd};
 
 pub fn execute_tests(shell: &Shell) -> anyhow::Result<()> {
     println!();

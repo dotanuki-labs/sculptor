@@ -1,11 +1,11 @@
 // Copyright 2024 Dotanuki Labs
 // SPDX-License-Identifier: MIT
 
-use crate::utils::BuildEnvironment::{Local, CI};
+use crate::utils::BuildEnvironment::{CI, Local};
 use std::env;
 
 static CALLINECTES_DOCKER_IMAGE: &str = "ghcr.io/dotanuki-labs/callinectes:latest";
-static CALLINECTES_DOCKER_DIGEST: &str = "cbaaa1b11bd2eec9d52ba12c70ba70b764467ff7eedf6ee1765a3297c0010e52";
+static CALLINECTES_DOCKER_DIGEST: &str = "c043a071cc77e2a98eda06bb94ad204c3028454291df9a8a9d48787d64bc333b";
 
 pub enum BuildEnvironment {
     CI,

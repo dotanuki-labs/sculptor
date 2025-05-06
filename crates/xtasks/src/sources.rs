@@ -2,9 +2,9 @@
 // SPDX-License-Identifier: MIT
 
 use crate::utils::{
-    docker_execution_arguments, evaluate_build_environment, BuildEnvironment::Local, BuildEnvironment::CI,
+    BuildEnvironment::CI, BuildEnvironment::Local, docker_execution_arguments, evaluate_build_environment,
 };
-use xshell::{cmd, Shell};
+use xshell::{Shell, cmd};
 
 pub fn check_source_files(shell: &Shell) -> anyhow::Result<()> {
     check_code_formatting(shell)?;

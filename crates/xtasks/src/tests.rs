@@ -1,4 +1,4 @@
-// Copyright 2024 Dotanuki Labs
+// Copyright 2025 Dotanuki Labs
 // SPDX-License-Identifier: MIT
 
 use crate::utils::{BuildEnvironment::CI, BuildEnvironment::Local, evaluate_build_environment};

@@ -1,5 +1,5 @@
 #! /usr/bin/env bash
-# Copyright 2024 Dotanuki Labs
+# Copyright 2025 Dotanuki Labs
 # SPDX-License-Identifier: MIT
 
 readonly color_cyan="\033[1;36m"

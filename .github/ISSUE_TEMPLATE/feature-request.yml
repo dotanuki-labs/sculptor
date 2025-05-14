@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: MIT
 
 name: New feature request
-description: Suggest an idea or enhancement for `rust-cli-tool-scaffold`
+description: Suggest an idea or enhancement for rust-cli-tool-scaffold
 title: "Feature: "
 labels:
   - enhancement
@@ -10,7 +10,7 @@ body:
   - type: markdown
     attributes:
       value: |
-        Thank you for taking the time to request a new feature or enhancement for `rust-cli-tool-scaffold`!
+        Thank you for taking the time to request a new feature or enhancement for `rust-cli-tool-scaffold`
 
         > [!WARNING]
         > **Before opening a new issue, please read the following parts of this template carefully. Invalid or incomplete submissions take longer to triage, and may be given a lower priority or closed right away when not actionable.**
@@ -29,10 +29,6 @@ body:
             I have looked through the
             [open issues](https://github.com/dotanuki-labs/rust-cli-tool-scaffold/issues?q=is%3Aissue+is%3Aopen+)
             for a duplicate request and could not find it.
-          required: true
-        - label: >-
-            I agree to follow Dotanuki Labs
-            [Code of Conduct](https://github.com/dotanuki-labs/rust-cli-tool-scaffold?tab=coc-ov-file#readme)
           required: true
 
   - type: textarea

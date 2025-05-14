@@ -76,6 +76,9 @@ replace_readme
 patch_file .gitignore
 patch_file .github/workflows/ci.yml
 patch_file .github/workflows/cd.yml
+patch_file .github/ISSUE_TEMPLATE/bug-report.yml
+patch_file .github/ISSUE_TEMPLATE/config.yml
+patch_file .github/ISSUE_TEMPLATE/feature-request.yml
 patch_file Cargo.toml
 patch_file Cargo.lock
 patch_file "crates/$target_name/Cargo.toml"

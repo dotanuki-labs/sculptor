@@ -1,8 +1,8 @@
 # Copyright 2025 Dotanuki Labs
 # SPDX-License-Identifier: MIT
 
-name: Bug Report
-description: File a bug report.
+name: New bug report
+description: Report a bug or unexpected behavior
 title: "[BUG]: "
 labels:
   - bug
@@ -11,18 +11,14 @@ body:
   - type: markdown
     attributes:
       value: |
-        Thank you for taking the time to fill out this bug report!
+        Thank you for taking the time to fill out this bug report! 🐞
 
         > [!WARNING]
-        > Before opening a new issue
-        > **Please read the following parts of this template carefully.
-        Invalid or incomplete submissions take longer to triage,
-        and may be given a lower priority or closed outright
-        if not actionable.**
+        > **Before opening a new issue, please read the following parts of this template carefully. Invalid or incomplete submissions take longer to triage, and may be given a lower priority or closed right away when not actionable.**
 
   - type: checkboxes
     attributes:
-      label: Pre-submission checks
+      label: Before getting started
       description: |
         By submitting this issue, I confirm that :
       options:

@@ -1,0 +1,88 @@
+# Copyright 2025 Dotanuki Labs
+# SPDX-License-Identifier: MIT
+
+name: Bug Report
+description: File a bug report.
+title: "[BUG]: "
+labels:
+  - bug
+  - triage
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for taking the time to fill out this bug report!
+
+        > [!WARNING]
+        > Before opening a new issue
+        > **Please read the following parts of this template carefully.
+        Invalid or incomplete submissions take longer to triage,
+        and may be given a lower priority or closed outright
+        if not actionable.**
+
+  - type: checkboxes
+    attributes:
+      label: Pre-submission checks
+      description: |
+        By submitting this issue, I confirm that :
+      options:
+        - label: >-
+            I am **not** filing a feature/enhancement request
+          required: true
+        - label: >-
+            I have looked through the
+            [open issues](https://github.com/dotanuki-labs/rust-cli-tool-scaffold/issues?q=is%3Aissue+is%3Aopen+)
+            for a duplicate bug and could not find it.
+          required: true
+        - label: >-
+            I agree to follow Dotanuki Labs
+            [Code of Conduct](https://github.com/dotanuki-labs/rust-cli-tool-scaffold?tab=coc-ov-file#readme)
+          required: true
+
+  - type: textarea
+    attributes:
+      label: Expected behavior
+      description: Add here concise description of what you expected to happen.
+      placeholder: |
+        I expected `rust-cli-tool-scaffold` to do <some behavior> by running ...
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: Actual behavior
+      description: Add here a concise description of what actually happened.
+      placeholder: |
+        Instead, `rust-cli-tool-scaffold` did ...
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: Reproduction steps
+      description: Provide a list of actions that we can take to reproduce the the bug.
+      placeholder: |
+        1. First
+        2. Second
+        3. Third
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: Logs
+      description: |
+        If applicable, please paste any logs or console errors here.
+
+        If you can re-run the command that produced the error, run it with
+        `--verbose` and paste the full verbose logs here.
+      render: plain text
+
+  - type: textarea
+    attributes:
+      label: Environment
+      description: Provide additional context about the environment where the bug was found.
+      placeholder: |
+        - Operation System : <my-os>
+        - `rust-cli-tool-scaffold-version` : <my-os>
+        - etc

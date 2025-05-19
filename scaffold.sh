@@ -65,6 +65,11 @@ define_project_crate() {
     mv "crates/$placeholder_name" "crates/$target_name"
 }
 
+setup_git_hooks() {
+    git init
+    mv githooks/precommit .git/hooks/precommit
+}
+
 require_name
 
 echo
@@ -95,6 +100,7 @@ remove .idea
 remove .git
 remove target
 remove "crates/$target_name/rust-cli-tool-scaffold.cdx.json"
+setup_git_hooks
 remove scaffold.sh
 
 echo

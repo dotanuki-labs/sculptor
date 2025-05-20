@@ -68,6 +68,7 @@ define_project_crate() {
 setup_git_hooks() {
     git init
     mv githooks/precommit .git/hooks/precommit
+    remove githooks
 }
 
 require_name

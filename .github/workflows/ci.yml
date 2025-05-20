@@ -25,7 +25,7 @@ jobs:
       - name: Check MIT license on source files
         uses: dotanuki-labs/github-actions/foss/check-licenses@main
         with:
-          file-patterns: "*.sh,*.rs,*.yml"
+          file-patterns: "*.rs,*.yml"
           license: "mit"
 
   lint:

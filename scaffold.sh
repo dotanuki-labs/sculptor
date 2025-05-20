@@ -7,6 +7,7 @@ readonly color_normal="\033[0m"
 
 readonly target_name="$1"
 readonly placeholder_name="rust-cli-tool-scaffold"
+dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 cyan() {
     echo "${color_cyan}$1${color_normal}"
@@ -56,17 +57,17 @@ replace_readme() {
 }
 
 enable_cd_workflow() {
-    readonly cd=".github/workflows/cd.yml"
+    readonly cd="$dir/.github/workflows/cd.yml"
     grep -v "if: false" "$cd" >enabled
     mv enabled "$cd"
 }
 
 define_project_crate() {
-    mv "crates/$placeholder_name" "crates/$target_name"
+    mv "$dir/crates/$placeholder_name" "$dir/crates/$target_name"
 }
 
 setup_git_hooks() {
-    git init
+    git init >/dev/null 2>&1
     mv githooks/precommit .git/hooks/precommit
     remove githooks
 }
@@ -79,30 +80,30 @@ echo
 
 define_project_crate
 replace_readme
-patch_file .gitignore
-patch_file .github/workflows/ci.yml
-patch_file .github/workflows/cd.yml
-patch_file .github/ISSUE_TEMPLATE/bug-report.yml
-patch_file .github/ISSUE_TEMPLATE/config.yml
-patch_file .github/ISSUE_TEMPLATE/feature-request.yml
-patch_file Cargo.toml
-patch_file Cargo.lock
-patch_file "crates/$target_name/Cargo.toml"
-patch_file "crates/$target_name/src/main.rs"
-patch_file "crates/$target_name/tests/integration.rs"
-patch_file "crates/xtasks/src/artifacts.rs"
-patch_file "crates/xtasks/Cargo.toml"
-patch_file docs/changelog.md
-patch_file docs/contributing.md
-patch_file docs/development.md
-patch_file docs/releasing.md
+patch_file "$dir/.gitignore"
+patch_file "$dir/.github/workflows/ci.yml"
+patch_file "$dir/.github/workflows/cd.yml"
+patch_file "$dir/.github/ISSUE_TEMPLATE/bug-report.yml"
+patch_file "$dir/.github/ISSUE_TEMPLATE/config.yml"
+patch_file "$dir/.github/ISSUE_TEMPLATE/feature-request.yml"
+patch_file "$dir/Cargo.toml"
+patch_file "$dir/Cargo.lock"
+patch_file "$dir/crates/$target_name/Cargo.toml"
+patch_file "$dir/crates/$target_name/src/main.rs"
+patch_file "$dir/crates/$target_name/tests/integration.rs"
+patch_file "$dir/crates/xtasks/src/artifacts.rs"
+patch_file "$dir/crates/xtasks/Cargo.toml"
+patch_file "$dir/docs/changelog.md"
+patch_file "$dir/docs/contributing.md"
+patch_file "$dir/docs/development.md"
+patch_file "$dir/docs/releasing.md"
 enable_cd_workflow
-remove .idea
-remove .git
-remove target
-remove "crates/$target_name/rust-cli-tool-scaffold.cdx.json"
+remove "$dir/.idea"
+remove "$dir/.git"
+remove "$dir/target"
+remove "$dir/crates/$target_name/rust-cli-tool-scaffold.cdx.json"
 setup_git_hooks
-remove scaffold.sh
+remove "$dir/scaffold.sh"
 
 echo
 say "✅ Done"

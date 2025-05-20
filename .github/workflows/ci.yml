@@ -28,9 +28,23 @@ jobs:
           file-patterns: "*.rs,*.yml"
           license: "mit"
 
+  scaffolding:
+    runs-on: macos-15
+    needs: docs
+
+    steps:
+      - name: Project Checkout
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+
+      - name: Running scaffolding script
+        run: |
+          ./scaffold.sh testcli
+          cargo build
+          ./target/debug/testcli --help
+
   lint:
     runs-on: ubuntu-24.04
-    needs: docs
+    needs: scaffolding
 
     steps:
       - name: Project Checkout
@@ -53,9 +67,8 @@ jobs:
       - name: Run project tests
         run: cargo xtasks tests
 
-
   build:
-    needs: docs
+    needs: scaffolding
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -78,7 +91,7 @@ jobs:
           path: artifacts
 
   artifacts:
-    needs: build
+    needs: scaffolding
     runs-on: ubuntu-24.04
 
     steps:

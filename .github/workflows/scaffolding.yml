@@ -1,0 +1,21 @@
+# Copyright 2025 Dotanuki Labs
+# SPDX-License-Identifier: MIT
+
+name: Scaffolding
+
+on:
+  pull_request:
+
+jobs:
+  scaffolding-test:
+    runs-on: macos-15
+
+    steps:
+      - name: Project Checkout
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+
+      - name: Running scaffolding script
+        run: |
+          ./scaffold.sh testcli
+          cargo build
+          ./target/debug/testcli --help

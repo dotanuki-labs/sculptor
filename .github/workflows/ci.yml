@@ -10,7 +10,7 @@ on:
       - main
 
 jobs:
-  docs:
+  docs-lint:
     runs-on: ubuntu-24.04
     steps:
       - name: Project Checkout
@@ -28,23 +28,8 @@ jobs:
           file-patterns: "*.rs,*.yml"
           license: "mit"
 
-  scaffolding:
-    runs-on: macos-15
-    needs: docs
-
-    steps:
-      - name: Project Checkout
-        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
-
-      - name: Running scaffolding script
-        run: |
-          ./scaffold.sh testcli
-          cargo build
-          ./target/debug/testcli --help
-
-  lint:
+  rust-lint:
     runs-on: ubuntu-24.04
-    needs: scaffolding
 
     steps:
       - name: Project Checkout
@@ -53,9 +38,8 @@ jobs:
       - name: Inspect and lint source files
         run: cargo xtasks sources
 
-  tests:
+  rust-tests:
     runs-on: ubuntu-24.04
-    needs: docs
 
     steps:
       - name: Project Checkout
@@ -67,8 +51,7 @@ jobs:
       - name: Run project tests
         run: cargo xtasks tests
 
-  build:
-    needs: scaffolding
+  rust-build:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -90,8 +73,8 @@ jobs:
           name: rust-cli-tool-scaffold-binaries-${{ runner.os }}
           path: artifacts
 
-  artifacts:
-    needs: scaffolding
+  rust-artifacts:
+    needs: rust-build
     runs-on: ubuntu-24.04
 
     steps:
@@ -121,9 +104,8 @@ jobs:
           name: sbom-${{ github.sha }}.json
           path: crates/rust-cli-tool-scaffold/rust-cli-tool-scaffold.cdx.json
 
-  security:
+  rust-security:
     runs-on: ubuntu-24.04
-    needs: [lint, tests, artifacts]
 
     steps:
       - name: Project Checkout
@@ -131,3 +113,10 @@ jobs:
 
       - name: Check issues with supply chain
         run: cargo xtasks security
+
+  all-checks:
+    runs-on: ubuntu-24.04
+    needs: [docs-lint, rust-lint, rust-tests, rust-artifacts, rust-security]
+    steps:
+      - name: Report success
+        run: echo "Great job ✅"

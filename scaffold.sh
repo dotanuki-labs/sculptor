@@ -101,6 +101,7 @@ enable_cd_workflow
 remove "$dir/.idea"
 remove "$dir/.git"
 remove "$dir/target"
+remove "$dir/.github/workflows/scaffolding.yml"
 remove "$dir/crates/$target_name/rust-cli-tool-scaffold.cdx.json"
 setup_git_hooks
 remove "$dir/scaffold.sh"

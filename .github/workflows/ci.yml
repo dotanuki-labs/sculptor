@@ -28,6 +28,18 @@ jobs:
           file-patterns: "*.rs,*.yml"
           license: "mit"
 
+  build-docker:
+    runs-on: ubuntu-24.04
+
+    steps:
+      - name: Project Checkout
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+
+      - name: Build and run with Docker
+        run: |
+          docker build -t dotanuki-labs/rust-cli-tool-scaffold .
+          docker run --rm -v "${PWD}/tmp" dotanuki-labs/rust-cli-tool-scaffold --help
+
   rust-lint:
     runs-on: ubuntu-24.04
 
@@ -55,7 +67,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ 'ubuntu-24.04', 'macos-15' ]
+        os: [ ubuntu-24.04, macos-15 ]
 
     steps:
       - name: Project Checkout
@@ -116,7 +128,7 @@ jobs:
 
   all-checks:
     runs-on: ubuntu-24.04
-    needs: [docs-lint, rust-lint, rust-tests, rust-artifacts, rust-security]
+    needs: [docs-lint, build-docker, rust-lint, rust-tests, rust-artifacts, rust-security]
     steps:
       - name: Report success
         run: echo "Great job ✅"

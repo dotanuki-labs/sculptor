@@ -7,15 +7,28 @@ on:
   pull_request:
 
 jobs:
-  scaffolding-test:
+  scaffolding-test-rust-build:
     runs-on: macos-15
 
     steps:
       - name: Project Checkout
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
 
-      - name: Running scaffolding script
+      - name: Scaffold a CLI from Rust build
         run: |
           ./scaffold.sh testcli
           cargo build
           ./target/debug/testcli --help
+
+  scaffolding-test-docker-build:
+    runs-on: ubuntu-24.04
+
+    steps:
+      - name: Project Checkout
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+
+      - name: Scaffold a CLI from Docker build
+        run: |
+          ./scaffold.sh testcli
+          docker build -t dotanuki-labs/testcli .
+          docker run --rm -v "${PWD}/tmp" dotanuki-labs/testcli --help

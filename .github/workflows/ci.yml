@@ -38,7 +38,7 @@ jobs:
       - name: Build and archive documentation assets
         uses: dotanuki-labs/github-actions/foss/prepare-ghpages@main
 
-  build-docker:
+  docker-build:
     # TODO: after scaffoldind, add a build matrix running against arm64-linux
     runs-on: ubuntu-24.04
 
@@ -75,6 +75,7 @@ jobs:
         run: cargo xtasks tests
 
   rust-build:
+    needs: [rust-lint, rust-tests]
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -128,6 +129,7 @@ jobs:
           path: crates/rust-cli-tool-scaffold/rust-cli-tool-scaffold.cdx.json
 
   rust-security:
+    needs: [rust-lint, rust-tests]
     runs-on: ubuntu-24.04
 
     steps:
@@ -139,7 +141,7 @@ jobs:
 
   all-checks:
     runs-on: ubuntu-24.04
-    needs: [docs-lint, build-docker, rust-lint, rust-tests, rust-artifacts, rust-security]
+    needs: [docs-lint, docker-build, rust-artifacts, rust-security]
     steps:
       - name: Report success
         run: echo "Great job ✅"

@@ -28,6 +28,16 @@ jobs:
           file-patterns: "*.rs,*.yml"
           license: "mit"
 
+  docs-build:
+    needs: docs-lint
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Project Checkout
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+
+      - name: Build and archive documentation assets
+        uses: dotanuki-labs/github-actions/foss/prepare-ghpages@main
+
   build-docker:
     # TODO: after scaffoldind, add a build matrix running against arm64-linux
     runs-on: ubuntu-24.04

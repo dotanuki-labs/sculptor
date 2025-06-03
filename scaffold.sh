@@ -56,10 +56,15 @@ replace_readme() {
     mv "$replacement" "$target"
 }
 
-enable_cd_workflow() {
+enable_workflows() {
+    readonly ci="$dir/.github/workflows/ci.yml"
     readonly cd="$dir/.github/workflows/cd.yml"
-    grep -v "if: false" "$cd" >enabled
-    mv enabled "$cd"
+
+    grep -v "if: false" "$ci" >enabledci
+    mv enabledci "$ci"
+
+    grep -v "if: false" "$cd" >enabledcd
+    mv enabledcd "$cd"
 }
 
 define_project_crate() {
@@ -97,7 +102,7 @@ patch_file "$dir/docs/changelog.md"
 patch_file "$dir/docs/contributing.md"
 patch_file "$dir/docs/development.md"
 patch_file "$dir/docs/releasing.md"
-enable_cd_workflow
+enable_workflows
 remove "$dir/.idea"
 remove "$dir/.git"
 remove "$dir/target"

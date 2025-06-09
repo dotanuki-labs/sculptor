@@ -17,7 +17,7 @@ categories = ["command-line-utilities"]
 
 [workspace.dependencies]
 rust-cli-tool-scaffold = { path = "crates/rust-cli-tool-scaffold" }
-xtasks-cli-tool-scaffold = { path = "crates/xtasks" }
+xtasks = { path = "crates/xtasks" }
 
 anyhow = "1.0.82"
 clap = "4.5.4"

@@ -19,7 +19,7 @@ categories = ["command-line-utilities"]
 rust-cli-tool-scaffold = { path = "crates/rust-cli-tool-scaffold" }
 xtasks = { path = "crates/xtasks" }
 
-anyhow = "=1.0.82"
+anyhow = "=1.0.98"
 clap = "4.5.4"
 human-panic = "2.0.0"
 better-panic = "0.3.0"

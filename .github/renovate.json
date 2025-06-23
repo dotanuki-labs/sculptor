@@ -6,41 +6,22 @@
         "helpers:pinGitHubActionDigests",
         ":pinDevDependencies"
     ],
-    "lockFileMaintenance": {
-        "enabled": true
-    },
     "osvVulnerabilityAlerts": true,
     "dependencyDashboard": true,
-    "labels": [
-        "dependencies"
-    ],
+    "labels": ["dependencies"],
     "packageRules": [
         {
-            "description": [
-                "Rust"
-            ],
-            "matchDepNames": [
-                "rust"
-            ],
-            "matchManagers": [
-                "custom.regex"
-            ],
+            "description": ["Rust"],
+            "matchDepNames": ["rust"],
+            "matchManagers": ["custom.regex"],
             "commitMessageTopic": "rust"
         },
         {
-            "matchDatasources": [
-                "docker"
-            ],
-            "matchDepNames": [
-                "dotanuki-labs/callinectes"
-            ],
-            "matchPackageNames": [
-                "docker.io/dotanuki-labs/callinectes"
-            ],
+            "matchDatasources": ["docker"],
+            "matchDepNames": ["dotanuki-labs/callinectes"],
+            "matchPackageNames": ["docker.io/dotanuki-labs/callinectes"],
             "replacementName": "ghcr.io/dotanuki-labs/callinectes",
-            "matchManagers": [
-                "custom.regex"
-            ]
+            "matchManagers": ["custom.regex"]
         }
     ],
     "customManagers": [
@@ -63,9 +44,7 @@
             "currentValueTemplate": "latest",
             "registryUrlTemplate": "https://ghcr.io",
             "depNameTemplate": "dotanuki-labs/callinectes",
-            "managerFilePatterns": [
-                "/crates/xtasks/utils\\.rs$/"
-            ],
+            "managerFilePatterns": ["/crates/xtasks/utils\\.rs$/"],
             "matchStrings": [
                 "static CALLINECTES_DOCKER_DIGEST: &str = \"(?<currentDigest>sha256:[a-f0-9]+)\""
             ]

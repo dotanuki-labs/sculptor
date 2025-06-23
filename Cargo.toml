@@ -20,15 +20,15 @@ rust-cli-tool-scaffold = { path = "crates/rust-cli-tool-scaffold" }
 xtasks = { path = "crates/xtasks" }
 
 anyhow = "=1.0.98"
-clap = "4.5.4"
-human-panic = "2.0.0"
-better-panic = "0.3.0"
-assert_cmd = "2.0.14"
-predicates = "3.1.0"
-xshell = "0.2.6"
-walkdir = "2.5.0"
-sha2 = "0.10.8"
-hex = "0.4.3"
+clap = "=4.5.4"
+human-panic = "=2.0.0"
+better-panic = "=0.3.0"
+assert_cmd = "=2.0.14"
+predicates = "=3.1.0"
+xshell = "=0.2.7"
+walkdir = "=2.5.0"
+sha2 = "=0.10.8"
+hex = "=0.4.3"
 
 [profile.release]
 strip = true

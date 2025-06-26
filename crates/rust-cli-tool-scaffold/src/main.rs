@@ -18,5 +18,5 @@ fn main() {
 
     let arguments = ProgramArguments::parse();
     let greet = core::greet(&arguments.name).expect("Expecting a greet!");
-    println!("{}", greet);
+    println!("{greet}");
 }

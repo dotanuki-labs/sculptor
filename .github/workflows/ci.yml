@@ -9,6 +9,10 @@ on:
     branches:
       - main
 
+permissions:
+  pages: read
+  contents: read
+
 jobs:
   docs-lint:
     runs-on: ubuntu-24.04

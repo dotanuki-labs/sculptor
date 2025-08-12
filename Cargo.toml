@@ -20,7 +20,7 @@ rust-cli-tool-scaffold = { path = "crates/rust-cli-tool-scaffold" }
 xtasks = { path = "crates/xtasks" }
 
 anyhow = "=1.0.99"
-clap = "=4.5.44"
+clap = "=4.5.45"
 human-panic = "=2.0.3"
 better-panic = "=0.3.0"
 assert_cmd = "=2.0.17"

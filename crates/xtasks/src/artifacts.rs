@@ -106,7 +106,7 @@ fn compute_checksums(shell: &Shell) -> anyhow::Result<()> {
 fn evaluate_build_targets() -> anyhow::Result<Vec<String>> {
     let runner_name = env::var("RUNNER_OS")?;
     let platform = match runner_name.as_str() {
-        "Linux" => "unknown-linux-gnu",
+        "Linux" => "unknown-linux-musl",
         "macOS" => "apple-darwin",
         _ => bail!("Unsupported runner : {}", runner_name),
     };

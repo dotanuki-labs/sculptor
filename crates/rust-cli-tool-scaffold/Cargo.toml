@@ -16,8 +16,9 @@ msrv = "1.74.0"
 [dependencies]
 anyhow.workspace = true
 clap = { workspace = true, features = ["derive"] }
-human-panic.workspace = true
 better-panic.workspace = true
+human-panic.workspace = true
+mimalloc.workspace = true
 
 [dev-dependencies]
 assert_cmd.workspace = true

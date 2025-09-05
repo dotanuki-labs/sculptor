@@ -181,11 +181,15 @@ jobs:
 
       - name: Compatibility check (macOS)
         if: ${{ runner.os == 'macOS'}}
-        run: ./artifacts/rust-cli-tool-scaffold-binaries-macOS/rust-cli-tool-scaffold-x86_64-apple-darwin --help
+        run: |
+          chmod +x ./artifacts/rust-cli-tool-scaffold-binaries-macOS/rust-cli-tool-scaffold-x86_64-apple-darwin
+          ./artifacts/rust-cli-tool-scaffold-binaries-macOS/rust-cli-tool-scaffold-x86_64-apple-darwin --help
 
       - name: Compatibility check (Linux)
         if: ${{ runner.os == 'Linux'}}
-        run: ./artifacts/rust-cli-tool-scaffold-binaries-Linux/rust-cli-tool-scaffold-x86_64-unknown-linux-musl --help
+        run: |
+          chmod +x ./artifacts/rust-cli-tool-scaffold-binaries-Linux/rust-cli-tool-scaffold-x86_64-unknown-linux-musl
+          ./artifacts/rust-cli-tool-scaffold-binaries-Linux/rust-cli-tool-scaffold-x86_64-unknown-linux-musl --help
 
   all-checks:
     runs-on: ubuntu-24.04

@@ -4,6 +4,10 @@
 mod core;
 
 use clap::Parser;
+use tikv_jemallocator::Jemalloc;
+
+#[global_allocator]
+static GLOBAL: Jemalloc = Jemalloc;
 
 #[derive(Parser, Debug)]
 #[command(version, about, long_about = None)]

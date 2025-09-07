@@ -17,7 +17,7 @@ linker = "rust-lld"
 rustflags = ["-Ctarget-feature=+crt-static"]
 
 [target.aarch64-unknown-linux-musl]
-linker = "rust-lld"
+linker = "aarch64-linux-gnu-gcc"
 rustflags = ["-Ctarget-feature=+crt-static"]
 
 [alias]

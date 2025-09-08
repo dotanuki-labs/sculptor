@@ -10,14 +10,12 @@ repository.workspace = true
 authors.workspace = true
 license.workspace = true
 
-[package.metadata]
-msrv = "1.74.0"
-
 [dependencies]
 anyhow.workspace = true
+better-panic.workspace = true
 clap = { workspace = true, features = ["derive"] }
 human-panic.workspace = true
-better-panic.workspace = true
+tikv-jemallocator.workspace = true
 
 [dev-dependencies]
 assert_cmd.workspace = true

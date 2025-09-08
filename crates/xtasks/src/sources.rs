@@ -37,8 +37,8 @@ fn check_code_smells(shell: &Shell) -> anyhow::Result<()> {
 
     match evaluate_build_environment() {
         CI => {
-            let (volume, image) = docker_execution_arguments();
-            cmd!(shell, "docker run --rm -v {volume} {image} clippy").run()?;
+            let (_, _) = docker_execution_arguments();
+            cmd!(shell, "cargo clippy --all-targets --all-features -- -D warnings").run()?;
         },
         Local => {
             cmd!(shell, "cargo clippy --all-targets --all-features -- -D warnings").run()?;

@@ -10,8 +10,9 @@ on:
       - main
 
 permissions:
-  pages: read
   contents: read
+  pages: write
+  id-token: write
 
 jobs:
   compliance:
@@ -37,6 +38,8 @@ jobs:
 
   docs:
     uses: ./.github/workflows/docs.yml
+    with:
+      must-deploy: ${{ github.ref != 'refs/heads/main' }}
 
   rust-lint:
     runs-on: warp-ubuntu-2404-x64-2x # ubuntu-24.04

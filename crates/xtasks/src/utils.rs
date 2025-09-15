@@ -5,7 +5,7 @@ use crate::utils::BuildEnvironment::{CI, Local};
 use std::env;
 
 static CALLINECTES_DOCKER_IMAGE: &str = "ghcr.io/dotanuki-labs/callinectes:latest";
-static CALLINECTES_DOCKER_DIGEST: &str = "c043a071cc77e2a98eda06bb94ad204c3028454291df9a8a9d48787d64bc333b";
+static CALLINECTES_DOCKER_DIGEST: &str = "3a5252044164b7aca1ebb7d23c850177a7c280fb91d277d2b88dcdb4b9d03571";
 
 pub enum BuildEnvironment {
     CI,

@@ -16,62 +16,27 @@ permissions:
 
 jobs:
   compliance:
-    runs-on: warp-ubuntu-2404-x64-2x # ubuntu-24.04
-    steps:
-      - name: Project Checkout
-        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
-        with:
-          fetch-depth: 10
-
-      - name: Check typos on source files
-        uses: crate-ci/typos@85f62a8a84f939ae994ab3763f01a0296d61a7ee # v1.36.2
-
-      - name: Check commit conventions
-        if: ${{ github.ref != 'refs/heads/main' }}
-        uses: crate-ci/committed@15229711f8f597474c0b636f327cde5969f9a529 # v1.1.7
-
-      - name: Check MIT license on source files
-        uses: dotanuki-labs/github-actions/foss/check-licenses@main
-        with:
-          file-patterns: "*.rs,*.yml"
-          license: "mit"
+    uses: ./.github/workflows/compliance.yml
 
   docs:
     needs: compliance
     uses: ./.github/workflows/docs.yml
-    with:
-      must-deploy: ${{ github.ref == 'refs/heads/main' }}
 
   rust:
     needs: compliance
     uses: ./.github/workflows/rust.yml
 
-  docker-build:
-    needs: rust
-    runs-on: warp-ubuntu-2404-arm64-4x # ubuntu-24.04
+  docker:
+    needs: compliance
+    uses: ./.github/workflows/docker.yml
 
-    steps:
-      - name: Project Checkout
-        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
-
-      - name: Setup Docker buildx
-        uses: docker/setup-buildx-action@e468171a9de216ec08956ac3ada2f0791b6bd435 # v3.11.1
-        with:
-          driver-opts: |
-            network=host
-
-      - name: Build Docker image
-        uses: docker/build-push-action@263435318d21b8e681c14492fe198d362a7d2c83 # v6.18.0
-        with:
-          context: .
-          push: false
-          tags: "dotanuki-labs/canopus:latest"
-          cache-from: type=gha,url=http://127.0.0.1:49160/,version=1
-          cache-to: type=gha,url=http://127.0.0.1:49160/,mode=max,version=1
+  sculptor:
+    needs: compliance
+    uses: ./.github/workflows/sculptor.yml
 
   all-checks:
-    runs-on: warp-ubuntu-2204-arm64-2x # ubuntu-24.04
-    needs: [compliance, docs, rust]
+    runs-on: warp-ubuntu-2204-arm64-2x
+    needs: [compliance, docs, rust, docker, sculptor]
     steps:
       - name: Report success
         run: echo "Great job ✅"

@@ -113,7 +113,7 @@ jobs:
           name: sbom-${{ github.sha }}.json
           path: crates/sculptor/sculptor.cdx.json
 
-  publish-local-registry:
+  publish-local:
     needs: build
     runs-on: warp-ubuntu-2404-x64-4x
 
@@ -123,6 +123,9 @@ jobs:
 
       - name: Setup CI
         uses: ./.github/actions/setup-rust
+
+      - name: Start local Crates registry
+        run: docker run --rm -it -p 8000:8000 ghcr.io/kellnr/kellnr:5
 
       - name: Publish on local registry
         run: cargo publish -p sculptor --registry local

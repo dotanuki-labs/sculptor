@@ -94,6 +94,7 @@ jobs:
         uses: actions/download-artifact@634f93cb2916e3fdff6788551b99b062d0335ce0 # v5.0.0
         with:
           path: artifacts
+          pattern: sculptor-binaries-*
 
       - name: Setup CI
         uses: ./.github/actions/setup-rust
@@ -117,15 +118,17 @@ jobs:
     needs: build
     runs-on: warp-ubuntu-2404-x64-4x
 
+    services:
+      local-registry:
+        image: ghcr.io/kellnr/kellnr:5
+        ports:
+          - 8000:8000
     steps:
       - name: Project Checkout
         uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
 
       - name: Setup CI
         uses: ./.github/actions/setup-rust
-
-      - name: Start local Crates registry
-        run: docker run --rm -p 8000:8000 ghcr.io/kellnr/kellnr:5
 
       - name: Publish on local registry
         run: cargo publish -p sculptor --registry local

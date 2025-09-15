@@ -20,7 +20,7 @@ jobs:
           cargo build
           ./target/debug/test-cli --help
 
-  docker:
+  docker-cli:
     runs-on: warp-ubuntu-2404-x64-4x
 
     steps:

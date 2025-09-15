@@ -34,10 +34,10 @@ jobs:
         with:
           push: true
           provenance: false
-          platforms: linux/${{ matrix.build-args.platform }}
+          platforms: linux/amd64
           labels: ${{ steps.docker-metadata.outputs.labels }}
           annotations: ${{ steps.docker-metadata.outputs.annotations }}
           outputs: type=registry,push=true
-          tags: localhost:5000/${{ github.repository }}:${{ github.sha }}-${{ matrix.build-args.platform }}
+          tags: localhost:5000/${{ github.repository }}:${{ github.sha }}-amd64
           cache-from: type=gha,url=http://127.0.0.1:49160/,version=1
           cache-to: type=gha,url=http://127.0.0.1:49160/,mode=max,version=1

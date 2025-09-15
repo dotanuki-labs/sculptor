@@ -125,7 +125,7 @@ jobs:
         uses: ./.github/actions/setup-rust
 
       - name: Start local Crates registry
-        run: docker run --rm -it -p 8000:8000 ghcr.io/kellnr/kellnr:5
+        run: docker run --rm -p 8000:8000 ghcr.io/kellnr/kellnr:5
 
       - name: Publish on local registry
         run: cargo publish -p sculptor --registry local

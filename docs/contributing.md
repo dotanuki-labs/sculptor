@@ -9,7 +9,7 @@ projects.
 This document augments these recommendations with specifics ones for this project!
 
 When looking for something easy to contribute, we can recommend checking
-[good first issues](https://github.com/dotanuki-labs/rust-cli-tool-scaffold/labels/good%20first%20issue)
+[good first issues](https://github.com/dotanuki-labs/sculptor/labels/good%20first%20issue)
 in our issue tracker.
 
 ## Reporting (issues)
@@ -21,7 +21,7 @@ This project uses that standard
 in Dotanuki Labs.
 
 In particular, all bugs are tracked as
-[GitHub issues](https://github.com/dotanuki-labs/rust-cli-tool-scaffold/issues?q=is%3Aopen+is%3Aissue+label%3Abug)
+[GitHub issues](https://github.com/dotanuki-labs/sculptor/issues?q=is%3Aopen+is%3Aissue+label%3Abug)
 with the `bug` label applied.
 
 When reporting a bug, ensure you follow the
@@ -53,7 +53,7 @@ Please check them out.
 
 ### General procedure
 
-- Ensure you've read our [development guidelines](https://github.com/dotanuki-labs/rust-cli-tool-scaffold/blob/main/docs/development.md)
+- Ensure you've read our [development guidelines](https://github.com/dotanuki-labs/sculptor/blob/main/docs/development.md)
 - Fork this project
 - Ensure you have a proper running environment for your fork, e.g. running unit tests locally
 
@@ -62,7 +62,7 @@ cargo xtasks tests
 ```
 
 - Code your changes 🔥
-- Use our `xtasks` helpers to run [what we execute on CI](https://github.com/dotanuki-labs/rust-cli-tool-scaffold/blob/main/.github/workflows/ci.yml)
+- Use our `xtasks` helpers to run [what we execute on CI](https://github.com/dotanuki-labs/sculptor/blob/main/.github/workflows/ci.yml)
 - Raise your Pull Request 🚀
 - Fill the description with our [pull request template](https://github.com/dotanuki-labs/.github/blob/main/.github/PULL_REQUEST_TEMPLATE.md)
 - Ensure you've your PR [linked with a proper issue](https://docs.github.com/en/issues/tracking-your-work-with-issues/linking-a-pull-request-to-an-issue#linking-a-pull-request-to-an-issue-using-a-keyword)

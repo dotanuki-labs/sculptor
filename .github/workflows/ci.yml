@@ -57,8 +57,8 @@ jobs:
 
       - name: Build and run with Docker
         run: |
-          docker build -t dotanuki-labs/rust-cli-tool-scaffold .
-          docker run --rm -v "${PWD}/tmp" dotanuki-labs/rust-cli-tool-scaffold --help
+          docker build -t dotanuki-labs/sculptor .
+          docker run --rm -v "${PWD}/tmp" dotanuki-labs/sculptor --help
 
   rust-lint:
     runs-on: warp-ubuntu-2404-x64-2x # ubuntu-24.04
@@ -106,7 +106,7 @@ jobs:
       - name: Archive binaries
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
         with:
-          name: rust-cli-tool-scaffold-binaries-${{ runner.os }}
+          name: sculptor-binaries-${{ runner.os }}
           path: artifacts
 
   rust-artifacts:
@@ -138,7 +138,7 @@ jobs:
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
         with:
           name: sbom-${{ github.sha }}.json
-          path: crates/rust-cli-tool-scaffold/rust-cli-tool-scaffold.cdx.json
+          path: crates/sculptor/sculptor.cdx.json
 
   rust-security:
     needs: [rust-lint, rust-tests]
@@ -183,14 +183,14 @@ jobs:
       - name: Compatibility check (macOS)
         if: ${{ runner.os == 'macOS'}}
         run: |
-          chmod +x ./artifacts/rust-cli-tool-scaffold-binaries-macOS/rust-cli-tool-scaffold-x86_64-apple-darwin
-          ./artifacts/rust-cli-tool-scaffold-binaries-macOS/rust-cli-tool-scaffold-x86_64-apple-darwin --help
+          chmod +x ./artifacts/sculptor-binaries-macOS/sculptor-x86_64-apple-darwin
+          ./artifacts/sculptor-binaries-macOS/sculptor-x86_64-apple-darwin --help
 
       - name: Compatibility check (Linux)
         if: ${{ runner.os == 'Linux'}}
         run: |
-          chmod +x ./artifacts/rust-cli-tool-scaffold-binaries-Linux/rust-cli-tool-scaffold-aarch64-unknown-linux-musl
-          ./artifacts/rust-cli-tool-scaffold-binaries-Linux/rust-cli-tool-scaffold-aarch64-unknown-linux-musl --help
+          chmod +x ./artifacts/sculptor-binaries-Linux/sculptor-aarch64-unknown-linux-musl
+          ./artifacts/sculptor-binaries-Linux/sculptor-aarch64-unknown-linux-musl --help
 
   all-checks:
     runs-on: warp-ubuntu-2204-arm64-4x # ubuntu-24.04

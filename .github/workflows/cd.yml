@@ -51,7 +51,7 @@ jobs:
       - name: Archive binaries
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
         with:
-          name: rust-cli-tool-scaffold-binaries-${{ runner.os }}
+          name: sculptor-binaries-${{ runner.os }}
           path: artifacts
 
   artifacts:
@@ -83,7 +83,7 @@ jobs:
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
         with:
           name: sbom-${{ github.sha }}.json
-          path: crates/rust-cli-tool-scaffold/rust-cli-tool-scaffold.cdx.json
+          path: crates/sculptor/sculptor.cdx.json
 
   github-release:
     needs: artifacts
@@ -120,7 +120,7 @@ jobs:
           draft: true
           files: |
             artifacts/**/*
-            rust-cli-tool-scaffold.cdx.json
+            sculptor.cdx.json
 
   publish-crate:
     needs: github-release
@@ -134,7 +134,7 @@ jobs:
         uses: ./.github/actions/setup-rust
 
       - name: Publish on crates.io
-        run: cargo publish -p rust-cli-tool-scaffold --token ${{ secrets.CRATESIO_PUBLISH_TOKEN }}
+        run: cargo publish -p sculptor --token ${{ secrets.CRATESIO_PUBLISH_TOKEN }}
 
   deploy-docker-images:
     runs-on: ${{ matrix.build-args.runner }}

@@ -8,15 +8,15 @@ edition = "2024"
 rust-version = "1.89.0"
 authors = ["ubiratan.f.soares@gmail.com"]
 description = "An opinionated way to kick-off CLI apps powered by Rust"
-repository = "https://github.com/dotanuki-labs/rust-cli-tool-scaffold"
-homepage = "https://github.com/dotanuki-labs/rust-cli-tool-scaffold"
-documentation = "https://github.com/dotanuki-labs/rust-cli-tool-scaffold"
+repository = "https://github.com/dotanuki-labs/sculptor"
+homepage = "https://github.com/dotanuki-labs/sculptor"
+documentation = "https://github.com/dotanuki-labs/sculptor"
 readme = "README.md"
 license = "MIT"
 categories = ["command-line-utilities"]
 
 [workspace.dependencies]
-rust-cli-tool-scaffold = { path = "crates/rust-cli-tool-scaffold" }
+sculptor = { path = "crates/sculptor" }
 xtasks = { path = "crates/xtasks" }
 
 anyhow = "=1.0.99"

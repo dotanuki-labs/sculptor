@@ -1,7 +1,7 @@
 # Rust builds
 /target
 artifacts
-rust-cli-tool-scaffold.cdx.json
+sculptor.cdx.json
 xtasks.cdx.json
 
 # IDE environment

@@ -1,4 +1,4 @@
-# rust-cli-tool-scaffold
+# sculptor
 
 ## What
 

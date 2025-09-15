@@ -1,3 +1,3 @@
-# rust-cli-tool-scaffold
+# sculptor
 
 Document your project here

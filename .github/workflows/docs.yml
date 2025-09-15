@@ -11,7 +11,7 @@ on:
         type: boolean
 
 jobs:
-  docs-lint:
+  lint:
     runs-on: warp-ubuntu-2404-x64-2x # ubuntu-24.04
     steps:
       - name: Project Checkout
@@ -20,8 +20,21 @@ jobs:
       - name: Lint Markdown files
         uses: dotanuki-labs/github-actions/quality/markdown@main
 
-  docs-build-deploy:
-    needs: docs-lint
+  build-only:
+    needs: lint
+    if: ${{ ! inputs.must-deploy }}
+    runs-on: warp-ubuntu-2404-x64-2x # ubuntu-24.04
+
+    steps:
+      - name: Project Checkout
+        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
+
+      - name: Build and archive documentation assets
+        uses: dotanuki-labs/github-actions/foss/prepare-ghpages@main
+
+  deploy:
+    needs: lint
+    if: ${{ inputs.must-deploy }}
     runs-on: warp-ubuntu-2404-x64-2x # ubuntu-24.04
 
     steps:
@@ -32,6 +45,5 @@ jobs:
         uses: dotanuki-labs/github-actions/foss/prepare-ghpages@main
 
       - name: Deploy assets to GitHub Pages
-        if: ${{ inputs.must-deploy }}
         id: deployment
         uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e # v4.0.5

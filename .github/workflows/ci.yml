@@ -37,11 +37,13 @@ jobs:
           license: "mit"
 
   docs:
+    needs: compliance
     uses: ./.github/workflows/docs.yml
     with:
       must-deploy: ${{ github.ref != 'refs/heads/main' }}
 
   rust-lint:
+    needs: compliance
     runs-on: warp-ubuntu-2404-x64-2x # ubuntu-24.04
 
     steps:
@@ -52,6 +54,7 @@ jobs:
         run: cargo xtasks sources
 
   rust-tests:
+    needs: compliance
     runs-on: warp-ubuntu-2404-x64-4x # ubuntu-24.04
 
     steps:

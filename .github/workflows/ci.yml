@@ -11,28 +11,27 @@ on:
 
 permissions:
   contents: read
-  pages: write
   id-token: write
 
 jobs:
   compliance:
-    uses: ./.github/workflows/compliance.yml
+    uses: ./.github/workflows/ci-compliance.yml
 
   docs:
     needs: compliance
-    uses: ./.github/workflows/docs.yml
+    uses: ./.github/workflows/ci-docs.yml
 
   rust:
     needs: compliance
-    uses: ./.github/workflows/rust.yml
+    uses: ./.github/workflows/ci-rust.yml
 
   docker:
     needs: compliance
-    uses: ./.github/workflows/docker.yml
+    uses: ./.github/workflows/ci-docker.yml
 
   sculptor:
     needs: compliance
-    uses: ./.github/workflows/sculptor.yml
+    uses: ./.github/workflows/ci-sculptor.yml
 
   all-checks:
     runs-on: warp-ubuntu-2204-arm64-2x

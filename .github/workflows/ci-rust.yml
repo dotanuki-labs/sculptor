@@ -112,3 +112,17 @@ jobs:
         with:
           name: sbom-${{ github.sha }}.json
           path: crates/sculptor/sculptor.cdx.json
+
+  publish-local-registry:
+    needs: build
+    runs-on: warp-ubuntu-2404-x64-4x
+
+    steps:
+      - name: Project Checkout
+        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
+
+      - name: Setup CI
+        uses: ./.github/actions/setup-rust
+
+      - name: Publish on local registry
+        run: cargo publish -p sculptor --registry local

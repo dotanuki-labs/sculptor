@@ -36,7 +36,7 @@ jobs:
 
   security:
     needs: [lint, tests]
-    runs-on: warp-ubuntu-2404-x64-2x # ubuntu-24.04
+    runs-on: ubuntu-24.04
 
     steps:
       - name: Project Checkout
@@ -84,7 +84,7 @@ jobs:
 
   extras:
     needs: build
-    runs-on: warp-ubuntu-2404-x64-4x
+    runs-on: ubuntu-24.04
 
     steps:
       - name: Project Checkout
@@ -116,8 +116,7 @@ jobs:
 
   publish:
     needs: build
-    runs-on: warp-ubuntu-2404-x64-4x
-
+    runs-on: ubuntu-24.04
     services:
       local-registry:
         image: ghcr.io/kellnr/kellnr:5

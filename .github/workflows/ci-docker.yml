@@ -7,15 +7,16 @@ on:
   workflow_call:
 
 jobs:
-  build:
+  build-push:
     runs-on: warp-ubuntu-2404-x64-4x
-
+    services:
+      local-registry:
+        image: registry:2
+        ports:
+          - 5000:5000
     steps:
       - name: Project Checkout
         uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
-
-      - name: Start local registry
-        run: docker run -d -p 5000:5000 --name local-registry registry:2
 
       - name: Docker metadata
         id: docker-metadata

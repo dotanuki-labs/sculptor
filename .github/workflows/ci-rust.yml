@@ -113,7 +113,7 @@ jobs:
           name: sbom-${{ github.sha }}.json
           path: crates/sculptor/sculptor.cdx.json
 
-  publish-local:
+  publish:
     needs: build
     runs-on: warp-ubuntu-2404-x64-4x
 

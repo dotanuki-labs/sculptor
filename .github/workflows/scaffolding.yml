@@ -8,7 +8,7 @@ on:
 
 jobs:
   scaffolding-test-rust-build:
-    runs-on: macos-15
+    runs-on: warp-macos-15-arm64-6x
 
     steps:
       - name: Project Checkout
@@ -21,7 +21,7 @@ jobs:
           ./target/debug/testcli --help
 
   scaffolding-test-docker-build:
-    runs-on: ubuntu-24.04
+    runs-on: warp-ubuntu-2404-x64-4x
 
     steps:
       - name: Project Checkout

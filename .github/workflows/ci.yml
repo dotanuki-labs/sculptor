@@ -40,7 +40,7 @@ jobs:
     needs: compliance
     uses: ./.github/workflows/docs.yml
     with:
-      must-deploy: ${{ github.ref != 'refs/heads/main' }}
+      must-deploy: ${{ github.ref == 'refs/heads/main' }}
 
   rust-lint:
     needs: compliance

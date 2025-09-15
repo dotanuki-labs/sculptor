@@ -32,7 +32,7 @@ jobs:
       - name: Build and archive documentation assets
         uses: dotanuki-labs/github-actions/foss/prepare-ghpages@main
 
-  deploy:
+  build-deploy:
     needs: lint
     if: ${{ inputs.must-deploy }}
     runs-on: warp-ubuntu-2404-x64-2x # ubuntu-24.04

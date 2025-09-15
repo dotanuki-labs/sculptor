@@ -5,7 +5,7 @@
 - Understand what changes we are shipping by inspecting unreleased commits
 
 ```bash
-git co main
+git checkout main
 git pull origin main --rebase
 git log $(git describe --abbrev=0 --tags)...HEAD --oneline
 ```
@@ -17,21 +17,21 @@ git log $(git describe --abbrev=0 --tags)...HEAD --oneline
 git checkout -b ufs/release-x.y.z
 ```
 
-- Add **notable changes** the to [changelog file](https://github.com/dotanuki-labs/rust-cli-tool-scaffold/blob/main/docs/changelog.md)
-- Bump version at [Cargo.toml](https://github.com/dotanuki-labs/rust-cli-tool-scaffold/blob/main/Cargo.toml#L3)
+- Add **notable changes** the to [changelog file](https://github.com/dotanuki-labs/sculptor/blob/main/docs/changelog.md)
+- Bump version at [Cargo.toml](https://github.com/dotanuki-labs/sculptor/blob/main/Cargo.toml#L3)
 - Raise a PR preparing the release
 
 ## Creating a release (GitHub admins-only)
 
 - Ensure the next release is prepared (as described above)
-- Execute the [CD Workflow](https://github.com/dotanuki-labs/rust-cli-tool-scaffold/actions/workflows/cd.yml)
-- Go to the [releases page](https://github.com/dotanuki-labs/rust-cli-tool-scaffold/releases)
+- Execute the [CD Workflow](https://github.com/dotanuki-labs/sculptor/actions/workflows/cd.yml)
+- Go to the [releases page](https://github.com/dotanuki-labs/sculptor/releases)
 - Review the release draft and add any final touches (for instance, updating `RenovateBot` identity name)
 - Publish the release 🚀
 
 ## Updating distributions
 
 - Clone [dotanuki-labs/homebrew-taps](https://github.com/dotanuki-labs/homebrew-taps)
-- Create a branch like `ufs/rust-cli-tool-scaffold-x.y.z`
-- Update the `rust-cli-tool-scaffold.rb` formula with proper version and checksums
+- Create a branch like `ufs/sculptor-x.y.z`
+- Update the `sculptor.rb` formula with proper version and checksums
 - Raise a PR

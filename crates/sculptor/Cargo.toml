@@ -1,5 +1,5 @@
 [package]
-name = "rust-cli-tool-scaffold"
+name = "sculptor"
 description = "An opinionated way to kick-off CLI apps powered by Rust"
 version.workspace = true
 edition.workspace = true

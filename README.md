@@ -1,4 +1,4 @@
-# rust-cli-tool-scaffold
+# sculptor
 
 > An opinionated way to bootstrap CLI tools written in Rust 🦀
 
@@ -17,8 +17,8 @@
 - Run the `scaffold.sh` script
 
 ```bash
-$> git clone git@github.com:dotanuki-labs/rust-cli-tool-scaffold.git
-$> mv rust-cli-tool-scaffold my-tool
+$> git clone git@github.com:dotanuki-labs/sculptor.git
+$> mv sculptor my-tool
 $> cd my-tool
 $> ./scaffold.sh my-tool
 ```

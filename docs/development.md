@@ -18,7 +18,7 @@ This project uses `xtasks` helpers to run common tasks. You can check them by ru
 ```bash
 cargo xtasks
 
-Companion build tasks for rust-cli-tool-scaffold
+Companion build tasks for sculptor
 
 Usage: xtasks <COMMAND>
 
@@ -76,7 +76,7 @@ According to our policies, all code contributions to this project must go throug
 and all required status checks must pass.
 
 This project adopts
-[GiHub Actions](https://github.com/dotanuki-labs/rust-cli-tool-scaffold/actions)
+[GiHub Actions](https://github.com/dotanuki-labs/sculptor/actions)
 as it CI system. Most of the verifications we'll run on CI are wrapped by the `xtasks` helpers,
 as previously mentioned.
 

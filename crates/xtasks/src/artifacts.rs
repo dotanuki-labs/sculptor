@@ -44,8 +44,8 @@ fn build_targets(shell: &Shell) -> anyhow::Result<()> {
             for target in targets {
                 cmd!(shell, "rustup target add {target}").run()?;
                 cmd!(shell, "cargo build --release --target {target}").run()?;
-                let binary = format!("target/{target}/release/rust-cli-tool-scaffold");
-                let destination = format!("{DEFAULT_ARTIFACTS_DIR}/rust-cli-tool-scaffold-{target}");
+                let binary = format!("target/{target}/release/sculptor");
+                let destination = format!("{DEFAULT_ARTIFACTS_DIR}/sculptor-{target}");
                 shell.copy_file(&binary, &destination)?;
                 cmd!(shell, "chmod +x {destination}").run()?;
             }
@@ -86,7 +86,7 @@ fn compute_checksums(shell: &Shell) -> anyhow::Result<()> {
         .filter_map(|e| e.ok())
         .filter(|entry| {
             let path = entry.path().to_str().unwrap();
-            path.contains("rust-cli-tool-scaffold-x86_64") || path.contains("rust-cli-tool-scaffold-aarch64")
+            path.contains("sculptor-x86_64") || path.contains("sculptor-aarch64")
         })
         .filter(|entry| entry.file_type().is_file())
         .map(|entry| {

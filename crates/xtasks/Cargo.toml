@@ -1,6 +1,6 @@
 [package]
 name = "xtasks"
-description = "Companion build tasks for rust-cli-tool-scaffold"
+description = "Companion build tasks for sculptor"
 version.workspace = true
 edition.workspace = true
 rust-version.workspace = true

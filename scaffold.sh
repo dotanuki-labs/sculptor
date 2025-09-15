@@ -6,7 +6,7 @@ readonly color_cyan="\033[1;36m"
 readonly color_normal="\033[0m"
 
 readonly target_name="$1"
-readonly placeholder_name="rust-cli-tool-scaffold"
+readonly placeholder_name="sculptor"
 dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 cyan() {
@@ -112,7 +112,7 @@ remove "$dir/.idea"
 remove "$dir/.git"
 remove "$dir/target"
 remove "$dir/.github/workflows/scaffolding.yml"
-remove "$dir/crates/$target_name/rust-cli-tool-scaffold.cdx.json"
+remove "$dir/crates/$target_name/sculptor.cdx.json"
 setup_git_hooks
 remove "$dir/scaffold.sh"
 

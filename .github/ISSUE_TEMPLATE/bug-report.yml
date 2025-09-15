@@ -27,7 +27,7 @@ body:
           required: true
         - label: >-
             I have looked through the
-            [open issues](https://github.com/dotanuki-labs/rust-cli-tool-scaffold/issues?q=is%3Aissue+is%3Aopen+)
+            [open issues](https://github.com/dotanuki-labs/sculptor/issues?q=is%3Aissue+is%3Aopen+)
             for a duplicate bug and could not find it.
           required: true
 
@@ -36,7 +36,7 @@ body:
       label: Expected behavior
       description: Add here concise description of what you expected to happen.
       placeholder: |
-        I expected rust-cli-tool-scaffold to do <some behavior> by running <some command> ...
+        I expected sculptor to do <some behavior> by running <some command> ...
     validations:
       required: true
 
@@ -45,7 +45,7 @@ body:
       label: Actual behavior
       description: Add here a concise description of what actually happened.
       placeholder: |
-        Instead, rust-cli-tool-scaffold did ...
+        Instead, sculptor did ...
     validations:
       required: true
 
@@ -74,5 +74,5 @@ body:
       description: Provide additional context about the environment where the bug was found.
       placeholder: |
         - Operation System : <my-os / version x.y.z>
-        - `rust-cli-tool-scaffold-version` : <a.b.c>
+        - `sculptor-version` : <a.b.c>
         - etc

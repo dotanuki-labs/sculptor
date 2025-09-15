@@ -5,7 +5,7 @@ use assert_cmd::Command;
 use predicates::str::contains;
 
 fn sut() -> Command {
-    Command::cargo_bin("rust-cli-tool-scaffold").expect("Should be able to create a command")
+    Command::cargo_bin("sculptor").expect("Should be able to create a command")
 }
 
 #[test]
@@ -18,7 +18,7 @@ fn should_parse_arguments() {
 
 #[test]
 fn should_show_help() {
-    let description = "Usage: rust-cli-tool-scaffold";
+    let description = "Usage: sculptor";
 
     let execution = sut().arg("--help").assert();
     execution.stdout(contains(description));

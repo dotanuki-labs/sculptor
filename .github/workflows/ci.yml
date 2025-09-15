@@ -71,7 +71,7 @@ jobs:
         run: cargo xtasks sources
 
   rust-tests:
-    runs-on: warp-ubuntu-2404-x64-2x # ubuntu-24.04
+    runs-on: warp-ubuntu-2404-x64-4x # ubuntu-24.04
 
     steps:
       - name: Project Checkout
@@ -89,7 +89,7 @@ jobs:
     strategy:
       matrix:
         # os: [ ubuntu-24.04, macos-15 ]
-        os: [ warp-ubuntu-2404-x64-2x, warp-macos-15-arm64-6x ]
+        os: [ warp-ubuntu-2404-x64-4x, warp-macos-15-arm64-6x ]
 
     steps:
       - name: Project Checkout
@@ -111,7 +111,7 @@ jobs:
 
   rust-artifacts:
     needs: rust-build
-    runs-on: warp-ubuntu-2404-x64-2x # ubuntu-24.04
+    runs-on: warp-ubuntu-2404-x64-4x # ubuntu-24.04
 
     steps:
       - name: Project Checkout
@@ -193,7 +193,7 @@ jobs:
           ./artifacts/rust-cli-tool-scaffold-binaries-Linux/rust-cli-tool-scaffold-aarch64-unknown-linux-musl --help
 
   all-checks:
-    runs-on: warp-ubuntu-2204-arm64-2x # ubuntu-24.04
+    runs-on: warp-ubuntu-2204-arm64-4x # ubuntu-24.04
     needs: [docs-lint, docker-build, rust-artifacts, rust-security, compatibility-tests]
     steps:
       - name: Report success

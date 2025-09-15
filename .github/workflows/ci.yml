@@ -48,18 +48,6 @@ jobs:
       - name: Build and archive documentation assets
         uses: dotanuki-labs/github-actions/foss/prepare-ghpages@main
 
-  docker-build:
-    runs-on: warp-ubuntu-2404-x64-4x # ubuntu-24.04
-
-    steps:
-      - name: Project Checkout
-        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
-
-      - name: Build and run with Docker
-        run: |
-          docker build -t dotanuki-labs/sculptor .
-          docker run --rm -v "${PWD}/tmp" dotanuki-labs/sculptor --help
-
   rust-lint:
     runs-on: warp-ubuntu-2404-x64-2x # ubuntu-24.04
 
@@ -179,6 +167,7 @@ jobs:
         uses: actions/download-artifact@634f93cb2916e3fdff6788551b99b062d0335ce0 # v5.0.0
         with:
           path: artifacts
+          pattern: sculptor-binaries-*
 
       - name: Compatibility check (macOS)
         if: ${{ runner.os == 'macOS'}}
@@ -192,8 +181,34 @@ jobs:
           chmod +x ./artifacts/sculptor-binaries-Linux/sculptor-aarch64-unknown-linux-musl
           ./artifacts/sculptor-binaries-Linux/sculptor-aarch64-unknown-linux-musl --help
 
+
+  docker-build:
+    needs: rust-build
+    runs-on: warp-ubuntu-2404-arm64-4x # ubuntu-24.04
+
+    steps:
+      - name: Project Checkout
+        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
+
+      - name: Setup Docker buildx
+        uses: docker/setup-buildx-action@e468171a9de216ec08956ac3ada2f0791b6bd435 # v3.11.1
+        with:
+          driver-opts: |
+            network=host
+
+      - name: Build Docker image
+        uses: docker/build-push-action@263435318d21b8e681c14492fe198d362a7d2c83 # v6.18.0
+        with:
+          context: .
+          push: false
+          tags: "dotanuki-labs/canopus:latest"
+          cache-from: type=gha,url=http://127.0.0.1:49160/,version=1
+          cache-to: type=gha,url=http://127.0.0.1:49160/,mode=max,version=1
+
+
+
   all-checks:
-    runs-on: warp-ubuntu-2204-arm64-4x # ubuntu-24.04
+    runs-on: warp-ubuntu-2204-arm64-2x # ubuntu-24.04
     needs: [docs-lint, docker-build, rust-artifacts, rust-security, compatibility-tests]
     steps:
       - name: Report success

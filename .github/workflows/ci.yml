@@ -47,7 +47,7 @@ jobs:
     uses: ./.github/workflows/rust.yml
 
   docker-build:
-    needs: rust-build
+    needs: rust
     runs-on: warp-ubuntu-2404-arm64-4x # ubuntu-24.04
 
     steps:

@@ -111,7 +111,7 @@ jobs:
 
   rust-artifacts:
     needs: rust-build
-    runs-on: warp-ubuntu-2404-x64-4x # ubuntu-24.04
+    runs-on: warp-ubuntu-2404-arm64-8x # ubuntu-24.04
 
     steps:
       - name: Project Checkout
@@ -142,7 +142,7 @@ jobs:
 
   rust-security:
     needs: [rust-lint, rust-tests]
-    runs-on: warp-ubuntu-2404-x64-4x # ubuntu-24.04
+    runs-on: warp-ubuntu-2404-arm64-8x # ubuntu-24.04
 
     steps:
       - name: Project Checkout

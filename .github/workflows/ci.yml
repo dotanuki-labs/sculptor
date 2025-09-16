@@ -22,13 +22,13 @@ jobs:
     needs: compliance
     uses: ./.github/workflows/ci-docs.yml
 
-  rust:
-    needs: compliance
-    uses: ./.github/workflows/ci-rust.yml
-
   docker:
     needs: compliance
     uses: ./.github/workflows/ci-docker.yml
+
+  rust:
+    needs: compliance
+    uses: ./.github/workflows/ci-rust.yml
 
   sculptor:
     needs: compliance

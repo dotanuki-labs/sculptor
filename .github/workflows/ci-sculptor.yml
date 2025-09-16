@@ -16,7 +16,7 @@ jobs:
 
       - name: Sculpt a CLI from Rust build
         run: |
-          ./scaffold.sh test-cli
+          ./sculpt.sh test-cli
           cargo build
           ./target/debug/test-cli --help
 
@@ -29,6 +29,6 @@ jobs:
 
       - name: Sculpt and run a Docker build
         run: |
-          ./scaffold.sh test-cli
+          ./sculpt.sh test-cli
           docker build -t dotanuki-labs/test-cli .
           docker run --rm -v "${PWD}/tmp" dotanuki-labs/test-cli --help

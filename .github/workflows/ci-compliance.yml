@@ -1,7 +1,7 @@
 # Copyright 2025 Dotanuki Labs
 # SPDX-License-Identifier: MIT
 
-name: Compliance
+name: ci-compliance
 
 on:
   workflow_call:
@@ -10,7 +10,7 @@ jobs:
   checks:
     runs-on: warp-ubuntu-2404-x64-2x # ubuntu-24.04
     steps:
-      - name: Project Checkout
+      - name: Project checkout
         uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
         with:
           fetch-depth: 20

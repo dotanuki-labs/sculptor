@@ -1,0 +1,32 @@
+# Copyright 2025 Dotanuki Labs
+# SPDX-License-Identifier: MIT
+
+name: cd
+
+on: workflow_dispatch
+
+permissions:
+  id-token: write
+  contents: read
+  pages: write
+  attestations: write
+
+jobs:
+  docs:
+    uses: ./.github/workflows/cd-docs.yml
+
+  docker:
+    uses: ./.github/workflows/cd-docker.yml
+
+  rust:
+    uses: ./.github/workflows/cd-rust.yml
+
+  all-deploys:
+    runs-on: warp-ubuntu-2204-arm64-2x
+    needs: [docs, rust, docker]
+    steps:
+      - name: Report success
+        run: |
+          echo "All artifacts deploys ✅"
+          echo "Go to Github releases to publish the draft version"
+          echo "https://github.com/dotanuki-labs/releases"

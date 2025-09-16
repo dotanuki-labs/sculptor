@@ -1,7 +1,7 @@
 # Copyright 2025 Dotanuki Labs
 # SPDX-License-Identifier: MIT
 
-name: Rust
+name: ci-rust
 
 permissions:
   contents: read
@@ -13,7 +13,7 @@ jobs:
   lint:
     runs-on: warp-ubuntu-2404-x64-2x # ubuntu-24.04
     steps:
-      - name: Project Checkout
+      - name: Project checkout
         uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
 
       - name: Checking formatting of Rust code (rustfmt)
@@ -25,10 +25,10 @@ jobs:
   tests:
     runs-on: warp-ubuntu-2404-x64-4x # ubuntu-24.04
     steps:
-      - name: Project Checkout
+      - name: Project checkout
         uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
 
-      - name: Setup CI
+      - name: Setup Rust tools
         uses: ./.github/actions/setup-rust
 
       - name: Run project tests
@@ -39,7 +39,7 @@ jobs:
     runs-on: warp-ubuntu-2404-x64-4x
 
     steps:
-      - name: Project Checkout
+      - name: Project checkout
         uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
 
       - name: Check issues with supply chain
@@ -53,10 +53,10 @@ jobs:
         os: [ warp-ubuntu-2404-x64-4x, warp-macos-15-arm64-6x ] # os: [ ubuntu-24.04, macos-15 ]
 
     steps:
-      - name: Project Checkout
+      - name: Project checkout
         uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
 
-      - name: Setup CI
+      - name: Setup Rust tools
         uses: ./.github/actions/setup-rust
         with:
           install-extra-tools: true
@@ -75,7 +75,7 @@ jobs:
     runs-on: warp-ubuntu-2404-x64-4x
 
     steps:
-      - name: Project Checkout
+      - name: Project checkout
         uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
 
       - name: Fetch executable from previous build
@@ -84,7 +84,7 @@ jobs:
           path: artifacts
           pattern: sculptor-binaries-*
 
-      - name: Setup CI
+      - name: Setup Rust tools
         uses: ./.github/actions/setup-rust
 
       - name: Generate additional artifacts
@@ -117,10 +117,10 @@ jobs:
           --health-retries 5
 
     steps:
-      - name: Project Checkout
+      - name: Project checkout
         uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
 
-      - name: Setup CI
+      - name: Setup Rust tools
         uses: ./.github/actions/setup-rust
 
       - name: Publish on local registry

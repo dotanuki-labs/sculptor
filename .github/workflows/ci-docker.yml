@@ -11,7 +11,7 @@ jobs:
     runs-on: warp-ubuntu-2404-x64-4x
     services:
       local-registry:
-        image: registry:2@sha256:a3d8aaa63ed8681a604f1dea0aa03f100d5895b6a58ace528858a7b332415373
+        image: registry:3@sha256:3725021071ec9383eb3d87ddbdff9ed602439b3f7c958c9c2fb941049ea6531d
         ports:
           - 5000:5000
     steps:

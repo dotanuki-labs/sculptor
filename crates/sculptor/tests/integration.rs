@@ -12,8 +12,7 @@ fn sut() -> Command {
 fn should_parse_arguments() {
     let execution = sut().args(["--name", "John"]).assert();
 
-    let expected = "Hello, John!\n";
-    execution.stdout(expected);
+    execution.stdout(contains("Hello, John"));
 }
 
 #[test]

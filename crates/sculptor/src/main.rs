@@ -4,6 +4,7 @@
 mod core;
 
 use clap::Parser;
+use console::style;
 use tikv_jemallocator::Jemalloc;
 
 #[global_allocator]
@@ -22,5 +23,5 @@ fn main() {
 
     let arguments = ProgramArguments::parse();
     let greet = core::greet(&arguments.name).expect("Expecting a greet!");
-    println!("{greet}");
+    println!("{}", style(greet).green());
 }

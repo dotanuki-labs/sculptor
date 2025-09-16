@@ -10,6 +10,7 @@ permissions:
   contents: read
   pages: write
   attestations: write
+  packages: write
 
 jobs:
   docs:
@@ -20,10 +21,13 @@ jobs:
 
   rust:
     uses: ./.github/workflows/cd-rust.yml
+    secrets:
+      DOTANUKI_BOT_TOKEN: ${{ secrets.DOTANUKI_BOT_TOKEN }}
+      CRATESIO_PUBLISH_TOKEN: ${{ secrets.CRATESIO_PUBLISH_TOKEN }}
 
   all-deploys:
     runs-on: warp-ubuntu-2204-arm64-2x
-    needs: [docs, rust, docker]
+    needs: [docs, docker, rust]
     steps:
       - name: Report success
         run: |

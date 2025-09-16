@@ -18,11 +18,9 @@ jobs:
       - name: Project Checkout
         uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
 
-      - name: Compute release tag
+      - name: Compute current version
         id: release-tag
-        run: |
-          version=$(grep 'version' Cargo.toml | head -1 | sed "s/version[[:space:]]=[[:space:]]//g" | tr -d '"')
-          echo "version=$version" >>"$GITHUB_OUTPUT"
+        uses: ./.github/actions/compute-version
 
       - name: Docker metadata
         id: docker-metadata
@@ -46,6 +44,6 @@ jobs:
           labels: ${{ steps.docker-metadata.outputs.labels }}
           annotations: ${{ steps.docker-metadata.outputs.annotations }}
           outputs: type=registry,push=true
-          tags: localhost:5000/${{ github.repository }}:${{ steps.release-tag.outputs.version }}-amd64
+          tags: localhost:5000/${{ github.repository }}:${{ steps.release-tag.outputs.computed }}-amd64
           cache-from: type=gha,url=http://127.0.0.1:49160/,version=1
           cache-to: type=gha,url=http://127.0.0.1:49160/,mode=max,version=1

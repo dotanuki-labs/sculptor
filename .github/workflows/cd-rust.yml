@@ -5,6 +5,11 @@ name: cd-rust
 
 on:
   workflow_call:
+    secrets:
+      CRATESIO_PUBLISH_TOKEN:
+        required: true
+      DOTANUKI_BOT_TOKEN:
+        required: true
 
 jobs:
   build:
@@ -71,16 +76,23 @@ jobs:
       - name: Project Checkout
         uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
 
-      - name: Fetch executable from previous build
+      - name: Fetch binaries from previous build
         uses: actions/download-artifact@634f93cb2916e3fdff6788551b99b062d0335ce0 # v5.0.0
         with:
           path: artifacts
+          pattern: sculptor-binaries-*
 
       - name: Build provenance for binaries
         uses: actions/attest-build-provenance@977bb373ede98d70efdf65b84cb5f73e068dcc2a # v3.0.0
         if: false
         with:
           subject-path: artifacts/**/*
+
+      - name: Fetch checksums from previous build
+        uses: actions/download-artifact@634f93cb2916e3fdff6788551b99b062d0335ce0 # v5.0.0
+        with:
+          path: artifacts
+          pattern: checksums.txt
 
       - name: Compute current version
         id: release-tag
@@ -96,7 +108,6 @@ jobs:
           draft: true
           files: |
             artifacts/**/*
-            sculptor.cdx.json
 
   cratesio:
     needs: github

@@ -42,7 +42,6 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build container image
-        id: build
         uses: docker/build-push-action@263435318d21b8e681c14492fe198d362a7d2c83 # v6.18.0
         with:
           context: .
@@ -52,7 +51,7 @@ jobs:
           labels: ${{ steps.docker-metadata.outputs.labels }}
           annotations: ${{ steps.docker-metadata.outputs.annotations }}
           outputs: type=registry,push=true
-          tags: ghcr.io/${{ github.repository }}:${{ steps.release-tag.outputs.version }}-${{ matrix.build-args.platform }}
+          tags: ghcr.io/${{ github.repository }}:${{ steps.release-tag.outputs.computed }}-${{ matrix.build-args.platform }}
 
   merge-manifest:
     runs-on: warp-ubuntu-2404-x64-4x
@@ -81,5 +80,5 @@ jobs:
           docker manifest inspect "$latest"
           docker manifest push "$latest"
         env:
-          package: ghcr.io/${{ github.repository }}:${{ steps.release-tag.outputs.version }}
+          package: ghcr.io/${{ github.repository }}:${{ steps.release-tag.outputs.computed }}
           latest: ghcr.io/${{ github.repository }}:latest

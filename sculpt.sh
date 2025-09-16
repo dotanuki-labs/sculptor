@@ -25,7 +25,7 @@ require_name() {
     if [ -z "$target_name" ]; then
         line
         say "🚫 Error : no arguments provided"
-        say "Usage : $(cyan "./scaffold <your_project_name>")"
+        say "Usage : $(cyan "./sculpt <your_project_name>")"
         line
         exit 1
     fi
@@ -57,11 +57,7 @@ replace_readme() {
 }
 
 enable_workflows() {
-    readonly ci="$dir/.github/workflows/ci.yml"
-    readonly cd="$dir/.github/workflows/cd.yml"
-
-    grep -v "if: false" "$ci" >enabledci
-    mv enabledci "$ci"
+    readonly cd="$dir/.github/workflows/cd-rust.yml"
 
     grep -v "if: false" "$cd" >enabledcd
     mv enabledcd "$cd"
@@ -80,14 +76,21 @@ setup_git_hooks() {
 require_name
 
 echo
-say "🔥 Scaffolding with $(cyan "$target_name")"
+say "🔥 Sculpting with $(cyan "$target_name")"
 echo
 
 define_project_crate
 replace_readme
 patch_file "$dir/.gitignore"
-patch_file "$dir/.github/workflows/ci.yml"
-patch_file "$dir/.github/workflows/cd.yml"
+patch_file "$dir/.github/workflows/ci-all.yml"
+patch_file "$dir/.github/workflows/ci-compliance.yml"
+patch_file "$dir/.github/workflows/ci-docker.yml"
+patch_file "$dir/.github/workflows/ci-docs.yml"
+patch_file "$dir/.github/workflows/ci-rust.yml"
+patch_file "$dir/.github/workflows/cd-all.yml"
+patch_file "$dir/.github/workflows/cd-docker.yml"
+patch_file "$dir/.github/workflows/cd-docs.yml"
+patch_file "$dir/.github/workflows/cd-rust.yml"
 patch_file "$dir/.github/ISSUE_TEMPLATE/bug-report.yml"
 patch_file "$dir/.github/ISSUE_TEMPLATE/config.yml"
 patch_file "$dir/.github/ISSUE_TEMPLATE/feature-request.yml"
@@ -111,10 +114,10 @@ enable_workflows
 remove "$dir/.idea"
 remove "$dir/.git"
 remove "$dir/target"
-remove "$dir/.github/workflows/scaffolding.yml"
+remove "$dir/.github/workflows/ci-sculptor.yml"
 remove "$dir/crates/$target_name/sculptor.cdx.json"
 setup_git_hooks
-remove "$dir/scaffold.sh"
+remove "$dir/sculpt.sh"
 
 echo
 say "✅ Done"

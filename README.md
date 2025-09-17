@@ -14,13 +14,13 @@
 
 - Get this project
 - Rename it
-- Run the `scaffold.sh` script
+- Run the `sculpt.sh` script
 
 ```bash
 $> git clone git@github.com:dotanuki-labs/sculptor.git
-$> mv sculptor my-tool
+$> mv sculpt my-tool
 $> cd my-tool
-$> ./scaffold.sh my-tool
+$> ./sculpt.sh my-tool
 ```
 
 ## License

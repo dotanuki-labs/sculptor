@@ -1,7 +1,11 @@
 # Copyright 2025 Dotanuki Labs
 # SPDX-License-Identifier: MIT
 
-# Adapted from : https://kerkour.com/rust-docker-from-scratch
+#
+# Adapted from :
+# https://kerkour.com/rust-docker-from-scratch
+# https://labs.iximiuz.com/tutorials/pitfalls-of-from-scratch-images
+#
 FROM rust:alpine3.21@sha256:8f717b9506b922815d461317b6ac40d2cddc0f77867809509a5f1d32b8372ea4 AS builder
 
 RUN apk update && \

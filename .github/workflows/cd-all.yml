@@ -5,22 +5,27 @@ name: cd
 
 on: workflow_dispatch
 
-permissions:
-  id-token: write
-  contents: read
-  pages: write
-  attestations: write
-  packages: write
-
 jobs:
   docs:
     uses: ./.github/workflows/cd-docs.yml
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
 
   docker:
     uses: ./.github/workflows/cd-docker.yml
+    permissions:
+      contents: read
+      id-token: write
+      packages: write
 
   rust:
     uses: ./.github/workflows/cd-rust.yml
+    permissions:
+      contents: read
+      id-token: write
+      attestations: write
     secrets:
       DOTANUKI_BOT_TOKEN: ${{ secrets.DOTANUKI_BOT_TOKEN }}
       CRATESIO_PUBLISH_TOKEN: ${{ secrets.CRATESIO_PUBLISH_TOKEN }}
@@ -28,6 +33,8 @@ jobs:
   all-deploys:
     runs-on: warp-ubuntu-2204-arm64-2x
     needs: [docs, docker, rust]
+    permissions:
+      contents: read
     steps:
       - name: Report success
         run: |

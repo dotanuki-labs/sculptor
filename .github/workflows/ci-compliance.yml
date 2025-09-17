@@ -14,6 +14,7 @@ jobs:
         uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
         with:
           fetch-depth: 20
+          persist-credentials: false
 
       - name: Check typos on source files
         uses: crate-ci/typos@85f62a8a84f939ae994ab3763f01a0296d61a7ee # v1.36.2
@@ -23,7 +24,13 @@ jobs:
         uses: crate-ci/committed@15229711f8f597474c0b636f327cde5969f9a529 # v1.1.7
 
       - name: Check MIT license on source files
-        uses: dotanuki-labs/github-actions/foss/check-licenses@main
+        uses: dotanuki-labs/github-actions/foss/check-licenses@a25d200bd37cec3467c6030e63e914fd03e69180
         with:
           file-patterns: "*.rs,*.yml"
           license: "mit"
+
+      - name: Check issues with GHA Workflows
+        uses: zizmorcore/zizmor-action@e673c3917a1aef3c65c972347ed84ccd013ecda4 # v0.2.0
+        with:
+          advanced-security: false
+

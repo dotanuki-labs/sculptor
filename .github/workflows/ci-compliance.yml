@@ -8,6 +8,7 @@ on:
 
 jobs:
   checks:
+    timeout-minutes: 3
     runs-on: warp-ubuntu-2404-x64-2x # ubuntu-24.04
     steps:
       - name: Project checkout

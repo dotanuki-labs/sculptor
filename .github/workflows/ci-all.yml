@@ -43,6 +43,7 @@ jobs:
 
   all-checks:
     runs-on: warp-ubuntu-2204-arm64-2x
+    timeout-minutes: 5
     needs: [compliance, docs, rust, docker, sculptor]
     permissions:
       contents: read

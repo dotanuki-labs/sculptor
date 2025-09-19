@@ -19,7 +19,7 @@ categories = ["command-line-utilities"]
 sculptor = { path = "crates/sculptor" }
 xtasks = { path = "crates/xtasks" }
 
-anyhow = "=1.0.99"
+anyhow = "=1.0.100"
 assert_cmd = "=2.0.17"
 better-panic = "=0.3.0"
 clap = "=4.5.47"

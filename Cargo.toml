@@ -22,7 +22,7 @@ xtasks = { path = "crates/xtasks" }
 anyhow = "=1.0.100"
 assert_cmd = "=2.0.17"
 better-panic = "=0.3.0"
-clap = "=4.5.48"
+clap = "=4.5.49"
 console = "0.16.1"
 hex = "=0.4.3"
 human-panic = "=2.0.3"

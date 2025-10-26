@@ -17,7 +17,7 @@ jobs:
           persist-credentials: false
 
       - name: Lint Markdown files
-        uses: dotanuki-labs/github-actions/quality/markdown@02a32cd43679b1d87d690ca6dd15eda5a4087a19
+        uses: dotanuki-labs/github-actions/quality/markdown@73651dc53c2f4bbca0a76f0d1ebbb0720883fb8d
 
       - name: Build and archive documentation assets
-        uses: dotanuki-labs/github-actions/foss/prepare-ghpages@02a32cd43679b1d87d690ca6dd15eda5a4087a19
+        uses: dotanuki-labs/github-actions/foss/prepare-ghpages@73651dc53c2f4bbca0a76f0d1ebbb0720883fb8d

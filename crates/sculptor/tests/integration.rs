@@ -5,7 +5,7 @@ use assert_cmd::Command;
 use predicates::str::contains;
 
 fn sut() -> Command {
-    Command::cargo_bin("sculptor").expect("Should be able to create a command")
+    assert_cmd::cargo::cargo_bin_cmd!("sculptor")
 }
 
 #[test]

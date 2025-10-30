@@ -16,8 +16,11 @@ jobs:
         with:
           persist-credentials: false
 
+      - name: Setup Rust tools
+        uses: ./.github/actions/setup-rust
+
       - name: Lint Markdown files
-        uses: dotanuki-labs/github-actions/quality/markdown@8bd526177673e42dbad9b0a7080c91746a089fd5
+        run: cargo install rumdl && rumdl check
 
       - name: Build and archive documentation assets
         uses: dotanuki-labs/github-actions/foss/prepare-ghpages@8bd526177673e42dbad9b0a7080c91746a089fd5

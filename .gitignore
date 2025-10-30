@@ -9,3 +9,5 @@ xtasks.cdx.json
 .DS_STORE
 .idea
 
+# Misc
+.rumdl-cache/

@@ -23,7 +23,7 @@ jobs:
         run: cargo fmt --check
 
       - name: Checking smells in Rust code (clippy)
-        run: cargo clippy --all-targets --all-features -- -D warnings
+        run: cargo clippy --workspace --all-targets --all-features -- -D warnings
 
   tests:
     runs-on: warp-ubuntu-2404-x64-4x # ubuntu-24.04

@@ -23,4 +23,4 @@ jobs:
         run: cargo install rumdl && rumdl check
 
       - name: Build and archive documentation assets
-        uses: dotanuki-labs/github-actions/foss/prepare-ghpages@8bd526177673e42dbad9b0a7080c91746a089fd5
+        uses: dotanuki-labs/github-actions/foss/prepare-ghpages@39791886dfa1c43817857e2eaacd2f28dab3a150

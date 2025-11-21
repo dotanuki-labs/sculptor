@@ -17,14 +17,16 @@
             "description": ["Rust"],
             "matchDepNames": ["rust"],
             "matchManagers": ["custom.regex"],
-            "commitMessageTopic": "rust"
+            "commitMessageTopic": "rust",
+            "minimumReleaseAge": "5 days"
         },
         {
             "matchDatasources": ["docker"],
             "matchDepNames": ["dotanuki-labs/callinectes"],
             "matchPackageNames": ["docker.io/dotanuki-labs/callinectes"],
             "replacementName": "ghcr.io/dotanuki-labs/callinectes",
-            "matchManagers": ["custom.regex"]
+            "matchManagers": ["custom.regex"],
+            "minimumReleaseAge": "5 days"
         }
     ],
     "customManagers": [

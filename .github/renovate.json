@@ -17,8 +17,7 @@
             "description": ["Rust"],
             "matchDepNames": ["rust"],
             "matchManagers": ["custom.regex"],
-            "commitMessageTopic": "rust",
-            "minimumReleaseAge": "5 days"
+            "commitMessageTopic": "rust"
         },
         {
             "matchDatasources": ["docker"],
@@ -26,6 +25,9 @@
             "matchPackageNames": ["docker.io/dotanuki-labs/callinectes"],
             "replacementName": "ghcr.io/dotanuki-labs/callinectes",
             "matchManagers": ["custom.regex"],
+        },
+        {
+            "matchManagers": ["github-actions", "rust", "docker"],
             "minimumReleaseAge": "5 days"
         }
     ],

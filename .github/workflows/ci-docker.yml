@@ -8,7 +8,7 @@ on:
 
 jobs:
   build-push:
-    runs-on: warp-ubuntu-2404-x64-4x
+    runs-on: ubuntu-24.04
     timeout-minutes: 10
     services:
       local-registry:
@@ -48,5 +48,5 @@ jobs:
           annotations: ${{ steps.docker-metadata.outputs.annotations }}
           outputs: type=registry,push=true
           tags: localhost:5000/${{ github.repository }}:${{ steps.release-tag.outputs.computed }}-amd64
-          cache-from: type=gha,url=http://127.0.0.1:49160/,version=1
-          cache-to: type=gha,url=http://127.0.0.1:49160/,mode=max,version=1
+          cache-from: type=gha
+          cache-to: type=gha,mode=max

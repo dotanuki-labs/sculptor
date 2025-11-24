@@ -32,7 +32,7 @@ jobs:
 
   all-deploys:
     timeout-minutes: 5
-    runs-on: warp-ubuntu-2204-arm64-2x
+    runs-on: ubuntu-24.04
     needs: [docs, docker, rust]
     permissions:
       contents: read

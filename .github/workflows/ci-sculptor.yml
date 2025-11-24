@@ -8,7 +8,7 @@ on:
 
 jobs:
   rust-cli:
-    runs-on: warp-macos-15-arm64-6x
+    runs-on: macos-15
 
     steps:
       - name: Project checkout
@@ -23,7 +23,7 @@ jobs:
           ./target/debug/test-cli --help
 
   docker-cli:
-    runs-on: warp-ubuntu-2404-x64-4x
+    runs-on: ubuntu-24.04
 
     steps:
       - name: Project checkout

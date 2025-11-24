@@ -14,9 +14,9 @@ jobs:
       matrix:
         build-args:
           - platform: amd64
-            runner: warp-ubuntu-2404-x64-4x
+            runner: ubuntu-24.04
           - platform: arm64
-            runner: warp-ubuntu-2404-arm64-4x
+            runner: ubuntu-24.04-arm
 
     steps:
       - name: Project checkout
@@ -57,7 +57,7 @@ jobs:
           tags: ghcr.io/${{ github.repository }}:${{ steps.release-tag.outputs.computed }}-${{ matrix.build-args.platform }}
 
   merge-manifest:
-    runs-on: warp-ubuntu-2404-x64-4x
+    runs-on: ubuntu-24.04
     timeout-minutes: 5
     needs: docker-images
 

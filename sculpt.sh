@@ -122,3 +122,9 @@ remove "$dir/sculpt.sh"
 echo
 say "✅ Done"
 echo
+echo "Don't forget to:"
+echo
+say "Ensure proper description is set on Cargo.toml files"
+say "Ensure proper categories set on cargo.toml files"
+say "Perform changes at the related Github repo (e.g. setting up secrets)"
+echo

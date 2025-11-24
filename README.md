@@ -2,13 +2,9 @@
 
 > An opinionated way to bootstrap CLI tools written in Rust 🦀
 
-## Features
+## What
 
-- Easy setup for local and CI development
-- Simple module structure and application entrypoint driven by [clap](https://github.com/clap-rs/clap)
-- Pull request automation powered by [Mergify](https://mergify.com/)
-- CI and CD pipelines driven by Github Actions
-- A few other niceties
+This project is intended to be used within Dotanuki Labs only.
 
 ## Using
 
@@ -22,6 +18,8 @@ $> mv sculpt my-tool
 $> cd my-tool
 $> ./sculpt.sh my-tool
 ```
+
+- Setup git and start a new project on Github
 
 ## License
 

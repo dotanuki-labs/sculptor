@@ -1,10 +1,8 @@
 # sculptor
 
-> An opinionated way to bootstrap CLI tools written in Rust 🦀
-
 ## What
 
-This project is intended to be used within Dotanuki Labs only.
+An extremely opinionated way to bootstrap CLI apps powered by Rust.
 
 ## Using
 
@@ -20,6 +18,17 @@ $> ./sculpt.sh my-tool
 ```
 
 - Setup git and start a new project on Github
+
+## Contributing
+
+> [!WARNING]
+>
+> This project is intended to be used exclusively within this Github organization.
+> For now, **we'll only accept bug reports** for this repository.
+> Everything within `docs` is actually boilerplate.
+
+If you find a bug, feel free to raise
+[an issue](https://github.com/dotanuki-labs/sculptor/issues).
 
 ## License
 

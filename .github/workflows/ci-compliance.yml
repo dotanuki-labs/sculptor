@@ -28,7 +28,7 @@ jobs:
         uses: crate-ci/committed@bb02f309663f9baced8dbd5fdd80c6369ddf3efd # v1.1.8
 
       - name: Check MIT license on source files
-        uses: korandoru/hawkeye@2f80559b06187bcd1aa7bca5138fe5e5c53e275f # v6.3.0
+        run: docker run --rm -v $(pwd):/github/workspace ghcr.io/korandoru/hawkeye:v6.3.0 check
 
       - name: Check issues with GHA Workflows
         uses: zizmorcore/zizmor-action@e639db99335bc9038abc0e066dfcd72e23d26fb4 # v0.3.0

@@ -3,6 +3,9 @@
 
 name: cd-docs
 
+permissions:
+  contents: read
+
 on:
   workflow_call:
 

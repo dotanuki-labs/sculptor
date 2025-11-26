@@ -3,6 +3,9 @@
 
 name: cd-docker
 
+permissions:
+  contents: read
+
 on:
   workflow_call:
 

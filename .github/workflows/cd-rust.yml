@@ -3,6 +3,9 @@
 
 name: cd-rust
 
+permissions:
+  contents: read
+
 on:
   workflow_call:
     secrets:

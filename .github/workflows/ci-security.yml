@@ -11,6 +11,10 @@ on:
 
 jobs:
   checks:
+    permissions:
+      security-events: write
+      id-token: write
+
     timeout-minutes: 5
     runs-on: ubuntu-24.04
     steps:

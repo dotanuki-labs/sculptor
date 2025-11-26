@@ -5,6 +5,9 @@ name: cd
 
 on: workflow_dispatch
 
+permissions:
+  contents: read
+
 jobs:
   docs:
     uses: ./.github/workflows/cd-docs.yml
@@ -34,8 +37,6 @@ jobs:
     timeout-minutes: 5
     runs-on: ubuntu-24.04
     needs: [docs, docker, rust]
-    permissions:
-      contents: read
     steps:
       - name: Report success
         run: |

@@ -3,6 +3,9 @@
 
 name: ci
 
+permissions:
+  contents: read
+
 on:
   pull_request:
   push:
@@ -53,8 +56,6 @@ jobs:
     runs-on: ubuntu-24.04
     timeout-minutes: 5
     needs: [compliance, docs, rust, docker, scorecard, sculptor]
-    permissions:
-      contents: read
     steps:
       - name: Report success
         run: echo "Great job ✅"

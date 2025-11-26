@@ -63,6 +63,10 @@ enable_workflows() {
     mv enabledcd "$cd"
 }
 
+enable_mergify() {
+    mv "$dir/.mergify-template.yml" "$dir/.mergify.yml"
+}
+
 define_project_crate() {
     mv "$dir/crates/$placeholder_name" "$dir/crates/$target_name"
 }
@@ -108,16 +112,17 @@ patch_file "$dir/docs/development.md"
 patch_file "$dir/docs/releasing.md"
 patch_file "$dir/docs/readme.md"
 patch_file "$dir/docs/website.json"
-
-enable_workflows
-
 remove "$dir/.idea"
 remove "$dir/.git"
 remove "$dir/target"
-remove "$dir/.github/workflows/ci-sculptor.yml"
+remove "$dir/.github/workflows/dogfood.yml"
+remove "$dir/.mergify"
 remove "$dir/crates/$target_name/sculptor.cdx.json"
-setup_git_hooks
 remove "$dir/sculpt.sh"
+
+setup_git_hooks
+enable_workflows
+enable_mergify
 
 echo
 say "✅ Done"

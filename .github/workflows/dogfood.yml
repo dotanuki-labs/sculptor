@@ -1,16 +1,19 @@
 # Copyright 2025 Dotanuki Labs
 # SPDX-License-Identifier: MIT
 
-name: ci-sculptor
+name: dogfood
 
 permissions:
   contents: read
 
 on:
-  workflow_call:
+  pull_request:
+  push:
+    branches:
+      - main
 
 jobs:
-  rust-cli:
+  dogfood-rust:
     runs-on: macos-15
 
     steps:
@@ -25,7 +28,7 @@ jobs:
           cargo build
           ./target/debug/test-cli --help
 
-  docker-cli:
+  dogfood-docker:
     runs-on: ubuntu-24.04
 
     steps:

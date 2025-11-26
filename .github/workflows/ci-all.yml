@@ -38,12 +38,6 @@ jobs:
     permissions:
       contents: read
 
-  sculptor:
-    needs: compliance
-    uses: ./.github/workflows/ci-sculptor.yml
-    permissions:
-      contents: read
-
   scorecard:
     needs: compliance
     uses: ./.github/workflows/ci-scorecards.yml
@@ -55,7 +49,7 @@ jobs:
   all-checks:
     runs-on: ubuntu-24.04
     timeout-minutes: 5
-    needs: [compliance, docs, rust, docker, scorecard, sculptor]
+    needs: [compliance, docs, rust, docker, scorecard]
     steps:
       - name: Report success
         run: echo "Great job ✅"

@@ -3,6 +3,9 @@
 
 name: ci-sculptor
 
+permissions:
+  contents: read
+
 on:
   workflow_call:
 

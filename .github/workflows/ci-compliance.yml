@@ -3,6 +3,9 @@
 
 name: ci-compliance
 
+permissions:
+  contents: read
+
 on:
   workflow_call:
 

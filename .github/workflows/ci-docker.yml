@@ -6,6 +6,9 @@ name: ci-docker
 on:
   workflow_call:
 
+permissions:
+  contents: read
+
 jobs:
   build-push:
     runs-on: ubuntu-24.04

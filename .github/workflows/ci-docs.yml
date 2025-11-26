@@ -6,6 +6,9 @@ name: ci-docs
 on:
   workflow_call:
 
+permissions:
+  contents: read
+
 jobs:
   lint-build:
     runs-on: ubuntu-24.04

@@ -41,8 +41,9 @@ jobs:
     permissions:
       contents: read
 
-  security:
-    uses: ./.github/workflows/ci-security.yml
+  scorecard:
+    needs: compliance
+    uses: ./.github/workflows/ci-scorecards.yml
     permissions:
       contents: read
       security-events: write
@@ -51,7 +52,7 @@ jobs:
   all-checks:
     runs-on: ubuntu-24.04
     timeout-minutes: 5
-    needs: [compliance, docs, rust, docker, security, sculptor]
+    needs: [compliance, docs, rust, docker, scorecard, sculptor]
     permissions:
       contents: read
     steps:

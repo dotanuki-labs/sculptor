@@ -41,10 +41,17 @@ jobs:
     permissions:
       contents: read
 
+  security:
+    uses: ./.github/workflows/ci-security.yml
+    permissions:
+      contents: read
+      security-events: write
+      id-token: write
+
   all-checks:
     runs-on: ubuntu-24.04
     timeout-minutes: 5
-    needs: [compliance, docs, rust, docker, sculptor]
+    needs: [compliance, docs, rust, docker, security, sculptor]
     permissions:
       contents: read
     steps:

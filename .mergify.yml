@@ -8,7 +8,7 @@ pull_request_rules:
       - check-success=all-checks
       - check-success=dogfood-docker
       - check-success=dogfood-rust
-      - check-success=stability-days
+      - check-success=renovate/stability-days
     actions:
       merge:
         method: squash

@@ -13,7 +13,6 @@
     "dependencyDashboard": true,
     "labels": ["dependencies"],
     "minimumReleaseAge": "5 days",
-    "prCreation": "not-pending",
     "internalChecksFilter": "strict",
     "packageRules": [
         {

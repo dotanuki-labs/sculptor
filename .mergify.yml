@@ -8,9 +8,8 @@ pull_request_rules:
       - check-success=all-checks
       - check-success=dogfood-docker
       - check-success=dogfood-rust
+      - check-success=stability-days
     actions:
-      review:
-        type: APPROVE
       merge:
         method: squash
 
@@ -21,7 +20,5 @@ pull_request_rules:
       - check-success=dogfood-docker
       - check-success=dogfood-rust
     actions:
-      review:
-        type: APPROVE
       merge:
         method: squash

@@ -22,7 +22,7 @@ categories = ["command-line-utilities"]
 anyhow = "=1.0.100"
 assert_cmd = "=2.1.1"
 better-panic = "=0.3.0"
-clap = "=4.5.53"
+clap = "=4.5.54"
 console = "=0.16.2"
 hex = "=0.4.3"
 human-panic = "=2.0.6"

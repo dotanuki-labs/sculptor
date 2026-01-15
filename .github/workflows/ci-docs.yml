@@ -23,4 +23,4 @@ jobs:
         uses: rvben/rumdl@5325c3093dfb5d6e1218ece3977301d8b3512d93 # v0.0.212
 
       - name: Build and archive documentation assets
-        uses: dotanuki-labs/github-actions/foss/prepare-ghpages@94e620b50bc8470655184441061d4bfa400dfb5f
+        uses: dotanuki-labs/github-actions/foss/prepare-ghpages@4a177523cad99b491826bd6dcdb5e3b4550f313d

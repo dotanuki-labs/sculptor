@@ -19,7 +19,7 @@ license = "MIT"
 categories = ["command-line-utilities"]
 
 [workspace.dependencies]
-anyhow = "=1.0.100"
+anyhow = "=1.0.101"
 assert_cmd = "=2.1.2"
 better-panic = "=0.3.0"
 clap = "=4.5.57"

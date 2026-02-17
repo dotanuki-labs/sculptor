@@ -8,7 +8,7 @@ resolver = "2"
 [workspace.package]
 version = "0.1.0"
 edition = "2024"
-rust-version = "1.93.0"
+rust-version = "1.93.1"
 authors = ["dotanuki.labs@gmail.com"]
 description = "An opinionated way to kick-off CLI apps powered by Rust"
 repository = "https://github.com/dotanuki-labs/sculptor"

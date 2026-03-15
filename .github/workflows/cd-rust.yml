@@ -112,7 +112,7 @@ jobs:
         with:
           name: ${{ steps.release-tag.outputs.version }}
           tag_name: ${{ steps.release-tag.outputs.version }}
-          token: ${{ secrets.DOTANUKI_BOT_TOKEN }}
+          token: ${{ secrets.DOTANUKI_BOT_TOKEN }} # zizmor: ignore[secrets-outside-env]
           generate_release_notes: true
           draft: true
           files: |
@@ -133,4 +133,4 @@ jobs:
         uses: ./.github/actions/setup-rust
 
       - name: Publish on crates.io
-        run: cargo publish -p sculptor --token ${{ secrets.CRATESIO_PUBLISH_TOKEN }} --dry-run # zizmor: ignore[use-trusted-publishing]
+        run: cargo publish -p sculptor --token ${{ secrets.CRATESIO_PUBLISH_TOKEN }} --dry-run # zizmor: ignore[use-trusted-publishing, secrets-outside-env]

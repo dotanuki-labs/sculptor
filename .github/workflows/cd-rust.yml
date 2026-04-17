@@ -108,7 +108,7 @@ jobs:
         uses: ./.github/actions/compute-version
 
       - name: Publish draft release on Github
-        uses: softprops/action-gh-release@153bb8e04406b158c6c84fc1615b65b24149a1fe # v2.6.1 # zizmor: ignore[superfluous-actions]
+        uses: softprops/action-gh-release@3bb12739c298aeb8a4eeaf626c5b8d85266b0e65 # v2.6.2 # zizmor: ignore[superfluous-actions]
         with:
           name: ${{ steps.release-tag.outputs.version }}
           tag_name: ${{ steps.release-tag.outputs.version }}

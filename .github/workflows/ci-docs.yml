@@ -20,7 +20,7 @@ jobs:
           persist-credentials: false
 
       - name: Lint Markdown files
-        uses: rvben/rumdl@e8c30294f7b713c7b1ffb11fb4b86e4e8b340b19 # v0.1.89
+        uses: rvben/rumdl@9a78b143c00cc273fa0636410b91ec9acde1004a # v0.1.90
 
       - name: Build and archive documentation assets
         uses: dotanuki-labs/github-actions/foss/prepare-ghpages@40a42443f36bbfcd9de1e04be69cc5c3c6f885a8

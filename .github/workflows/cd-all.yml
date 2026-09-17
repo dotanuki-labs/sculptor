@@ -10,21 +10,21 @@ permissions:
 
 jobs:
   docs:
-    uses: ./.github/workflows/cd-docs.yml
+    uses: $/.github/workflows/cd-docs.yml
     permissions:
       contents: read
       pages: write
       id-token: write
 
   docker:
-    uses: ./.github/workflows/cd-docker.yml
+    uses: $/.github/workflows/cd-docker.yml
     permissions:
       contents: read
       id-token: write
       packages: write
 
   rust:
-    uses: ./.github/workflows/cd-rust.yml
+    uses: $/.github/workflows/cd-rust.yml
     permissions:
       contents: read
       id-token: write

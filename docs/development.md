@@ -16,11 +16,11 @@ Please ensure you have those installed on your system.
 This project uses `xtasks` helpers to run common tasks. You can check them by running:
 
 ```bash
-cargo xtasks
+cargo xtask
 
 Companion build tasks for sculptor
 
-Usage: xtasks <COMMAND>
+Usage: xtask <COMMAND>
 
 Commands:
   sources    Inspects sources for formatting and smells

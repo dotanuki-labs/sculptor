@@ -58,7 +58,7 @@ Please check them out.
 - Ensure you have a proper running environment for your fork, e.g. running unit tests locally
 
 ```bash
-cargo xtasks tests
+cargo xtask tests
 ```
 
 - Code your changes 🔥

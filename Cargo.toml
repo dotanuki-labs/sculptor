@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: MIT
 
 [workspace]
-members = ["crates/*"]
+members = ["crates/*", "xtasks"]
 resolver = "2"
 
 [workspace.package]

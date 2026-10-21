@@ -60,7 +60,7 @@ jobs:
           tags: ghcr.io/${{ github.repository }}:${{ steps.release-tag.outputs.computed }}-${{ matrix.build-args.platform }}
 
   merge-manifest:
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
     timeout-minutes: 5
     needs: docker-images
 

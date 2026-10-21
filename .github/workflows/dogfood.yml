@@ -29,7 +29,7 @@ jobs:
           ./target/debug/test-cli --help
 
   dogfood-docker:
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
 
     steps:
       - name: Project checkout
